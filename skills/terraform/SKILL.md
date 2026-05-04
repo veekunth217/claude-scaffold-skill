@@ -195,6 +195,99 @@ Generate `modules/eks/main.tf` with:
 - Security group for cluster API
 - `aws_eks_addon` for coredns, kube-proxy, vpc-cni
 
+After EKS is selected, also ask:
+```
+Do you want Helm chart deployments on EKS?
+  1. Yes — generate Helm provider + chart releases in Terraform
+  2. Yes — generate a starter Helm chart for my app
+  3. Both
+  4. No
+```
+
+**Helm provider in Terraform (option 1):**
+```hcl
+# modules/eks/helm.tf
+provider "helm" {
+  kubernetes {
+    host                   = aws_eks_cluster.[name].endpoint
+    cluster_ca_certificate = base64decode(aws_eks_cluster.[name].certificate_authority[0].data)
+    exec {
+      api_version = "client.authentication.k8s.io/v1beta1"
+      args        = ["eks", "get-token", "--cluster-name", aws_eks_cluster.[name].name]
+      command     = "aws"
+    }
+  }
+}
+
+# Example: deploy ingress-nginx via Terraform + Helm
+resource "helm_release" "ingress_nginx" {
+  name             = "ingress-nginx"
+  repository       = "https://kubernetes.github.io/ingress-nginx"
+  chart            = "ingress-nginx"
+  namespace        = "ingress-nginx"
+  create_namespace = true
+  version          = "4.10.0"
+
+  set { name = "controller.service.type"; value = "LoadBalancer" }
+  set { name = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"; value = "nlb" }
+}
+
+# Example: AWS Load Balancer Controller
+resource "helm_release" "aws_lbc" {
+  name       = "aws-load-balancer-controller"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-load-balancer-controller"
+  namespace  = "kube-system"
+
+  set { name = "clusterName";     value = aws_eks_cluster.[name].name }
+  set { name = "serviceAccount.create"; value = "false" }
+  set { name = "serviceAccount.name";   value = "aws-load-balancer-controller" }
+}
+```
+
+**Starter Helm chart for the user's app (option 2/3):**
+Generate `helm/[app-name]/` with:
+```
+helm/[app-name]/
+├── Chart.yaml
+├── values.yaml               # dev defaults
+├── values-prod.yaml          # prod overrides
+└── templates/
+    ├── deployment.yaml
+    ├── service.yaml
+    ├── ingress.yaml
+    ├── hpa.yaml               # Horizontal Pod Autoscaler
+    ├── configmap.yaml
+    ├── secret.yaml
+    └── _helpers.tpl
+```
+
+Key `values.yaml`:
+```yaml
+replicaCount: 2
+image:
+  repository: [aws-account-id].dkr.ecr.[region].amazonaws.com/[app-name]
+  tag: latest
+  pullPolicy: Always
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+ingress:
+  enabled: true
+  className: nginx
+  host: [domain]
+  tls: true
+resources:
+  requests: { cpu: 100m, memory: 128Mi }
+  limits:   { cpu: 500m, memory: 512Mi }
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+```
+
 ### ECR (component 11)
 ```hcl
 resource "aws_ecr_repository" "[project_name]" {

@@ -141,6 +141,22 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route G — GraphQL API
+**Trigger words:** graphql, gql, apollo, resolvers, subscriptions, schema-first, type-graphql, pothos
+
+→ Confirm: "Got it — a GraphQL API. Let me walk you through server choice, DB, and schema design."
+→ Hand off to: `skills/graphql/SKILL.md`
+
+---
+
+### Route H — Database Setup
+**Trigger words:** postgres setup, postgresql, scylladb, cassandra, redis, database schema, migrations, prisma, drizzle, orm
+
+→ Confirm: "Got it — let's set up your [DB]. I'll design the schema around your access patterns."
+→ Hand off to: `skills/database/SKILL.md`
+
+---
+
 ### Route F — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, FastAPI, Laravel, MERN, LAMP, LEMP, Docker
 
