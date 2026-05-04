@@ -28,6 +28,16 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Refresh star counts in skills.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/update-stars.py
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add registry/skills.json
+          git diff --staged --quiet || git commit -m "chore: refresh star counts [skip ci]"
+
       - name: Run skill discovery scraper
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,11 +54,8 @@ jobs:
             echo "new_count=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit discovered.json
-        if: steps.check-new.outputs.new_count != '0'
+      - name: Commit and push registry updates
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add registry/discovered.json
           git diff --staged --quiet || git commit -m "chore: update discovered skills registry [skip ci]"
           git push
