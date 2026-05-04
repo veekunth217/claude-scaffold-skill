@@ -345,27 +345,50 @@ Generate a `.gitignore` appropriate for the stack. Use gitignore.io patterns for
 
 ---
 
-## Final Output
+## Phase 5 — Skill Installation (Automatic Post-Scaffold)
 
-End every successful scaffold with:
+After every successful scaffold, immediately run the skill bootstrapper without waiting to be asked.
+
+Print this transition:
 
 ```
-✓ Scaffold complete!
+✓ Scaffold complete! CLAUDE.md and .gitignore generated.
 
-What was created:
-  [list of created files/dirs]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Now let's set up your Claude Code skills.
+The right skills turn Claude into a specialist for your stack.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-Next steps:
-  1. [most important next step]
-  2. [second step]
-  3. cd [project-name] && [start command]
+Then follow the full workflow defined in `skills/bootstrap/SKILL.md`:
+- Read the registry
+- Build tiered recommendations based on the stack you just scaffolded (you already know it — skip re-detection)
+- Present the menu with essentials pre-selected
+- Install what the user picks
+
+If the user wants to skip skill installation, they can type `skip` at the menu and you will show the final summary below.
+
+## Final Summary
+
+After scaffold + skill install (or skip), show:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALL DONE
+
+Project:  [project-name]/
+Stack:    [stack]
+Skills:   [N installed] / [N skipped]
+
+Start developing:
+  cd [project-name]
+  [start command]
 
 Useful commands:
-  [dev]  [start command]
-  [test] [test command]
+  [dev]   [start command]
+  [test]  [test command]
   [build] [build command]
-
-CLAUDE.md has been generated with full project context.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ---

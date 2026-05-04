@@ -8,8 +8,8 @@
 
 An open-source Claude Code skill repository with **three core features**:
 1. **Scaffolding Wizard** — set up any stack interactively, safely, from any environment
-2. **Skill Picker** — find and install the right community skill for your task
-3. **Community Registry** — auto-discovering, curated index of Claude Code skills
+2. **Skill Bootstrapper** — detects your stack and installs the right Claude Code skills in tiers (essentials always, stack-matched, community picks)
+3. **Community Registry** — auto-discovering, curated index of Claude Code skills with weekly GitHub scraping
 
 ---
 
@@ -27,13 +27,18 @@ An interactive wizard that:
 
 **Safe for:** local machines, VPS consoles, Docker containers, CI environments.
 
-### 2. Skill Picker (`skills/picker/SKILL.md`)
+### 2. Skill Bootstrapper (`skills/bootstrap/SKILL.md`)
 
-A discovery assistant that:
-- Asks what you're trying to accomplish in plain English
-- Reads `registry/skills.json` and scores skills by relevance
-- Recommends the **top 3 matching skills** with explanations of why they fit
-- Offers to install any of them with your confirmation
+An active skill installer that:
+- **Detects your project stack** by reading `package.json`, `requirements.txt`, `composer.json`, etc.
+- **Tiers recommendations** into three groups shown all at once:
+  - 🔴 **Essentials** — pre-selected for everyone (GSD, Claude Code Expert, Awesome Claude Code)
+  - 🟡 **Stack Match** — scored from registry tags against your detected stack
+  - 🟢 **Community Picks** — top by stars not already shown
+- **Reads both** `registry/skills.json` and `registry/discovered.json` for the widest selection
+- **Actually installs** selected skills via `git clone` — with skip/already-installed detection
+- **Falls back** to a hardcoded essentials list if the registry file isn't found
+- Runs **automatically after scaffolding** as Phase 5 of the main wizard
 
 ### 3. Community Registry (`registry/skills.json`)
 
@@ -78,25 +83,41 @@ The wizard will:
 5. Show the full plan — wait for your **GO**
 6. Execute and generate `CLAUDE.md` + `.gitignore`
 
-### Skill Picker
+### Skill Bootstrapper (standalone)
+
+Run on any project — new or existing:
 
 ```
-/skill-picker
+/skill-bootstrap
 ```
 
-Example session:
+Example session on a React project:
 ```
-You: I want to add AI/LLM features to my Python app
+CLAUDE CODE SKILL INSTALLER
+Project detected: frontend, react, node
 
-Skill Picker: Found 3 matches...
+🔴 ESSENTIALS — Recommended for every project
+   [1] ✓ Get Shit Done (GSD)           ⭐ 59,791
+   [2] ✓ Awesome Claude Code           ⭐ 42,429
+   [3] ✓ Claude Code Expert            ⭐ 0
 
-#1 — Claude Code Expert (verified ✓)
-    54-skill collection with AI/ML agents and Python specialization...
+🟡 STACK MATCH — Picked for your react, frontend stack
+   [4]   UI/UX Pro Max                 ⭐ 73,729
+   [5]   Code Review Graph             ⭐ 15,203
 
-#2 — Everything Claude Code
-    Comprehensive tips for integrating Claude into development workflows...
+🟢 COMMUNITY PICKS
+   [6]   Agent Orchestrator            ⭐ 6,785
+   [7]   Claude Memory (claude-mem)    ⭐ 71,750
 
-Would you like to install any? (1, 2, 3, all, or none)
+Currently selected: 1, 2, 3
+Type numbers to toggle, "all", "none", or "go" to install.
+
+> 4 go
+
+Installing Get Shit Done (GSD)...   ✓
+Installing Awesome Claude Code...   ✓
+Installing Claude Code Expert...    ✓ (already installed)
+Installing UI/UX Pro Max...         ✓
 ```
 
 ### Run the Scraper Locally
@@ -229,21 +250,26 @@ tags: [tag1, tag2, tag3]
 
 ```
 claude-scaffold-skill/
-├── SKILL.md                        # Main scaffolding wizard
+├── SKILL.md                        # Scaffolding wizard (Phases 1-4 scaffold, Phase 5 → bootstrapper)
+├── Makefile                        # make validate / update-stars / discover
 ├── README.md                       # This file
 ├── LICENSE                         # MIT
 ├── .github/
 │   └── workflows/
-│       └── sync-registry.yml       # Weekly auto-discovery action
+│       ├── sync-registry.yml       # Weekly: refresh stars + discover new skills + open Issue
+│       └── validate-registry.yml  # PR gate: blocks 404 repos from merging
 ├── skills/
+│   ├── bootstrap/
+│   │   └── SKILL.md                # Skill installer — tiered recommendations + git clone install
 │   └── picker/
-│       └── SKILL.md                # Skill picker/recommender
+│       └── SKILL.md                # Redirects to bootstrap (legacy entry point)
 ├── registry/
-│   ├── skills.json                 # Curated community registry
-│   └── discovered.json             # Auto-generated weekly discoveries
+│   ├── skills.json                 # Curated community registry (16 entries)
+│   └── discovered.json             # Auto-generated weekly discoveries (maintainer review queue)
 ├── scripts/
-│   ├── fetch-skills.py             # GitHub scraper
-│   └── validate-registry.py       # Registry structure validator
+│   ├── fetch-skills.py             # GitHub scraper — stdlib only, no pip install
+│   ├── update-stars.py             # Refresh star counts in skills.json
+│   └── validate-registry.py       # Structure + GitHub existence validator
 └── references/
     ├── stacks.md                   # Stack version requirements & commands
     └── environments.md             # Environment detection edge cases
