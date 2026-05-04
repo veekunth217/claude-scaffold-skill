@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Skills: 3](https://img.shields.io/badge/Skills-3-green.svg)
-![Registry: 7 skills](https://img.shields.io/badge/Registry-7%20skills-orange.svg)
+![Registry: 16 skills](https://img.shields.io/badge/Registry-16%20skills-orange.svg)
 ![Last Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)
 
 An open-source Claude Code skill repository with **three core features**:
@@ -140,17 +140,26 @@ python scripts/validate-registry.py
 
 ## Community Registry
 
-### Current Skills (7 verified)
+### Current Skills (16 entries — 7 verified)
 
-| Skill | Repo | Tags |
-|-------|------|------|
-| Claude Code Scaffolding | hmohamed01/Claude-Code-Scaffolding-Skill | scaffolding, 70+ templates |
-| Claude Code Expert | reedmayhew18/claude-code-expert | wizard, agents, workflow |
-| Everything Claude Code | affaan-m/everything-claude-code | collection, tips |
-| Superpowers | obra/superpowers | professional, workflow |
-| UI/UX Pro Max | nextlevelbuilder/ui-ux-pro-max-skill | design, 67 styles |
-| Claude Skills | mastepanoski/claude-skills | debugging, docs |
-| Code Review Graph | tirth8205/code-review-graph | review, graph analysis |
+| Skill | Repo | Verified | Tags |
+|-------|------|----------|------|
+| Claude Code Scaffolding | hmohamed01/Claude-Code-Scaffolding-Skill | ✓ | scaffolding, 70+ templates |
+| Claude Code Expert | reedmayhew18/claude-code-expert | ✓ | wizard, agents, workflow |
+| Everything Claude Code | affaan-m/everything-claude-code | ✓ | collection, tips |
+| Superpowers | obra/superpowers | ✓ | professional, workflow |
+| UI/UX Pro Max | nextlevelbuilder/ui-ux-pro-max-skill | ✓ | design, 67 styles |
+| Claude Skills | mastepanoski/claude-skills | ✓ | debugging, docs |
+| Code Review Graph | tirth8205/code-review-graph | ✓ | review, graph analysis |
+| Claude Code Toolkit | applied-artificial-intelligence/claude-code-toolkit | — | workflow, planning, memory |
+| Get Shit Done (GSD) | gsd-build/get-shit-done | — | spec, planning, phases |
+| Awesome Claude Code | hesreallyhim/awesome-claude-code | — | collection, reference |
+| Agent Orchestrator | ComposioHQ/agent-orchestrator | — | agents, orchestration |
+| claude-mem | thedotmack/claude-mem | — | memory, token-saving |
+| gstack *(future)* | garrytan/gstack | — | scaffolding, full-stack |
+| OpenMemory *(future)* | CaviraOSS/OpenMemory | — | memory, agents |
+| Free Claude Code *(future)* | Alishahryar1/free-claude-code | — | community |
+| Browser Use *(future)* | browser-use/browser-use | — | browser, automation |
 
 ### How the Auto-Discovery Works
 
