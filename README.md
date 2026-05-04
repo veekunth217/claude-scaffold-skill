@@ -93,6 +93,7 @@ That's it.
 | **GraphQL** | `/graphql` | Apollo/Yoga/Pothos + Prisma/Drizzle/ScyllaDB + DataLoader + codegen |
 | **Database** | `/database` | PG/ScyllaDB/Redis — schema-first wizard, migrations, query patterns |
 | **Suggest** | `/suggest` | No stack preference → 2-3 options with tradeoffs + skill recommendations |
+| **Python** | `/python` | FastAPI/Django/Flask/Celery/Jupyter — pyenv pre-flight, venv, DB, Docker, CI |
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 

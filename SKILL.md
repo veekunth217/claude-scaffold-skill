@@ -157,6 +157,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route J — Python Project
+**Trigger words:** python, fastapi, django, flask, celery, jupyter, pandas, data science, pyenv, pip, uvicorn, pydantic, alembic, pytest
+
+→ Confirm: "Got it — a Python [FastAPI / Django / Flask / data science] project. Let me check your Python setup first."
+→ Hand off to: `skills/python/SKILL.md`
+
+---
+
 ### Route I — Context Sync
 **Trigger words:** sync, context sync, sync context, sync to new machine, new device, lost context, path hash, claude context, /sync export, /sync import
 
@@ -223,7 +231,65 @@ Type GO to proceed, SKIP [step number] to skip a step, or ask any questions.
 - Always prefer version managers: nvm over direct Node, pyenv over direct Python, rbenv over direct Ruby
 - On VPS/Docker: never assume sudo access — check first with `sudo -n true 2>/dev/null`
 - On existing projects: never overwrite existing files — append or skip
-- If a required tool is missing and you cannot install it, tell the user exactly what to install manually
+- If a required tool is missing, show the options below — never just say "install it manually"
+
+### Pre-flight: Missing Tools
+
+If the detected stack needs a tool that isn't installed, show this before the main plan:
+
+**Node.js stack, nvm missing:**
+```
+⚠️  Node.js pre-flight
+
+  node:  [✅ version / ❌ not found]
+  nvm:   ❌ not found  (recommended for version management)
+  npm:   [✅ version / ❌ not found]
+
+OPTIONS:
+  A) Install nvm now (recommended) — isolates Node versions per project
+     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+     Then: nvm install --lts && nvm use --lts
+  B) Use system Node [version] if present — simpler, less flexible
+  C) I'll install it myself first, come back when done
+
+Which do you prefer? (A/B/C)
+```
+
+**Python stack, pyenv missing:**
+```
+⚠️  Python pre-flight
+
+  python3:  [✅ version / ❌ not found]
+  pyenv:    ❌ not found  (recommended for version management)
+  pip3:     [✅ version / ❌ not found]
+
+OPTIONS:
+  A) Install pyenv now (recommended)
+     curl https://pyenv.run | bash
+     Then add to ~/.bashrc: [show exact lines]
+  B) Use system Python [version] — works fine for most projects
+  C) I'll install it myself first, come back when done
+
+Which do you prefer? (A/B/C)
+```
+
+**Nothing installed at all:**
+```
+⚠️  No runtime found for [Node/Python]. 
+
+Recommended path:
+  1. Install [nvm / pyenv] — manages versions cleanly
+  2. Use it to install [Node LTS / Python 3.12]
+  3. Come back and I'll scaffold from there
+
+Install commands:
+  nvm:   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  pyenv: curl https://pyenv.run | bash
+
+Want me to walk you through the install step by step?
+```
+
+Wait for the user to respond before proceeding with the main scaffold plan.
 
 ---
 
