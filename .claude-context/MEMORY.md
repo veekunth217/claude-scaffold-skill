@@ -1,0 +1,3 @@
+- [No Roo on this project](memory/feedback_no_roo.md) — do all work directly, Roo hallucinated fake repos
+- [Git safety: no blind git add .](memory/feedback_git_safety.md) — .jetro/credentials near-miss, always check untracked files first
+- [Repo state + pre-public checklist](memory/project_state_scaffold.md) — private until MBP sync test + scaffold test done

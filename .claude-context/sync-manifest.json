@@ -4,9 +4,12 @@
   "exported_from_user": "bunny",
   "exported_from_path": "/home/bunny/claude-scaffold-skill",
   "exported_from_hash": "-home-bunny-claude-scaffold-skill",
-  "exported_at": "2026-05-04T13:14:06.796963+00:00",
+  "exported_at": "2026-05-04T13:16:51.059349+00:00",
   "files": [
-    "memory/feedback_no_roo.md"
+    "MEMORY.md",
+    "memory/feedback_git_safety.md",
+    "memory/feedback_no_roo.md",
+    "memory/project_state_scaffold.md"
   ],
   "claude_version": "unknown"
 }
