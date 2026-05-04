@@ -34,8 +34,15 @@ npm-debug.log*
 *.tmp
 *.bak
 
-# Jetro / other tool state (may contain credentials)
+# Tool state and IDE config (may contain credentials or tokens)
 .jetro/
+.mcp.json
+.agents/
+.cursor/
+.windsurfrules
+AGENT.md
+CLAUDE.md
+.github/copilot-instructions.md
 
 # Claude Code conversation history — never commit (private + too large)
 *.jsonl
