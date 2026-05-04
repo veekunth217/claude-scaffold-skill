@@ -6,9 +6,9 @@ Usage:
     python scripts/fetch-skills.py
     python scripts/fetch-skills.py --output registry/discovered.json
     python scripts/fetch-skills.py --token YOUR_GITHUB_TOKEN
+    python scripts/fetch-skills.py --skip-skill-check   # faster, no SKILL.md verification
 
-Requires: requests (pip install requests)
-No other external dependencies.
+No external dependencies — uses stdlib only.
 """
 
 import argparse
@@ -16,15 +16,11 @@ import json
 import os
 import sys
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-
-try:
-    import requests
-except ImportError:
-    print("Error: 'requests' is required. Install with: pip install requests", file=sys.stderr)
-    sys.exit(1)
-
 
 SEARCH_QUERIES = [
     "topic:claude-skill",
@@ -34,7 +30,7 @@ SEARCH_QUERIES = [
 
 REGISTRY_PATH = Path(__file__).parent.parent / "registry" / "skills.json"
 GITHUB_API = "https://api.github.com"
-RATE_LIMIT_PAUSE = 2  # seconds between requests to avoid rate limiting
+RATE_LIMIT_PAUSE = 2
 
 
 def get_headers(token: str | None) -> dict:
@@ -47,8 +43,29 @@ def get_headers(token: str | None) -> dict:
     return headers
 
 
+def api_get(path: str, headers: dict, params: dict | None = None) -> dict | None:
+    url = path if path.startswith("http") else f"{GITHUB_API}{path}"
+    if params:
+        url = f"{url}?{urllib.parse.urlencode(params)}"
+    req = urllib.request.Request(url)
+    for k, v in headers.items():
+        req.add_header(k, v)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        if e.code == 403:
+            print("  Rate limited — waiting 60s...", file=sys.stderr)
+            time.sleep(60)
+            return api_get(path, headers, params)
+        print(f"  HTTP {e.code}: {url}", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"  Request error: {e}", file=sys.stderr)
+        return None
+
+
 def load_existing_registry(path: Path) -> set[str]:
-    """Return set of repo slugs already in the main registry."""
     if not path.exists():
         return set()
     with open(path) as f:
@@ -57,64 +74,33 @@ def load_existing_registry(path: Path) -> set[str]:
 
 
 def search_github(query: str, headers: dict) -> list[dict]:
-    """Search GitHub repos and return raw results."""
     results = []
     page = 1
-
-    while True:
-        url = f"{GITHUB_API}/search/repositories"
-        params = {
-            "q": query,
-            "sort": "stars",
-            "order": "desc",
-            "per_page": 30,
-            "page": page,
-        }
-
-        try:
-            resp = requests.get(url, headers=headers, params=params, timeout=15)
-        except requests.exceptions.RequestException as e:
-            print(f"  Request error: {e}", file=sys.stderr)
+    while page <= 10:
+        data = api_get(
+            "/search/repositories",
+            headers,
+            {"q": query, "sort": "stars", "order": "desc", "per_page": 30, "page": page},
+        )
+        if not data:
             break
-
-        if resp.status_code == 403:
-            print(f"  Rate limited. Waiting 60 seconds...", file=sys.stderr)
-            time.sleep(60)
-            continue
-
-        if resp.status_code != 200:
-            print(f"  API error {resp.status_code}: {resp.text[:200]}", file=sys.stderr)
-            break
-
-        data = resp.json()
         items = data.get("items", [])
         if not items:
             break
-
         results.extend(items)
-
-        # GitHub search API caps at 1000 results; stop at page 10
-        if page >= 10 or len(items) < 30:
+        if len(items) < 30:
             break
-
         page += 1
         time.sleep(RATE_LIMIT_PAUSE)
-
     return results
 
 
 def has_skill_md(repo_full_name: str, headers: dict) -> bool:
-    """Check if the repo has a SKILL.md in its root."""
-    url = f"{GITHUB_API}/repos/{repo_full_name}/contents/SKILL.md"
-    try:
-        resp = requests.get(url, headers=headers, timeout=10)
-        return resp.status_code == 200
-    except requests.exceptions.RequestException:
-        return False
+    data = api_get(f"/repos/{repo_full_name}/contents/SKILL.md", headers)
+    return data is not None
 
 
 def build_entry(item: dict) -> dict:
-    """Build a registry-compatible entry from a GitHub search result."""
     repo = item["full_name"]
     return {
         "name": item.get("name", repo.split("/")[-1]),
@@ -128,29 +114,17 @@ def build_entry(item: dict) -> dict:
     }
 
 
-def deduplicate(discovered: list[dict], existing_repos: set[str]) -> list[dict]:
-    """Remove entries already in the main registry and deduplicate within results."""
-    seen = set(existing_repos)
-    unique = []
-    for entry in discovered:
-        if entry["repo"] not in seen:
-            seen.add(entry["repo"])
-            unique.append(entry)
-    return unique
-
-
 def main():
     parser = argparse.ArgumentParser(description="Discover Claude Code skills on GitHub")
-    parser.add_argument("--output", default="registry/discovered.json", help="Output JSON file path")
-    parser.add_argument("--token", help="GitHub personal access token (or set GITHUB_TOKEN env var)")
-    parser.add_argument("--skip-skill-check", action="store_true", help="Skip SKILL.md verification (faster)")
+    parser.add_argument("--output", default="registry/discovered.json")
+    parser.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"))
+    parser.add_argument("--skip-skill-check", action="store_true")
     args = parser.parse_args()
 
-    token = args.token or os.environ.get("GITHUB_TOKEN")
-    if not token:
-        print("Warning: No GITHUB_TOKEN set. Unauthenticated requests are rate-limited to 10/min.", file=sys.stderr)
+    if not args.token:
+        print("Warning: No GITHUB_TOKEN — unauthenticated requests rate-limited to 10/min.", file=sys.stderr)
 
-    headers = get_headers(token)
+    headers = get_headers(args.token)
     existing_repos = load_existing_registry(REGISTRY_PATH)
     print(f"Loaded {len(existing_repos)} repos from existing registry.")
 
@@ -161,22 +135,22 @@ def main():
         print(f"\nSearching: {query}")
         results = search_github(query, headers)
         print(f"  Found {len(results)} results")
-
         for item in results:
             if item["id"] not in seen_ids:
                 seen_ids.add(item["id"])
                 all_raw.append(item)
-
         time.sleep(RATE_LIMIT_PAUSE)
 
-    print(f"\nTotal unique repos found across all queries: {len(all_raw)}")
+    print(f"\nTotal unique repos found: {len(all_raw)}")
 
-    # Build entries and optionally verify SKILL.md exists
     entries = []
+    seen_repos = set(existing_repos)
+
     for item in all_raw:
         repo = item["full_name"]
-        if repo in existing_repos:
+        if repo in seen_repos:
             continue
+        seen_repos.add(repo)
 
         if not args.skip_skill_check:
             print(f"  Checking SKILL.md: {repo} ... ", end="", flush=True)
@@ -188,12 +162,10 @@ def main():
 
         entries.append(build_entry(item))
 
-    new_discoveries = deduplicate(entries, existing_repos)
-
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_searched": len(all_raw),
-        "new_discoveries": new_discoveries,
+        "new_discoveries": entries,
         "skipped_already_in_registry": len([i for i in all_raw if i["full_name"] in existing_repos]),
     }
 
@@ -202,13 +174,11 @@ def main():
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"\nDone. {len(new_discoveries)} new skill(s) discovered.")
-    print(f"Output written to: {out_path}")
-
-    if new_discoveries:
-        print("\nNew discoveries:")
-        for entry in new_discoveries:
-            print(f"  - {entry['repo']} ({entry['stars']} stars)")
+    print(f"\nDone. {len(entries)} new skill(s) discovered.")
+    print(f"Output: {out_path}")
+    if entries:
+        for e in entries:
+            print(f"  - {e['repo']} ({e['stars']} ⭐)")
 
 
 if __name__ == "__main__":
