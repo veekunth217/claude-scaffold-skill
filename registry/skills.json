@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Claude Code Scaffolding Skill",
+    "repo": "hmohamed01/Claude-Code-Scaffolding-Skill",
+    "description": "70+ project templates with interactive CLI setup for web, mobile, desktop, and backend stacks",
+    "tags": ["scaffolding", "setup", "react", "vue", "nextjs", "fastapi", "flutter", "typescript", "boilerplate"],
+    "install": "git clone https://github.com/hmohamed01/Claude-Code-Scaffolding-Skill.git ~/.claude/skills/claude-scaffold",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "Claude Code Expert",
+    "repo": "reedmayhew18/claude-code-expert",
+    "description": "54-skill collection with active/available split, 8-phase production wizard, 19 specialized agents, and 9 interaction modes",
+    "tags": ["expert", "wizard", "agents", "workflow", "production", "testing", "review", "refactor"],
+    "install": "git clone https://github.com/reedmayhew18/claude-code-expert.git ~/.claude/skills/claude-expert",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "Everything Claude Code",
+    "repo": "affaan-m/everything-claude-code",
+    "description": "Comprehensive collection of Claude Code tips, skills, and configurations for power users",
+    "tags": ["collection", "tips", "configuration", "power-user", "productivity"],
+    "install": "git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/skills/everything-claude",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "Superpowers",
+    "repo": "obra/superpowers",
+    "description": "Battle-tested Claude Code skills for professional software development workflows",
+    "tags": ["professional", "workflow", "development", "battle-tested", "productivity"],
+    "install": "git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "UI/UX Pro Max",
+    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "description": "67 UI/UX design styles, design system generation, component patterns, and accessibility guidance",
+    "tags": ["ui", "ux", "design", "components", "accessibility", "design-system", "tailwind", "css", "figma"],
+    "install": "git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git ~/.claude/skills/ui-ux-pro-max",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "Claude Skills Collection",
+    "repo": "mastepanoski/claude-skills",
+    "description": "Curated set of reusable Claude Code skills covering debugging, documentation, and code quality",
+    "tags": ["debugging", "documentation", "code-quality", "refactoring", "collection"],
+    "install": "git clone https://github.com/mastepanoski/claude-skills.git ~/.claude/skills/claude-skills",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  },
+  {
+    "name": "Code Review Graph",
+    "repo": "tirth8205/code-review-graph",
+    "description": "Graph-based code review skill that traces dependencies and surfaces high-impact review areas",
+    "tags": ["code-review", "review", "graph", "dependencies", "analysis", "quality", "security"],
+    "install": "git clone https://github.com/tirth8205/code-review-graph.git ~/.claude/skills/code-review-graph",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-01"
+  }
+]
