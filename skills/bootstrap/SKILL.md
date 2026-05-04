@@ -1,9 +1,9 @@
 ---
 name: skill-bootstrap
-description: Detects your project stack and installs the right Claude Code skills — essentials always included, stack-matched and community picks you choose
-version: 1.0.0
+description: Detects your project stack, installs the right Claude Code skills, and surfaces built-in Claude Code capabilities you might not know exist
+version: 1.1.0
 author: veekunth217
-tags: [bootstrap, install, skills, setup, registry]
+tags: [bootstrap, install, skills, setup, registry, capabilities]
 platforms: [claude-code, cursor, codex]
 ---
 
@@ -55,6 +55,8 @@ Also try `registry/discovered.json` at the same locations — merge those entrie
 
 If no registry file is found, use the hardcoded essentials list at the bottom of this file and tell the user the registry wasn't found.
 
+Also try to read `registry/claude-capabilities.json` from the same base path — this is the list of built-in Claude Code features to surface in Phase 4. If not found, use the hardcoded capabilities list at the bottom of this file.
+
 ---
 
 ## Phase 3 — Build Tiered Recommendations
@@ -91,6 +93,21 @@ Tag → skill mapping guidance:
 
 From remaining registry entries, take top 3 by star count not already in Tier 1 or 2.
 
+### Tier 4 — Built into Claude Code (no install needed)
+
+Read from `registry/claude-capabilities.json`. Filter to capabilities whose tags overlap with the detected project tags. Score each capability: +2 per tag match.
+
+Show top 5 by score. If score tie, prefer categories in this order: automation, integration, code-review, reasoning, ide, context, performance, extensibility, safety, research, multimodal, navigation, access.
+
+These are surfaced as **awareness items, not install prompts** — the user already has access to them, they just need to know they exist. No git clone, no toggle number — just show them.
+
+Special rules:
+- If `frontend` or `react` or `vue` or `angular` detected → always include "IDE Extension" and "Image Input"
+- If `terraform` or `docker` detected → always include "Permission Modes" (useful for CI/CD)
+- If `new-project` detected → always include "Project Memory (CLAUDE.md)" and "Hooks"
+- If `mature-project` detected → always include "Ultra Review" and "GitHub PR Review"
+- Always include "Hooks" as it benefits every project type
+
 ---
 
 ## Phase 4 — Present the Menu
@@ -111,7 +128,7 @@ Project detected: [detected stack tags]
        Spec-driven workflow, planning, phase execution
        install: git clone ... ~/.claude/skills/gsd
 
-   [2] ✓ Awesome Claude Code              ⭐ 42,429  
+   [2] ✓ Awesome Claude Code              ⭐ 42,429
        Curated reference of Claude Code best practices
        install: git clone ... ~/.claude/skills/awesome-claude-code
 
@@ -143,18 +160,46 @@ Project detected: [detected stack tags]
        Persistent memory across sessions, saves tokens
        install: git clone ... ~/.claude/skills/claude-mem
 
+─────────────────────────────────────────
+💡 ALREADY IN CLAUDE CODE — No install needed
+   Features you already have access to — most devs don't know these exist.
+
+   ↳ Hooks
+     Run eslint/prettier/tests automatically after every file Claude edits.
+     → Settings > Hooks in Claude Code
+
+   ↳ MCP Servers
+     Connect Claude directly to your Postgres/MySQL/GitHub — no copy-paste.
+     → Settings > MCP Servers | search: mcp-server-postgres, mcp-server-github
+
+   ↳ /ultrareview
+     Multi-agent cloud PR review before you merge. Catches what you miss.
+     → Type /ultrareview in Claude Code, or /ultrareview <PR-number>
+
+   ↳ Project Memory (CLAUDE.md)
+     Claude reads this file every session — never re-explain your stack again.
+     → Create CLAUDE.md in your project root
+
+   ↳ Hooks (auto-lint on save)
+     PostToolUse(Write) → eslint --fix && prettier — runs on every file edit.
+     → Settings > Hooks
+
+   [show top matches for detected stack — up to 5 capabilities total]
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Currently selected: 1, 2, 3
 Type numbers to toggle (e.g. "4 5"), "all", "none", or "go" to install selected.
+The 💡 section is informational — no install needed, nothing to toggle.
 ```
 
 Wait for user input. Accept:
-- Numbers like `4 5` or `4,5` — toggle those skills on/off
-- `all` — select everything
+- Numbers like `4 5` or `4,5` — toggle those skills on/off (only installable skills 1-N)
+- `all` — select everything installable
 - `none` — deselect everything including essentials
 - `go` or `install` — proceed with currently selected
 - `skip` — exit without installing anything
+- `more` — show all capabilities, not just top 5
 
 Update the display to show current selection state after each input.
 
@@ -234,3 +279,33 @@ If no `registry/skills.json` is accessible, use this hardcoded essentials list:
 ```
 
 Tell the user: "Registry not found — showing hardcoded essentials. Install the full registry: `git clone https://github.com/veekunth217/claude-scaffold-skill.git ~/.claude/skills/claude-scaffold-skill`"
+
+---
+
+## Fallback: No Capabilities File Found
+
+If `registry/claude-capabilities.json` is not accessible, always show these built-in capabilities in the 💡 section:
+
+```
+💡 ALREADY IN CLAUDE CODE — No install needed
+
+   ↳ Hooks
+     Auto-run eslint, prettier, or tests after every file Claude edits.
+     → Settings > Hooks in Claude Code
+
+   ↳ /ultrareview
+     Multi-agent cloud PR review — catches bugs across your full diff.
+     → Type /ultrareview (or /ultrareview <PR-number> for GitHub PRs)
+
+   ↳ Project Memory (CLAUDE.md)
+     Add a CLAUDE.md to your project root — Claude reads it every session.
+     → Never re-explain your stack, conventions, or "never do X" again.
+
+   ↳ MCP Servers
+     Connect Claude to your database, GitHub, or Slack directly.
+     → Settings > MCP Servers | try: mcp-server-postgres, mcp-server-github
+
+   ↳ IDE Extension (VS Code / JetBrains)
+     Claude Code inside your editor — inline diffs, apply without switching.
+     → Install 'Claude Code' from VS Code marketplace or JetBrains marketplace
+```

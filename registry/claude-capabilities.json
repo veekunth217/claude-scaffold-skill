@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-05-04",
+  "source": "manually-curated",
+  "note": "Updated weekly by scripts/fetch-capabilities.py — do not edit generated_at or source manually",
+  "capabilities": [
+    {
+      "name": "Ultra Review",
+      "trigger": "/ultrareview",
+      "description": "Multi-agent cloud review of your current branch or any GitHub PR — catches bugs, security holes, and missed edge cases across the full diff",
+      "category": "code-review",
+      "tags": ["code-review", "quality", "pr", "multi-agent", "security"],
+      "when_to_use": "Before merging any non-trivial PR or before a release",
+      "note": "Billed separately — spawns multiple review agents in parallel. Use /ultrareview <PR#> to review a specific GitHub PR."
+    },
+    {
+      "name": "Hooks",
+      "trigger": "Settings > Hooks in Claude Code",
+      "description": "Run any shell command automatically when Claude edits a file, runs bash, or completes a task — use for auto-lint, auto-format, auto-test on every change",
+      "category": "automation",
+      "tags": ["automation", "testing", "linting", "formatting", "ci", "workflow", "quality"],
+      "when_to_use": "Any project — prevents Claude from leaving you with un-linted or un-formatted code",
+      "example": "PostToolUse(Write) → eslint --fix $FILE && prettier --write $FILE"
+    },
+    {
+      "name": "MCP Servers",
+      "trigger": "Settings > MCP Servers in Claude Code",
+      "description": "Connect Claude directly to your database, GitHub, Slack, filesystem, or browser — Claude queries your DB, reads issues, sends messages without copy-pasting",
+      "category": "integration",
+      "tags": ["database", "github", "slack", "integration", "mcp", "postgres", "mysql", "mongodb", "backend", "fullstack"],
+      "when_to_use": "When you're constantly copy-pasting query results, API responses, or ticket descriptions into Claude",
+      "example": "mcp-server-postgres → Claude runs SELECT queries on your local DB mid-conversation"
+    },
+    {
+      "name": "Project Memory (CLAUDE.md)",
+      "trigger": "Create CLAUDE.md in your project root",
+      "description": "Persistent instructions Claude reads every session — define your stack, conventions, commands to never run, team preferences. Eliminates re-explaining context",
+      "category": "context",
+      "tags": ["workflow", "memory", "context", "team", "onboarding", "conventions"],
+      "when_to_use": "Every project — especially shared ones or any you return to after time away"
+    },
+    {
+      "name": "Global Memory (~/.claude/CLAUDE.md)",
+      "trigger": "Create ~/.claude/CLAUDE.md",
+      "description": "Global instructions applied to every project across every session — your coding style, preferred tools, things Claude should never do or always do",
+      "category": "context",
+      "tags": ["workflow", "memory", "personalization", "global", "preferences"],
+      "when_to_use": "Set once — never explain your global preferences again"
+    },
+    {
+      "name": "Extended Thinking",
+      "trigger": "Automatic on complex questions, or ask Claude to 'think carefully'",
+      "description": "Claude reasons through hard problems step-by-step before answering — dramatically better for architecture decisions, debugging subtle bugs, security analysis",
+      "category": "reasoning",
+      "tags": ["architecture", "debugging", "security", "planning", "complex-problems", "design"],
+      "when_to_use": "Architecture decisions, tricky bugs, security reviews — ask 'think carefully about...' or switch to Opus"
+    },
+    {
+      "name": "Parallel Sub-agents",
+      "trigger": "Claude uses automatically — or ask explicitly to 'work in parallel'",
+      "description": "Claude spawns parallel sub-agents for independent tasks — searches multiple files simultaneously, runs parallel research, coordinates multi-step work without blocking",
+      "category": "performance",
+      "tags": ["multi-agent", "parallel", "performance", "large-codebase", "refactoring", "search"],
+      "when_to_use": "Large codebases — Claude explores many files at once instead of reading them one by one"
+    },
+    {
+      "name": "Fast Mode",
+      "trigger": "/fast (toggle)",
+      "description": "Faster output streaming with the same Claude Opus 4.6 model — not a smaller model. Good for rapid back-and-forth iteration and quick edits",
+      "category": "performance",
+      "tags": ["performance", "speed", "iteration", "workflow"],
+      "when_to_use": "When iterating quickly on small changes and you don't need maximum reasoning depth"
+    },
+    {
+      "name": "IDE Extension (VS Code / JetBrains)",
+      "trigger": "Install 'Claude Code' from VS Code marketplace or JetBrains marketplace",
+      "description": "Claude Code directly inside your editor — inline diffs, apply changes without context switching, see suggestions in the exact file being edited",
+      "category": "ide",
+      "tags": ["vscode", "jetbrains", "ide", "frontend", "typescript", "javascript", "react", "vue", "angular"],
+      "when_to_use": "Frontend and TS/JS work — apply component changes without leaving your editor"
+    },
+    {
+      "name": "GitHub PR Review",
+      "trigger": "/ultrareview <PR-number>",
+      "description": "Point Ultra Review at any GitHub PR number — reviews the full diff with multiple agents checking for bugs, security holes, and missed edge cases",
+      "category": "code-review",
+      "tags": ["github", "pr", "code-review", "team", "quality", "security"],
+      "when_to_use": "Team code reviews — drop the PR number, get multi-agent analysis instead of reading the diff yourself"
+    },
+    {
+      "name": "Custom Skills (Slash Commands)",
+      "trigger": "Create ~/.claude/skills/<name>/SKILL.md",
+      "description": "Build your own reusable slash commands — document any workflow, Claude reads and follows it. Share with your team via git clone",
+      "category": "extensibility",
+      "tags": ["workflow", "team", "customization", "skills", "automation", "reusable"],
+      "when_to_use": "Any repeated workflow — deployment checklists, review protocols, project-specific runbooks"
+    },
+    {
+      "name": "Permission Modes",
+      "trigger": "Settings > Permissions, or --dangerously-skip-permissions flag",
+      "description": "Control what Claude can do autonomously — file edits, bash commands, git operations, network calls. Lock down or open up based on your trust level and task",
+      "category": "safety",
+      "tags": ["security", "permissions", "safety", "ci", "automation", "production"],
+      "when_to_use": "CI/CD pipelines (full auto) or production/sensitive codebases (locked down)"
+    },
+    {
+      "name": "Web Search",
+      "trigger": "Claude uses automatically when it needs current information",
+      "description": "Claude searches the web for docs, package APIs, error messages, CVEs, Stack Overflow — no more tab-switching to look up library signatures or error codes",
+      "category": "research",
+      "tags": ["research", "docs", "debugging", "packages", "security", "dependencies"],
+      "when_to_use": "Working with any external library or debugging errors you haven't seen before"
+    },
+    {
+      "name": "Image and Screenshot Input",
+      "trigger": "Paste or drag an image into Claude Code chat",
+      "description": "Paste a UI screenshot, error dialog, design mockup, diagram, or whiteboard photo — Claude reads it and acts on it directly",
+      "category": "multimodal",
+      "tags": ["frontend", "ui", "design", "debugging", "errors", "figma", "react", "vue", "angular"],
+      "when_to_use": "Frontend work — paste a Figma screenshot or browser error, get working code back"
+    },
+    {
+      "name": "Codebase Indexing",
+      "trigger": "Automatic — Claude indexes your project on first use",
+      "description": "Claude builds a semantic index of your codebase — finds relevant files instantly without you specifying paths. The bigger your repo, the more this saves you",
+      "category": "navigation",
+      "tags": ["large-codebase", "navigation", "search", "refactoring", "monorepo"],
+      "when_to_use": "Large repos — stop specifying file paths, Claude finds what it needs automatically"
+    },
+    {
+      "name": "Claude Code Web App",
+      "trigger": "claude.ai/code in browser",
+      "description": "Full Claude Code in the browser — no install needed. Same capabilities as the CLI, useful on machines where you can't install software",
+      "category": "access",
+      "tags": ["browser", "remote", "cloud", "access", "no-install"],
+      "when_to_use": "Remote servers, borrowed machines, or when you want Claude Code without installing anything"
+    }
+  ]
+}

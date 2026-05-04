@@ -114,6 +114,12 @@ Separate from the skill files above, a curated registry of 16 community skills a
 /skill-bootstrap   →   reads registry → shows tiered recommendations → installs
 ```
 
+### Claude Code Capabilities Registry
+
+A second registry (`registry/claude-capabilities.json`) tracks built-in Claude Code features — things already available without any install. The bootstrapper surfaces these as `💡` awareness items matched to your project stack.
+
+Updated weekly by scanning the Anthropic docs pages. If something new ships (a new slash command, hook event type, MCP integration), it opens a GitHub Issue for review and gets added to the curated file via PR.
+
 ---
 
 ## Full User Journey
@@ -144,7 +150,10 @@ Separate from the skill files above, a curated registry of 16 community skills a
    🔴 Essentials (GSD + Claude Code Expert) — pre-selected
    🟡 Stack match (UI/UX Pro Max for frontend, Code Review Graph, etc.)
    🟢 Community picks by stars
+   💡 Built into Claude Code — features you already have, surfaced for your stack
+      (Hooks, MCP Servers, /ultrareview, CLAUDE.md, IDE extension, etc.)
    → You toggle numbers, type GO → skills installed to ~/.claude/skills/
+   → 💡 items are informational — no install needed, just guidance
 ```
 
 ---
@@ -203,10 +212,11 @@ The weekly scraper will find it automatically.
 ## Developer Commands
 
 ```bash
-make validate        # validate registry structure (fast, no network)
-make validate-full   # validate + verify all repos exist on GitHub
-make update-stars    # refresh star counts from GitHub API
-make discover        # run scraper → registry/discovered.json
+make validate               # validate registry structure (fast, no network)
+make validate-full          # validate + verify all repos exist on GitHub
+make update-stars           # refresh star counts from GitHub API
+make discover               # run scraper → registry/discovered.json
+make discover-capabilities  # scan Anthropic docs → registry/discovered-capabilities.json
 ```
 
 ---
@@ -244,10 +254,13 @@ claude-scaffold-skill/
 │
 ├── registry/
 │   ├── skills.json                  # Curated community registry (16 entries)
-│   └── discovered.json              # Weekly auto-discoveries (pending review)
+│   ├── discovered.json              # Weekly auto-discoveries (pending review)
+│   ├── claude-capabilities.json     # Built-in Claude Code features (no install needed)
+│   └── discovered-capabilities.json # Weekly docs scan results (pending review)
 │
 ├── scripts/
 │   ├── fetch-skills.py              # GitHub scraper (stdlib only)
+│   ├── fetch-capabilities.py        # Anthropic docs scraper (stdlib only)
 │   ├── update-stars.py              # Refresh star counts (stdlib only)
 │   └── validate-registry.py        # Structure + GitHub existence validator
 │
