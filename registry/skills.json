@@ -68,5 +68,99 @@
     "stars": 0,
     "verified": true,
     "added": "2026-05-01"
+  },
+  {
+    "name": "Claude Code Toolkit",
+    "repo": "applied-artificial-intelligence/claude-code-toolkit",
+    "description": "Production workflow toolkit covering planning, memory management, and structured task execution for Claude Code",
+    "tags": ["workflow", "planning", "memory", "productivity", "toolkit"],
+    "install": "git clone https://github.com/applied-artificial-intelligence/claude-code-toolkit.git ~/.claude/skills/claude-code-toolkit",
+    "stars": 0,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Get Shit Done (GSD)",
+    "repo": "gsd-build/get-shit-done",
+    "description": "Opinionated Claude Code workflow system with spec-driven planning, phase execution, and structured delivery",
+    "tags": ["workflow", "spec", "planning", "phases", "delivery", "productivity"],
+    "install": "git clone https://github.com/gsd-build/get-shit-done.git ~/.claude/skills/gsd",
+    "stars": 0,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Awesome Claude Code",
+    "repo": "hesreallyhim/awesome-claude-code",
+    "description": "Curated awesome-list of Claude Code skills, tools, tips, and resources for developers",
+    "tags": ["collection", "reference", "awesome-list", "resources", "tips", "community"],
+    "install": "git clone https://github.com/hesreallyhim/awesome-claude-code.git ~/.claude/skills/awesome-claude-code",
+    "stars": 0,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Agent Orchestrator",
+    "repo": "ComposioHQ/agent-orchestrator",
+    "description": "Multi-agent orchestration framework for Claude Code — coordinate parallel agents with shared context and tool access",
+    "tags": ["agents", "orchestration", "multi-agent", "parallel", "composio", "automation"],
+    "install": "git clone https://github.com/ComposioHQ/agent-orchestrator.git ~/.claude/skills/agent-orchestrator",
+    "stars": 0,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Claude Memory (claude-mem)",
+    "repo": "thedotmack/claude-mem",
+    "description": "Lightweight persistent memory layer for Claude Code — stores context between sessions to reduce token usage",
+    "tags": ["memory", "token-saving", "persistence", "context", "sessions", "efficiency"],
+    "install": "git clone https://github.com/thedotmack/claude-mem.git ~/.claude/skills/claude-mem",
+    "stars": 0,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "gstack",
+    "repo": "garrytan/gstack",
+    "description": "Full-stack scaffolding and workflow system — tracking for future registry inclusion pending public release",
+    "tags": ["scaffolding", "full-stack", "workflow"],
+    "install": "git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack",
+    "stars": 0,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "OpenMemory",
+    "repo": "CaviraOSS/OpenMemory",
+    "description": "Open-source memory management system for AI agents — tracking for future registry inclusion",
+    "tags": ["memory", "agents", "open-source", "persistence"],
+    "install": "git clone https://github.com/CaviraOSS/OpenMemory.git ~/.claude/skills/openmemory",
+    "stars": 0,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Free Claude Code",
+    "repo": "Alishahryar1/free-claude-code",
+    "description": "Community resources and configurations for Claude Code — tracking for future registry inclusion",
+    "tags": ["community", "configuration", "resources"],
+    "install": "git clone https://github.com/Alishahryar1/free-claude-code.git ~/.claude/skills/free-claude-code",
+    "stars": 0,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-04"
+  },
+  {
+    "name": "Browser Use",
+    "repo": "browser-use/browser-use",
+    "description": "Browser automation agent for Claude — enables web browsing, scraping, and UI interaction — tracking for future registry inclusion",
+    "tags": ["browser", "automation", "web-scraping", "agents", "ui-testing"],
+    "install": "git clone https://github.com/browser-use/browser-use.git ~/.claude/skills/browser-use",
+    "stars": 0,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-04"
   }
 ]
