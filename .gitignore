@@ -33,3 +33,12 @@ npm-debug.log*
 # Temporary
 *.tmp
 *.bak
+
+# Claude Code conversation history — never commit (private + too large)
+*.jsonl
+
+# .claude-context/ is intentionally NOT gitignored — it's the sync feature
+# Only exclude the conversation history files inside it if they ever appear:
+.claude-context/*.jsonl
+.claude-context/*.json
+!.claude-context/sync-manifest.json

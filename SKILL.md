@@ -157,6 +157,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route I — Context Sync
+**Trigger words:** sync, context sync, sync context, sync to new machine, new device, lost context, path hash, claude context, /sync export, /sync import
+
+→ Confirm: "Got it — let's sync your Claude Code context to [or from] another device."
+→ Hand off to: `skills/sync/SKILL.md`
+
+---
+
 ### Route F — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, FastAPI, Laravel, MERN, LAMP, LEMP, Docker
 
@@ -417,6 +425,11 @@ Useful commands:
   [dev]   [start command]
   [test]  [test command]
   [build] [build command]
+
+Work across devices?
+  python scripts/sync-export.py && git push
+  → On new device: git pull && python scripts/sync-import.py
+  Claude will remember this project's full context everywhere.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

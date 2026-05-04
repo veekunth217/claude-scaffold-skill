@@ -120,6 +120,16 @@
     "added": "2026-05-04"
   },
   {
+    "name": "UX/UI Premium Direction Style Selector",
+    "repo": "Luispitik/ux-ui-premium-direction-style-selector",
+    "description": "8 visual direction demos with animations, accessibility, and theme extraction for Next.js/React projects",
+    "tags": ["ui", "ux", "design", "animation", "accessibility", "nextjs", "react", "theme", "premium"],
+    "install": "git clone https://github.com/Luispitik/ux-ui-premium-direction-style-selector.git ~/.claude/skills/ux-ui-premium",
+    "stars": 27,
+    "verified": false,
+    "added": "2026-05-04"
+  },
+  {
     "name": "gstack",
     "repo": "garrytan/gstack",
     "description": "Full-stack scaffolding and workflow system — tracking for future registry inclusion pending public release",

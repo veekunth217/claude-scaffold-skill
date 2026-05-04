@@ -89,9 +89,15 @@ Tag → skill mapping guidance:
 - `workflow`, `planning`: → Claude Code Toolkit, GSD (already in T1)
 - `wordpress`, `php`: → Claude Code Scaffolding Skill
 
-### Tier 3 — Community Picks (top by stars, not already shown)
+### Tier 3 — Community Picks (up to 7, not already shown)
 
-From remaining registry entries, take top 3 by star count not already in Tier 1 or 2.
+From remaining registry entries, take up to 7 by star count not already in Tier 1 or 2.
+
+**Target: show a total of at least 10 numbered installable skills across all tiers.**
+- Tier 1 contributes 3
+- Tier 2 contributes as many as score qualifies (min 1, max 5)
+- Tier 3 fills the remainder to reach 10 total (or more if the registry has enough)
+- Never cap the list at fewer than 10 — developers need choice, not a curated shortlist of 3
 
 ### Tier 4 — Built into Claude Code (no install needed)
 
@@ -159,6 +165,20 @@ Project detected: [detected stack tags]
    [7]   Claude Memory (claude-mem)        ⭐ 71,750
        Persistent memory across sessions, saves tokens
        install: git clone ... ~/.claude/skills/claude-mem
+
+   [8]   Everything Claude Code            ⭐ 172,979
+       Comprehensive tips, skills, configs for power users
+       install: git clone ... ~/.claude/skills/everything-claude
+
+   [9]   Superpowers                       ⭐ 177,817
+       Battle-tested professional development workflows
+       install: git clone ... ~/.claude/skills/superpowers
+
+  [10]   UX/UI Premium Style Selector      ⭐ 27
+       8 visual direction demos with animations + a11y
+       install: git clone ... ~/.claude/skills/ux-ui-premium
+
+   [continue listing all remaining registry entries with incrementing numbers]
 
 ─────────────────────────────────────────
 💡 ALREADY IN CLAUDE CODE — No install needed
