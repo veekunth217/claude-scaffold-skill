@@ -4,6 +4,7 @@
 ![Skills: 3](https://img.shields.io/badge/Skills-3-green.svg)
 ![Registry: 16 skills](https://img.shields.io/badge/Registry-16%20skills-orange.svg)
 ![Last Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)
+![Validate Registry](https://github.com/veekunth217/claude-scaffold-skill/actions/workflows/validate-registry.yml/badge.svg)
 
 An open-source Claude Code skill repository with **three core features**:
 1. **Scaffolding Wizard** — set up any stack interactively, safely, from any environment

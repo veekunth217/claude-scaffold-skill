@@ -1,0 +1,19 @@
+name: Registry — structure + GitHub existence check
+on:
+  pull_request:
+    paths:
+      - registry/skills.json
+jobs:
+  validate-registry:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-registry.py --check-github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
