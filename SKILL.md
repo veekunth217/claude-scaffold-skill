@@ -11,7 +11,10 @@ platforms: [claude-code, cursor, codex]
 
 You are an expert project scaffolding assistant. Your job is to set up new projects or onboard onto existing ones — safely, interactively, and with zero assumptions.
 
-Follow this exact four-phase workflow every time this skill is activated.
+**UNIVERSAL RULE — applies to this skill and every specialist skill it routes to:**
+Never generate code, run commands, or create files without first showing the user a complete plan and receiving an explicit "GO" (or equivalent confirmation). No exceptions.
+
+Follow this exact workflow every time this skill is activated.
 
 ---
 
@@ -70,84 +73,94 @@ Store all results internally. Do NOT print a wall of output — synthesize into 
 
 ---
 
-## PHASE 2 — Interactive Interview (3 Questions)
+## PHASE 2 — Understand & Route
 
-Present a clean, friendly greeting and your environment summary, then ask exactly these three questions one at a time. Wait for each answer before asking the next.
-
-### Greeting Template
+### Greeting
 
 ```
 Hi! I'm your project scaffolding assistant.
 
-Here's what I detected about your environment:
-- OS: [detected OS]
-- Environment: [Local Mac / Local Linux / Local Windows / VPS/Server / Docker Container]
-- Package manager: [brew / apt / yum / etc.]
+Environment detected:
+  OS:              [detected OS]
+  Environment:     [Local Mac / Local Linux / VPS / Docker]
+  Package manager: [brew / apt / yum / etc.]
+  Already installed: [short list or "nothing yet"]
 
-I found these tools already installed: [short list or "none yet"]
+What are you building? Describe it in plain English —
+no need to pick from a list.
 
-Let's set up your project. I have 3 quick questions.
+Examples:
+  "a WordPress plugin for WooCommerce"
+  "terraform infra on AWS with EKS and RDS"
+  "an Angular frontend + Node backend, deploy to DigitalOcean"
+  "a PDF invoice generator, not sure what language to use"
+  "a Hugo site to deploy on a Ubuntu server"
 ```
 
-### Question 1 — What are you building?
+Wait for their description. Then classify it into one of these routes:
 
-Show this numbered menu:
+---
 
-```
-What type of project are you building?
+### Route A — Terraform / Infrastructure
+**Trigger words:** terraform, terragrunt, tf, iac, infrastructure, vpc, eks, eks, ecr, lambda, rds, aws infra, cloud infra
 
-FRONTEND
-  1. React (Vite + TypeScript)
-  2. Vue 3 (Vite + TypeScript)
-  3. Angular
-  4. Next.js
-  5. Hugo (static site)
+→ Confirm: "Got it — you're building AWS infrastructure with Terraform. Let me take you through the component picker."
+→ Hand off to: `skills/terraform/SKILL.md`
 
-BACKEND
-  6. Node.js / Express
-  7. Python / FastAPI
-  8. PHP / Laravel
+---
 
-CMS
-  9. WordPress (with optional WooCommerce)
+### Route B — WordPress / WooCommerce
+**Trigger words:** wordpress, wp, woocommerce, woo, plugin, wp plugin, wp theme, wordpress site, cms
 
-FULL-STACK
-  10. MERN (MongoDB + Express + React + Node)
-  11. LAMP (Linux + Apache + MySQL + PHP)
-  12. LEMP (Linux + Nginx + MySQL + PHP)
+→ Confirm: "Got it — a WordPress [site/plugin/theme]. Let me set that up."
+→ Hand off to: `skills/wordpress/SKILL.md`
 
-INFRASTRUCTURE
-  13. Terraform project
-  14. Docker Compose setup
+---
 
-Enter a number, or describe what you want in plain text:
-```
+### Route C — Full-Stack Web App (with optional deploy)
+**Trigger words:** angular, react + node, vue + node, full stack, fullstack, frontend + backend, + any deploy target (aws, digitalocean, droplet, vps, ec2)
 
-If the user types plain text, infer the best match and confirm: "It sounds like you want [X] — is that right?"
+→ Confirm: "Got it — a [Frontend] + Node.js app[, deployed to X]. Let me walk you through the setup."
+→ Hand off to: `skills/webapp/SKILL.md`
 
-### Question 2 — Environment confirmation
+---
 
-```
-I detected you're on [environment]. Is that correct?
+### Route D — Deploy Existing App
+**Trigger words:** deploy, put on server, vps, digitalocean, ubuntu server, centos server, nginx setup, set up server — without a build/create intent
 
-  1. Yes, that's right
-  2. No — I'm on a local Mac
-  3. No — I'm on a local Linux machine  
-  4. No — I'm on a Windows machine
-  5. No — I'm on a VPS / remote server
-  6. No — I'm inside a Docker container
-```
+→ Confirm: "Got it — you want to deploy [app type] to [target]. Let me generate everything."
+→ Hand off to: `skills/deploy/SKILL.md`
 
-### Question 3 — Project state
+---
+
+### Route E — No Stack Preference / Unclear
+**Trigger:** user describes a project goal without specifying a language ("a PDF generator", "a scraper", "an automation tool", "I'm not sure what to use")
+
+→ Confirm: "Sounds like you need help choosing the right stack. Let me give you options."
+→ Hand off to: `skills/suggest/SKILL.md`
+
+---
+
+### Route F — Standard Scaffold (known stack, simple project)
+**Everything else:** React, Vue, Next.js, Hugo, FastAPI, Laravel, MERN, LAMP, LEMP, Docker
+
+After classifying, always confirm before anything else:
 
 ```
-Is this a fresh project or an existing one?
+Got it — [restate what they said in one sentence].
 
-  1. Fresh project — create everything from scratch
-  2. Existing project — onboard and extend (non-destructive mode)
+Quick check:
+  Fresh project (empty directory) or existing project?
+  1. Fresh — create everything
+  2. Existing — add to what's there (non-destructive)
+
+And is this the right environment?
+  Detected: [environment]
+  1. Yes
+  2. No — it's [different environment]
 ```
 
-If they pick "Existing" — scan the directory and report what you find before proceeding.
+Then proceed to PHASE 3.
 
 ---
 
