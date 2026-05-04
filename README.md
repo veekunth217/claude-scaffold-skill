@@ -15,51 +15,13 @@ A Claude Code skill collection that solves three real developer problems:
 
 ---
 
-## How It Works
+## Prerequisites
 
-```
-mkdir my-app && cd my-app
-↓  open VS Code
-↓  open Claude Code
-↓  /scaffold
+- **Claude Code** — [Install here](https://claude.ai/code) if you don't have it
+- **Git** — for install and context sync
+- **Python 3** — for context sync scripts (`python3 --version` to check)
 
-"What are you building?"
-
-→ "terraform infra on AWS with EKS, RDS and Redis"
-   Asks: Terraform or Terragrunt? Which region?
-   Shows component checklist: VPC, EKS, ECR, RDS, ElastiCache...
-   Confirms full plan → type GO
-   Generates: providers.tf, modules/vpc/, modules/eks/, modules/rds/
-   Asks: Add Helm chart for your app on EKS? (ingress-nginx, AWS LBC)
-   Then: installs GSD + relevant skills from the registry
-
-→ "WordPress plugin for WooCommerce payments"
-   Asks: plugin name, type, namespace
-   Confirms full plan → type GO
-   Generates: full plugin boilerplate, REST endpoints, hooks, tests
-   Recommends: GSD + chromium testing skill
-
-→ "Angular frontend and Node backend, deploy to DigitalOcean"
-   Asks: DB, auth, extras (Docker, CI/CD, ESLint)
-   Confirms full plan → type GO
-   Generates: client/ (Angular), server/ (Express/Fastify), docker-compose.yml
-   Generates: Nginx config, systemd service, deploy script, SSL setup
-
-→ "a PDF generator, not sure what language"
-   Shows: Python+WeasyPrint vs Node+Puppeteer vs PHP+DOMPDF
-   Explains tradeoffs, recommends for your context
-   Confirms → scaffolds chosen stack
-
-→ "graphql api with postgres and subscriptions"
-   Asks: Apollo vs Yoga vs Pothos, ORM choice
-   Asks: describe your entities
-   Generates: full SDL schema, resolvers, DataLoader, Prisma schema
-
-→ "react app"  (simple → standard scaffold)
-   Creates: Vite + TypeScript, CLAUDE.md, .gitignore
-```
-
-**Every wizard shows you the complete plan and waits for GO before touching anything.**
+That's it. No other dependencies.
 
 ---
 
@@ -70,12 +32,66 @@ git clone https://github.com/veekunth217/claude-scaffold-skill.git \
   ~/.claude/skills/claude-scaffold-skill
 ```
 
-Then in Claude Code:
+**Verify it worked** — open Claude Code in any project and type:
 ```
 /scaffold
 ```
+Claude should respond with an environment check and ask what you're building. If nothing happens, restart Claude Code once.
 
-That's it.
+---
+
+## How It Works
+
+Describe your project in plain English — Claude routes to the right specialist, asks focused questions, shows a complete plan, and waits for **GO** before touching anything.
+
+```
+mkdir my-app && cd my-app
+open Claude Code → /scaffold
+
+"What are you building?"
+
+→ "a FastAPI backend with PostgreSQL"
+   Checks: python3 ✅  pyenv ❌ (offers to install)
+   Asks: Django / Flask / FastAPI? DB ORM? Docker? CI?
+   Shows full plan → type GO
+   Generates: src/, tests/, requirements.txt, .env.example, Dockerfile, CLAUDE.md
+
+→ "Node.js REST API with Prisma and Postgres"
+   Checks: node ✅ via nvm ✅
+   Asks: Express / Fastify / NestJS? Auth? Extras?
+   Shows full plan → type GO
+   Generates: src/, tsconfig.json, package.json, docker-compose.yml, CLAUDE.md
+
+→ "terraform infra on AWS with EKS, RDS and Redis"
+   Asks: Terraform or Terragrunt? Which region?
+   Shows component checklist: VPC, EKS, ECR, RDS, ElastiCache...
+   Confirms full plan → type GO
+   Generates: providers.tf, modules/vpc/, modules/eks/, modules/rds/
+
+→ "WordPress plugin for WooCommerce payments"
+   Asks: plugin name, type, namespace
+   Confirms full plan → type GO
+   Generates: full plugin boilerplate, REST endpoints, hooks, tests
+
+→ "Angular frontend and Node backend, deploy to DigitalOcean"
+   Asks: DB, auth, extras (Docker, CI/CD, ESLint)
+   Confirms full plan → type GO
+   Generates: client/ (Angular), server/ (Express), docker-compose.yml
+   Generates: Nginx config, systemd service, deploy script, SSL setup
+
+→ "a PDF generator, not sure what language"
+   Shows: Python+WeasyPrint vs Node+Puppeteer vs PHP+DOMPDF
+   Explains tradeoffs → Confirms → scaffolds chosen stack
+
+→ "graphql api with postgres and subscriptions"
+   Asks: Apollo vs Yoga vs Pothos, ORM choice, entities
+   Generates: full SDL schema, resolvers, DataLoader, Prisma schema
+
+→ "react app"  (simple → standard scaffold)
+   Creates: Vite + TypeScript, CLAUDE.md, .gitignore
+```
+
+**Every wizard shows you the complete plan and waits for GO before touching anything.**
 
 ---
 
@@ -85,16 +101,16 @@ That's it.
 
 | Skill | Activate | What it does |
 |-------|----------|-------------|
-| **Scaffold** | `/scaffold` | Main entry — NL router, detects your environment, routes to specialist |
+| **Scaffold** | `/scaffold` | Main entry — describes your project in plain English, routes to specialist |
+| **Python** | `/python` | FastAPI/Django/Flask/Celery/Jupyter — pyenv pre-flight, venv, DB, Docker, CI |
+| **Node.js** | `/nodejs` | Express/Fastify/NestJS/Hono — nvm pre-flight, TypeScript, Prisma/Drizzle, auth, Docker |
 | **Terraform** | `/terraform` | AWS component picker → real `.tf` files, Terragrunt multi-env, Helm on EKS |
 | **Deploy** | `/deploy` | DO Ubuntu/CentOS or AWS EC2 → Nginx, SSL, systemd/PM2, deploy script |
 | **WordPress** | `/wordpress` | Site / plugin / theme — DDEV local dev, WP-CLI, plugin boilerplate |
 | **Web App** | `/webapp` | Angular/React/Vue + Node — DB, auth, Docker, CI/CD, deploy |
 | **GraphQL** | `/graphql` | Apollo/Yoga/Pothos + Prisma/Drizzle/ScyllaDB + DataLoader + codegen |
 | **Database** | `/database` | PG/ScyllaDB/Redis — schema-first wizard, migrations, query patterns |
-| **Suggest** | `/suggest` | No stack preference → 2-3 options with tradeoffs + skill recommendations |
-| **Python** | `/python` | FastAPI/Django/Flask/Celery/Jupyter — pyenv pre-flight, venv, DB, Docker, CI |
-| **Node.js** | `/nodejs` | Express/Fastify/NestJS/Hono — nvm pre-flight, TypeScript, Prisma/Drizzle, auth, Docker |
+| **Suggest** | `/suggest` | No stack preference → options with tradeoffs + recommendations |
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 
@@ -114,90 +130,91 @@ That's it.
 | **Security** | `/security` | OWASP Top 10, WP hardening, server hardening, SSL/TLS, secrets, WAF |
 | **DB** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch — full setup + tuning |
 
-### Community Registry
-
-Separate from the skill files above, a curated registry of 16 community skills auto-discovered weekly from GitHub:
-
-```
-/skill-bootstrap   →   reads registry → shows tiered recommendations → installs
-```
-
-### Claude Code Capabilities Registry
-
-A second registry (`registry/claude-capabilities.json`) tracks built-in Claude Code features — things already available without any install. The bootstrapper surfaces these as `💡` awareness items matched to your project stack.
-
-Updated weekly by scanning the Anthropic docs pages. If something new ships (a new slash command, hook event type, MCP integration), it opens a GitHub Issue for review and gets added to the curated file via PR.
-
 ---
 
 ## Full User Journey
 
 ```
-1. mkdir my-app && cd my-app
+Step 1 — Install (once)
+  git clone https://github.com/veekunth217/claude-scaffold-skill.git \
+    ~/.claude/skills/claude-scaffold-skill
 
-2. Open Claude Code → type /scaffold
+Step 2 — Create your project folder
+  mkdir my-app && cd my-app
 
-3. Claude silently checks:
-   - OS (Mac/Linux/Windows/VPS/Docker)
-   - Package manager (brew/apt/dnf/choco)
-   - What's already installed (node, python, php, docker, terraform...)
+Step 3 — Open Claude Code and type /scaffold
 
-4. "What are you building?" — you describe in plain English
+Step 4 — Claude silently checks your environment:
+  OS (Mac/Linux/Windows/VPS/Docker)
+  Package manager (brew/apt/dnf/choco)
+  What's installed (node, python, php, docker, terraform...)
+  nvm / pyenv / version managers
 
-5. Claude routes to the right specialist:
-   terraform / deploy / wordpress / webapp / graphql / database / suggest
+Step 5 — "What are you building?" — describe in plain English
 
-6. Specialist asks focused questions (5-8 questions max)
+Step 6 — Claude routes to the right specialist:
+  Python → /python   Node.js → /nodejs   Terraform → /terraform
+  WordPress → /wordpress   GraphQL → /graphql   Deploy → /deploy
+  Fullstack → /webapp   DB-only → /database   Unsure → /suggest
 
-7. Shows complete plan — files to create, commands to run
-   YOU TYPE GO
+Step 7 — Specialist asks focused questions (5 questions max)
+  Pre-flight if tools are missing:
+  ⚠️  pyenv not found.
+      A) Install pyenv now   B) Use system Python   C) I'll do it myself
 
-8. Code generated. CLAUDE.md written. .gitignore created.
+Step 8 — Shows complete plan — every file, every command
+  YOU TYPE GO
 
-9. Skill bootstrapper opens automatically:
-   🔴 Essentials (GSD + Claude Code Expert) — pre-selected
-   🟡 Stack match (UI/UX Pro Max for frontend, Code Review Graph, etc.)
-   🟢 Community picks by stars
-   💡 Built into Claude Code — features you already have, surfaced for your stack
-      (Hooks, MCP Servers, /ultrareview, CLAUDE.md, IDE extension, etc.)
-   → You toggle numbers, type GO → skills installed to ~/.claude/skills/
-   → 💡 items are informational — no install needed, just guidance
+Step 9 — Code generated. CLAUDE.md written. .gitignore created.
+
+Step 10 — Skill bootstrapper opens automatically:
+  🔴 Essentials (GSD + Claude Code Expert) — pre-selected
+  🟡 Stack match — picked for your detected stack
+  🟢 Community picks — top by stars, not already shown
+  💡 Built into Claude Code — features you already have (Hooks, MCP, /ultrareview...)
+  → Toggle numbers, type GO → skills installed to ~/.claude/skills/
 ```
 
 ---
 
 ## Context Sync
 
-Claude Code stores project memory in `~/.claude/projects/<path-hash>/`. The path hash is derived from your absolute project path:
+Claude Code stores project memory in `~/.claude/projects/<path-hash>/`. The hash comes from your absolute project path:
 
 ```
-/home/bunny/myapp    → -home-bunny-myapp
-/Users/john/myapp    → -Users-john-myapp   ← different hash = Claude loses all context
+Machine A:  /home/bunny/myapp   → -home-bunny-myapp
+Machine B:  /Users/john/myapp   → -Users-john-myapp   ← different hash, Claude loses context
 ```
 
 **The fix:** export context to `.claude-context/` (committed to git), push, import on the new device.
 
 ```bash
-# On your current machine — after a productive session
+# Machine A — after a productive session
 python scripts/sync-export.py
 git push
 
-# On any other machine — after git clone or git pull
+# Machine B — after git clone or git pull
 python scripts/sync-import.py
 ```
 
-The import script automatically calculates the correct path hash for the current device. Claude Code immediately has full project memory — your stack notes, feedback, conventions, everything.
+The import script calculates the correct path hash for the current device automatically. Claude Code immediately has your full project memory — stack notes, feedback, conventions, everything.
+
+**Or use the skill directly:**
+```
+/sync export   → export + commit
+/sync import   → git pull + restore
+/sync status   → diff between exported and local
+/sync clean    → remove *.jsonl to reduce size before export
+```
 
 What syncs: `MEMORY.md`, `memory/*.md`, `project_*.md`, `feedback_*.md`, `user_*.md`  
 What stays private: `*.jsonl` (conversation history), `*.json` (may contain keys)
-
-Or use the skill directly: `/sync export`, `/sync import`, `/sync status`, `/sync clean`
 
 ---
 
 ## Community Registry
 
-The registry at `registry/skills.json` tracks 17 verified community skills. It updates automatically every Sunday:
+The registry at `registry/skills.json` tracks 17 community skills. It updates automatically every Sunday:
 
 ```
 GitHub Action → searches topic:claude-skill, topic:claude-code-skill
@@ -208,6 +225,12 @@ GitHub Action → searches topic:claude-skill, topic:claude-code-skill
              → maintainer adds verified entries via PR
              → PR blocked by CI if any repo returns 404
 ```
+
+### Claude Code Capabilities Registry
+
+A second registry (`registry/claude-capabilities.json`) tracks 16 built-in Claude Code features — things already available without any install. The bootstrapper surfaces these as `💡` awareness items matched to your stack (Hooks, MCP Servers, `/ultrareview`, CLAUDE.md, IDE extension, Extended Thinking, etc.).
+
+Updated weekly by scanning the Claude Code releases page.
 
 ### Add your skill to the registry
 
@@ -253,7 +276,7 @@ make validate               # validate registry structure (fast, no network)
 make validate-full          # validate + verify all repos exist on GitHub
 make update-stars           # refresh star counts from GitHub API
 make discover               # run scraper → registry/discovered.json
-make discover-capabilities  # scan Anthropic docs → registry/discovered-capabilities.json
+make discover-capabilities  # scan Claude Code releases → registry/discovered-capabilities.json
 ```
 
 ---
@@ -262,20 +285,23 @@ make discover-capabilities  # scan Anthropic docs → registry/discovered-capabi
 
 ```
 claude-scaffold-skill/
-├── SKILL.md                         # Main entry — NL router (Routes A-H)
+├── SKILL.md                         # Main entry — NL router (Routes A-K)
 ├── Makefile                         # Dev commands
 ├── CONTRIBUTING.md                  # How to add skills and contribute
 ├── LICENSE                          # MIT
 │
 ├── skills/
 │   ├── bootstrap/SKILL.md           # Tiered skill installer (auto post-scaffold)
-│   ├── suggest/SKILL.md             # Stack suggester with tradeoffs + benefits
+│   ├── suggest/SKILL.md             # Stack suggester with tradeoffs
+│   ├── python/SKILL.md              # Python wizard (FastAPI/Django/Flask/Celery/Jupyter)
+│   ├── nodejs/SKILL.md              # Node.js wizard (Express/Fastify/NestJS/Hono)
 │   ├── terraform/SKILL.md           # AWS IaC wizard + Helm on EKS
 │   ├── deploy/SKILL.md              # Server deployment wizard
 │   ├── wordpress/SKILL.md           # WP site/plugin/theme wizard
 │   ├── webapp/SKILL.md              # Full-stack web app wizard
 │   ├── graphql/SKILL.md             # GraphQL API wizard
 │   ├── database/SKILL.md            # DB schema wizard
+│   ├── sync/SKILL.md                # Context sync skill
 │   ├── aws/SKILL.md                 # AWS reference skill
 │   ├── kubernetes/SKILL.md          # Kubernetes reference skill
 │   ├── cicd/SKILL.md                # CI/CD reference skill
@@ -286,13 +312,13 @@ claude-scaffold-skill/
 │   ├── php/SKILL.md                 # PHP reference skill
 │   ├── docker/SKILL.md              # Docker reference skill
 │   ├── security/SKILL.md            # Security reference skill
-│   ├── db/SKILL.md                  # Database reference skill (all 6 DBs)
+│   ├── db/SKILL.md                  # Database reference skill (6 DBs)
 │   └── picker/SKILL.md              # Legacy — redirects to bootstrap
 │
 ├── registry/
-│   ├── skills.json                  # Curated community registry (16 entries)
+│   ├── skills.json                  # Curated community registry (17 entries)
 │   ├── discovered.json              # Weekly auto-discoveries (pending review)
-│   ├── claude-capabilities.json     # Built-in Claude Code features (no install needed)
+│   ├── claude-capabilities.json     # Built-in Claude Code features (16 entries)
 │   └── discovered-capabilities.json # Weekly docs scan results (pending review)
 │
 ├── .claude-context/                 # Context sync folder — committed to git intentionally
@@ -303,13 +329,13 @@ claude-scaffold-skill/
 │   ├── sync-export.py               # Export Claude context → .claude-context/
 │   ├── sync-import.py               # Import from .claude-context/ → ~/.claude/projects/
 │   ├── fetch-skills.py              # GitHub scraper (stdlib only)
-│   ├── fetch-capabilities.py        # Anthropic docs scraper (stdlib only)
+│   ├── fetch-capabilities.py        # Claude Code releases scraper (stdlib only)
 │   ├── update-stars.py              # Refresh star counts (stdlib only)
 │   └── validate-registry.py        # Structure + GitHub existence validator
 │
 ├── references/
 │   ├── stacks.md                    # Stack version requirements + commands
-│   └── environments.md             # Environment detection edge cases
+│   └── environments.md              # Environment detection edge cases
 │
 └── .github/workflows/
     ├── sync-registry.yml            # Weekly: refresh stars + discover + open Issue
@@ -318,15 +344,15 @@ claude-scaffold-skill/
 
 ---
 
-## Supported Stacks (Scaffold Wizard)
+## Supported Stacks
 
 | Category | Stacks |
 |----------|--------|
 | Frontend | React (Vite+TS), Vue 3, Angular, Next.js, Hugo |
-| Backend | Node/Express, Node/Fastify, Node/NestJS, Python/FastAPI, PHP/Laravel |
+| Backend | Node/Express, Node/Fastify, Node/NestJS, Python/FastAPI, Python/Django, PHP/Laravel |
 | CMS | WordPress (site, plugin, theme, WooCommerce) |
 | Full-stack | MERN, LAMP, LEMP, Angular+Node, React+Node |
-| API | GraphQL (Apollo/Yoga/Pothos + any DB) |
+| API | GraphQL (Apollo/Yoga/Pothos + any DB), REST (Express/Fastify/FastAPI) |
 | Infrastructure | Terraform/Terragrunt (AWS), Docker Compose |
 | Deployment | DigitalOcean Ubuntu/CentOS, AWS EC2, AWS ECS |
 | Database | PostgreSQL, MySQL, MongoDB, Redis, ScyllaDB, Meilisearch |
@@ -338,9 +364,9 @@ claude-scaffold-skill/
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 Quick version:
-- **Add a registry entry** — edit `skills.json`, run `make validate-full`, open PR
-- **Add a new wizard skill** — create `skills/your-skill/SKILL.md`, follow the confirm-before-generate pattern
-- **Improve an existing skill** — PRs welcome, especially filling in `<!-- TODO -->` sections
+- **Add a registry entry** — edit `registry/skills.json`, run `make validate-full`, open PR
+- **Add a new wizard skill** — create `skills/your-skill/SKILL.md`, follow the confirm-before-generate pattern, set `name:` to match the slash command you want
+- **Improve an existing skill** — PRs welcome
 - **Make your repo discoverable** — add `claude-skill` topic to your GitHub repo
 
 ---
