@@ -3,7 +3,6 @@ name: digitalocean-skill
 description: DigitalOcean infrastructure — Droplets, managed databases, Spaces, load balancers, firewalls, DNS management
 version: 1.0.0
 author: veekunth217
-contributor: Veekunth (DevOps)
 tags: [digitalocean, droplet, spaces, managed-database, load-balancer, firewall, dns, doctl]
 platforms: [claude-code, cursor, codex]
 ---

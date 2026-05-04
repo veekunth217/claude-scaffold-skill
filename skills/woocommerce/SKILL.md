@@ -3,7 +3,6 @@ name: woocommerce-skill
 description: WooCommerce development — products, variations, pricing rules, payment gateways, hooks, cart/checkout customization, WebToffee CSV import/export
 version: 1.0.0
 author: veekunth217
-contributor: Nitin (WordPress)
 tags: [woocommerce, wordpress, ecommerce, payment-gateway, hooks, products, cart, checkout, csv, webtoffee]
 platforms: [claude-code, cursor, codex]
 ---

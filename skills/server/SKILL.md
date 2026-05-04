@@ -3,7 +3,6 @@ name: server-skill
 description: Linux server setup & tuning — Nginx, PHP-FPM, SSL/Certbot, UFW, Redis, MySQL/PostgreSQL, PM2, DigitalOcean Droplet
 version: 1.0.0
 author: veekunth217
-contributor: Veekunth (DevOps)
 tags: [nginx, php-fpm, ssl, certbot, ufw, fail2ban, redis, mysql, postgresql, pm2, digitalocean, ubuntu, server]
 platforms: [claude-code, cursor, codex]
 ---

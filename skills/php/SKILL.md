@@ -3,7 +3,6 @@ name: php-skill
 description: PHP development — OOP patterns, Laravel basics, WordPress plugin development, REST API endpoints, wpdb queries, security (sanitization, nonces)
 version: 1.0.0
 author: veekunth217
-contributor: Nitin (WordPress)
 tags: [php, oop, laravel, wordpress, plugin, rest-api, wpdb, security, sanitization, nonces]
 platforms: [claude-code, cursor, codex]
 ---

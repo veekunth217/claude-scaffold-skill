@@ -3,7 +3,6 @@ name: kubernetes-skill
 description: Kubernetes management — Helm charts, ArgoCD GitOps, Ingress, ConfigMaps, HPA autoscaling, blue/green deployments, debugging
 version: 1.0.0
 author: veekunth217
-contributor: Veekunth (DevOps)
 tags: [kubernetes, k8s, helm, argocd, gitops, ingress, nginx, hpa, blue-green, debugging]
 platforms: [claude-code, cursor, codex]
 ---

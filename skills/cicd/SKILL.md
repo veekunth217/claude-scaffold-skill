@@ -3,7 +3,6 @@ name: cicd-skill
 description: CI/CD pipeline builder — GitHub Actions, self-hosted runners, Docker build/push, multi-environment deployments, secrets, rollback strategies
 version: 1.0.0
 author: veekunth217
-contributor: Veekunth (DevOps)
 tags: [cicd, github-actions, self-hosted-runner, docker, pipeline, deployment, rollback, secrets, multi-environment]
 platforms: [claude-code, cursor, codex]
 ---

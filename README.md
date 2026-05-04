@@ -1,247 +1,212 @@
 # claude-scaffold-skill
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Skills: 3](https://img.shields.io/badge/Skills-3-green.svg)
-![Registry: 16 skills](https://img.shields.io/badge/Registry-16%20skills-orange.svg)
+![Skills](https://img.shields.io/badge/Skills-20+-green.svg)
+![Registry](https://img.shields.io/badge/Registry-16%20community%20skills-orange.svg)
 ![Last Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)
 ![Validate Registry](https://github.com/veekunth217/claude-scaffold-skill/actions/workflows/validate-registry.yml/badge.svg)
 
-An open-source Claude Code skill repository with **three core features**:
-1. **Scaffolding Wizard** — set up any stack interactively, safely, from any environment
-2. **Skill Bootstrapper** — detects your stack and installs the right Claude Code skills in tiers (essentials always, stack-matched, community picks)
-3. **Community Registry** — auto-discovering, curated index of Claude Code skills with weekly GitHub scraping
+A Claude Code skill collection that turns a blank directory into a production-ready project. Describe what you're building in plain English — it routes to the right specialist wizard, generates real code, installs the right Claude Code skills for your stack, and deploys if you want.
 
 ---
 
-## What It Does
+## How It Works
 
-### 1. Project Scaffolding Wizard (`SKILL.md`)
+```
+mkdir my-app && cd my-app
+↓  open VS Code
+↓  open Claude Code
+↓  /scaffold
 
-An interactive wizard that:
-- **Detects your environment** (Mac, Linux, Windows, VPS, Docker) before asking anything
-- **Audits what's already installed** (Node, Python, PHP, Docker, etc.) — never assumes
-- **Asks 3 questions** to understand your stack and goals
-- **Shows the full plan** and waits for your approval before running a single command
-- **Always uses version managers** (nvm, pyenv, rbenv) over direct installs
-- **Generates `CLAUDE.md`** and `.gitignore` after scaffolding
+"What are you building?"
 
-**Safe for:** local machines, VPS consoles, Docker containers, CI environments.
+→ "terraform infra on AWS with EKS, RDS and Redis"
+   Asks: Terraform or Terragrunt? Which region?
+   Shows component checklist: VPC, EKS, ECR, RDS, ElastiCache...
+   Confirms full plan → type GO
+   Generates: providers.tf, modules/vpc/, modules/eks/, modules/rds/
+   Asks: Add Helm chart for your app on EKS? (ingress-nginx, AWS LBC)
+   Then: installs GSD + relevant skills from the registry
 
-### 2. Skill Bootstrapper (`skills/bootstrap/SKILL.md`)
+→ "WordPress plugin for WooCommerce payments"
+   Asks: plugin name, type, namespace
+   Confirms full plan → type GO
+   Generates: full plugin boilerplate, REST endpoints, hooks, tests
+   Recommends: GSD + chromium testing skill
 
-An active skill installer that:
-- **Detects your project stack** by reading `package.json`, `requirements.txt`, `composer.json`, etc.
-- **Tiers recommendations** into three groups shown all at once:
-  - 🔴 **Essentials** — pre-selected for everyone (GSD, Claude Code Expert, Awesome Claude Code)
-  - 🟡 **Stack Match** — scored from registry tags against your detected stack
-  - 🟢 **Community Picks** — top by stars not already shown
-- **Reads both** `registry/skills.json` and `registry/discovered.json` for the widest selection
-- **Actually installs** selected skills via `git clone` — with skip/already-installed detection
-- **Falls back** to a hardcoded essentials list if the registry file isn't found
-- Runs **automatically after scaffolding** as Phase 5 of the main wizard
+→ "Angular frontend and Node backend, deploy to DigitalOcean"
+   Asks: DB, auth, extras (Docker, CI/CD, ESLint)
+   Confirms full plan → type GO
+   Generates: client/ (Angular), server/ (Express/Fastify), docker-compose.yml
+   Generates: Nginx config, systemd service, deploy script, SSL setup
 
-### 3. Community Registry (`registry/skills.json`)
+→ "a PDF generator, not sure what language"
+   Shows: Python+WeasyPrint vs Node+Puppeteer vs PHP+DOMPDF
+   Explains tradeoffs, recommends for your context
+   Confirms → scaffolds chosen stack
 
-A curated, versioned JSON registry of Claude Code skills that:
-- Is **auto-updated weekly** via GitHub Actions (discoveries go to `discovered.json` for review)
-- Has a **scraper** (`scripts/fetch-skills.py`) you can run locally
-- Requires **maintainer review** before skills are added to the main registry
-- Is validated by `scripts/validate-registry.py` on every PR
+→ "graphql api with postgres and subscriptions"
+   Asks: Apollo vs Yoga vs Pothos, ORM choice
+   Asks: describe your entities
+   Generates: full SDL schema, resolvers, DataLoader, Prisma schema
 
----
-
-## Quick Install
-
-```bash
-# Clone to your Claude skills directory
-git clone https://github.com/veekunth217/claude-scaffold-skill.git ~/.claude/skills/claude-scaffold-skill
-
-# Verify it's there
-ls ~/.claude/skills/claude-scaffold-skill/
+→ "react app"  (simple → standard scaffold)
+   Creates: Vite + TypeScript, CLAUDE.md, .gitignore
 ```
 
-Then in Claude Code, activate the skill with:
+**Every wizard shows you the complete plan and waits for GO before touching anything.**
+
+---
+
+## Install
+
+```bash
+git clone https://github.com/veekunth217/claude-scaffold-skill.git \
+  ~/.claude/skills/claude-scaffold-skill
+```
+
+Then in Claude Code:
 ```
 /scaffold
 ```
 
+That's it.
+
 ---
 
-## Usage
+## Skills
 
-### Scaffolding Wizard
+### Wizards — Interactive, generate real code
+
+| Skill | Activate | What it does |
+|-------|----------|-------------|
+| **Scaffold** | `/scaffold` | Main entry — NL router, detects your environment, routes to specialist |
+| **Terraform** | `/terraform` | AWS component picker → real `.tf` files, Terragrunt multi-env, Helm on EKS |
+| **Deploy** | `/deploy` | DO Ubuntu/CentOS or AWS EC2 → Nginx, SSL, systemd/PM2, deploy script |
+| **WordPress** | `/wordpress` | Site / plugin / theme — DDEV local dev, WP-CLI, plugin boilerplate |
+| **Web App** | `/webapp` | Angular/React/Vue + Node — DB, auth, Docker, CI/CD, deploy |
+| **GraphQL** | `/graphql` | Apollo/Yoga/Pothos + Prisma/Drizzle/ScyllaDB + DataLoader + codegen |
+| **Database** | `/database` | PG/ScyllaDB/Redis — schema-first wizard, migrations, query patterns |
+| **Suggest** | `/suggest` | No stack preference → 2-3 options with tradeoffs + skill recommendations |
+| **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
+
+### Reference Skills — Working snippets + configuration guides
+
+| Skill | Activate | Covers |
+|-------|----------|--------|
+| **AWS** | `/aws` | EKS, ECR, VPC, RDS, ElastiCache, S3, Route53, ACM, Secrets Manager, CloudWatch, IAM |
+| **Kubernetes** | `/kubernetes` | Helm, ArgoCD GitOps, Ingress-nginx, HPA, Blue/Green, debugging playbook |
+| **CI/CD** | `/cicd` | GitHub Actions, self-hosted runners, Docker push, OIDC to AWS, rollback |
+| **Server** | `/server` | Nginx, PHP-FPM, Certbot, UFW, fail2ban, Redis, MySQL/PG, PM2 |
+| **DigitalOcean** | `/digitalocean` | Droplets, Managed DBs, Spaces, Load Balancers, Firewalls, DNS, Terraform |
+| **WooCommerce** | `/woocommerce` | Products, pricing rules, payment gateways, hooks, checkout, WebToffee CSV |
+| **WordPress Server** | `/wordpress-server` | Nginx+WP, PHP 8.3-FPM, Redis object cache, WP Rocket, hardening, multisite |
+| **PHP** | `/php` | OOP, Laravel, plugin dev, REST API, wpdb queries, nonces, sanitization |
+| **Docker** | `/docker` | Dockerfile best practices, multi-stage, compose, networking, CI/CD |
+| **Security** | `/security` | OWASP Top 10, WP hardening, server hardening, SSL/TLS, secrets, WAF |
+| **DB** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch — full setup + tuning |
+
+### Community Registry
+
+Separate from the skill files above, a curated registry of 16 community skills auto-discovered weekly from GitHub:
 
 ```
-/scaffold
-```
-
-The wizard will:
-1. Silently detect your environment and installed tools
-2. Ask what you're building (shows a menu of stacks)
-3. Confirm your environment
-4. Ask if this is a fresh or existing project
-5. Show the full plan — wait for your **GO**
-6. Execute and generate `CLAUDE.md` + `.gitignore`
-
-### Skill Bootstrapper (standalone)
-
-Run on any project — new or existing:
-
-```
-/skill-bootstrap
-```
-
-Example session on a React project:
-```
-CLAUDE CODE SKILL INSTALLER
-Project detected: frontend, react, node
-
-🔴 ESSENTIALS — Recommended for every project
-   [1] ✓ Get Shit Done (GSD)           ⭐ 59,791
-   [2] ✓ Awesome Claude Code           ⭐ 42,429
-   [3] ✓ Claude Code Expert            ⭐ 0
-
-🟡 STACK MATCH — Picked for your react, frontend stack
-   [4]   UI/UX Pro Max                 ⭐ 73,729
-   [5]   Code Review Graph             ⭐ 15,203
-
-🟢 COMMUNITY PICKS
-   [6]   Agent Orchestrator            ⭐ 6,785
-   [7]   Claude Memory (claude-mem)    ⭐ 71,750
-
-Currently selected: 1, 2, 3
-Type numbers to toggle, "all", "none", or "go" to install.
-
-> 4 go
-
-Installing Get Shit Done (GSD)...   ✓
-Installing Awesome Claude Code...   ✓
-Installing Claude Code Expert...    ✓ (already installed)
-Installing UI/UX Pro Max...         ✓
-```
-
-### Run the Scraper Locally
-
-```bash
-export GITHUB_TOKEN=your_token_here
-python scripts/fetch-skills.py
-
-# With custom output
-python scripts/fetch-skills.py --output /tmp/new-skills.json
-```
-
-### Validate the Registry
-
-```bash
-python scripts/validate-registry.py
-# Valid! 7 entries, 7 verified.
+/skill-bootstrap   →   reads registry → shows tiered recommendations → installs
 ```
 
 ---
 
-## Supported Stacks
+## Full User Journey
 
-| Category | Stack | Key Tools |
-|----------|-------|-----------|
-| Frontend | React | Vite, TypeScript, npx |
-| Frontend | Vue 3 | Vite, TypeScript, npx |
-| Frontend | Angular | @angular/cli via npx |
-| Frontend | Next.js | create-next-app, Tailwind |
-| Frontend | Hugo | Hugo binary, themes |
-| Backend | Node.js / Express | npm, nodemon, TypeScript |
-| Backend | Python / FastAPI | pyenv, uvicorn, venv |
-| Backend | PHP / Laravel | composer, artisan |
-| CMS | WordPress | + WooCommerce option |
-| Full-stack | MERN | MongoDB, Express, React, Node |
-| Full-stack | LAMP | Apache, MySQL, PHP |
-| Full-stack | LEMP | Nginx, MySQL, PHP |
-| Infra | Terraform | tfenv, providers |
-| Infra | Docker Compose | docker compose v2 |
+```
+1. mkdir my-app && cd my-app
+
+2. Open Claude Code → type /scaffold
+
+3. Claude silently checks:
+   - OS (Mac/Linux/Windows/VPS/Docker)
+   - Package manager (brew/apt/dnf/choco)
+   - What's already installed (node, python, php, docker, terraform...)
+
+4. "What are you building?" — you describe in plain English
+
+5. Claude routes to the right specialist:
+   terraform / deploy / wordpress / webapp / graphql / database / suggest
+
+6. Specialist asks focused questions (5-8 questions max)
+
+7. Shows complete plan — files to create, commands to run
+   YOU TYPE GO
+
+8. Code generated. CLAUDE.md written. .gitignore created.
+
+9. Skill bootstrapper opens automatically:
+   🔴 Essentials (GSD + Claude Code Expert) — pre-selected
+   🟡 Stack match (UI/UX Pro Max for frontend, Code Review Graph, etc.)
+   🟢 Community picks by stars
+   → You toggle numbers, type GO → skills installed to ~/.claude/skills/
+```
 
 ---
 
 ## Community Registry
 
-### Current Skills (16 entries — 7 verified)
-
-| Skill | Repo | Verified | Tags |
-|-------|------|----------|------|
-| Claude Code Scaffolding | hmohamed01/Claude-Code-Scaffolding-Skill | ✓ | scaffolding, 70+ templates |
-| Claude Code Expert | reedmayhew18/claude-code-expert | ✓ | wizard, agents, workflow |
-| Everything Claude Code | affaan-m/everything-claude-code | ✓ | collection, tips |
-| Superpowers | obra/superpowers | ✓ | professional, workflow |
-| UI/UX Pro Max | nextlevelbuilder/ui-ux-pro-max-skill | ✓ | design, 67 styles |
-| Claude Skills | mastepanoski/claude-skills | ✓ | debugging, docs |
-| Code Review Graph | tirth8205/code-review-graph | ✓ | review, graph analysis |
-| Claude Code Toolkit | applied-artificial-intelligence/claude-code-toolkit | — | workflow, planning, memory |
-| Get Shit Done (GSD) | gsd-build/get-shit-done | — | spec, planning, phases |
-| Awesome Claude Code | hesreallyhim/awesome-claude-code | — | collection, reference |
-| Agent Orchestrator | ComposioHQ/agent-orchestrator | — | agents, orchestration |
-| claude-mem | thedotmack/claude-mem | — | memory, token-saving |
-| gstack *(future)* | garrytan/gstack | — | scaffolding, full-stack |
-| OpenMemory *(future)* | CaviraOSS/OpenMemory | — | memory, agents |
-| Free Claude Code *(future)* | Alishahryar1/free-claude-code | — | community |
-| Browser Use *(future)* | browser-use/browser-use | — | browser, automation |
-
-### How the Auto-Discovery Works
+The registry at `registry/skills.json` tracks 16 verified community skills. It updates automatically every Sunday:
 
 ```
-Every Sunday at midnight UTC
-         ↓
-GitHub Action runs fetch-skills.py
-         ↓
-Searches: topic:claude-skill, topic:claude-code-skill, filename:SKILL.md
-         ↓
-Deduplicates against existing registry
-         ↓
-Writes → registry/discovered.json
-         ↓
-Opens GitHub Issue listing new discoveries
-         ↓
-Maintainer reviews → merges PR to skills.json
+GitHub Action → searches topic:claude-skill, topic:claude-code-skill
+             → finds repos with SKILL.md
+             → deduplicates against registry
+             → writes registry/discovered.json
+             → opens GitHub Issue for maintainer review
+             → maintainer adds verified entries via PR
+             → PR blocked by CI if any repo returns 404
 ```
 
----
-
-## How to Contribute a Skill
-
-### Option A: Submit to the Registry
+### Add your skill to the registry
 
 1. Fork this repo
-2. Add your skill entry to `registry/skills.json`:
-
+2. Add your entry to `registry/skills.json`:
 ```json
 {
-  "name": "Your Skill Name",
-  "repo": "your-github-username/your-repo",
-  "description": "One clear sentence describing what it does",
-  "tags": ["relevant", "tags", "here"],
-  "install": "git clone https://github.com/your-github-username/your-repo.git ~/.claude/skills/your-skill",
+  "name": "Your Skill",
+  "repo": "your-username/your-repo",
+  "description": "One sentence, max 120 chars",
+  "tags": ["relevant", "tags"],
+  "install": "git clone https://github.com/your-username/your-repo.git ~/.claude/skills/your-skill",
   "stars": 0,
   "verified": false,
   "added": "2026-05-04"
 }
 ```
+3. Run `make validate-full` — blocks if your repo doesn't exist on GitHub
+4. Open a PR
 
-3. Run the validator: `python scripts/validate-registry.py`
-4. Open a PR — a maintainer will review and set `"verified": true`
+### Make your repo auto-discoverable
 
-### Option B: Make Your Repo Discoverable
-
-Add these topics to your GitHub repo so the weekly scraper finds it:
-- `claude-skill`
-- `claude-code-skill`
-
-And put a `SKILL.md` in your repo root with YAML frontmatter:
+Add GitHub topics `claude-skill` or `claude-code-skill` to your repo, and put a `SKILL.md` in the root with YAML frontmatter:
 
 ```yaml
 ---
 name: your-skill-name
-description: What your skill does
+description: What it does
 version: 1.0.0
 author: your-github-username
-tags: [tag1, tag2, tag3]
+tags: [tag1, tag2]
 ---
+```
+
+The weekly scraper will find it automatically.
+
+---
+
+## Developer Commands
+
+```bash
+make validate        # validate registry structure (fast, no network)
+make validate-full   # validate + verify all repos exist on GitHub
+make update-stars    # refresh star counts from GitHub API
+make discover        # run scraper → registry/discovered.json
 ```
 
 ---
@@ -250,40 +215,85 @@ tags: [tag1, tag2, tag3]
 
 ```
 claude-scaffold-skill/
-├── SKILL.md                        # Scaffolding wizard (Phases 1-4 scaffold, Phase 5 → bootstrapper)
-├── Makefile                        # make validate / update-stars / discover
-├── README.md                       # This file
-├── LICENSE                         # MIT
-├── .github/
-│   └── workflows/
-│       ├── sync-registry.yml       # Weekly: refresh stars + discover new skills + open Issue
-│       └── validate-registry.yml  # PR gate: blocks 404 repos from merging
+├── SKILL.md                         # Main entry — NL router (Routes A-H)
+├── Makefile                         # Dev commands
+├── CONTRIBUTING.md                  # How to add skills and contribute
+├── LICENSE                          # MIT
+│
 ├── skills/
-│   ├── bootstrap/
-│   │   └── SKILL.md                # Skill installer — tiered recommendations + git clone install
-│   └── picker/
-│       └── SKILL.md                # Redirects to bootstrap (legacy entry point)
+│   ├── bootstrap/SKILL.md           # Tiered skill installer (auto post-scaffold)
+│   ├── suggest/SKILL.md             # Stack suggester with tradeoffs + benefits
+│   ├── terraform/SKILL.md           # AWS IaC wizard + Helm on EKS
+│   ├── deploy/SKILL.md              # Server deployment wizard
+│   ├── wordpress/SKILL.md           # WP site/plugin/theme wizard
+│   ├── webapp/SKILL.md              # Full-stack web app wizard
+│   ├── graphql/SKILL.md             # GraphQL API wizard
+│   ├── database/SKILL.md            # DB schema wizard
+│   ├── aws/SKILL.md                 # AWS reference skill
+│   ├── kubernetes/SKILL.md          # Kubernetes reference skill
+│   ├── cicd/SKILL.md                # CI/CD reference skill
+│   ├── server/SKILL.md              # Server tuning reference skill
+│   ├── digitalocean/SKILL.md        # DigitalOcean reference skill
+│   ├── woocommerce/SKILL.md         # WooCommerce reference skill
+│   ├── wordpress-server/SKILL.md    # WP server reference skill
+│   ├── php/SKILL.md                 # PHP reference skill
+│   ├── docker/SKILL.md              # Docker reference skill
+│   ├── security/SKILL.md            # Security reference skill
+│   ├── db/SKILL.md                  # Database reference skill (all 6 DBs)
+│   └── picker/SKILL.md              # Legacy — redirects to bootstrap
+│
 ├── registry/
-│   ├── skills.json                 # Curated community registry (16 entries)
-│   └── discovered.json             # Auto-generated weekly discoveries (maintainer review queue)
+│   ├── skills.json                  # Curated community registry (16 entries)
+│   └── discovered.json              # Weekly auto-discoveries (pending review)
+│
 ├── scripts/
-│   ├── fetch-skills.py             # GitHub scraper — stdlib only, no pip install
-│   ├── update-stars.py             # Refresh star counts in skills.json
-│   └── validate-registry.py       # Structure + GitHub existence validator
-└── references/
-    ├── stacks.md                   # Stack version requirements & commands
-    └── environments.md             # Environment detection edge cases
+│   ├── fetch-skills.py              # GitHub scraper (stdlib only)
+│   ├── update-stars.py              # Refresh star counts (stdlib only)
+│   └── validate-registry.py        # Structure + GitHub existence validator
+│
+├── references/
+│   ├── stacks.md                    # Stack version requirements + commands
+│   └── environments.md             # Environment detection edge cases
+│
+└── .github/workflows/
+    ├── sync-registry.yml            # Weekly: refresh stars + discover + open Issue
+    └── validate-registry.yml        # PR gate: blocks 404 repos
 ```
+
+---
+
+## Supported Stacks (Scaffold Wizard)
+
+| Category | Stacks |
+|----------|--------|
+| Frontend | React (Vite+TS), Vue 3, Angular, Next.js, Hugo |
+| Backend | Node/Express, Node/Fastify, Node/NestJS, Python/FastAPI, PHP/Laravel |
+| CMS | WordPress (site, plugin, theme, WooCommerce) |
+| Full-stack | MERN, LAMP, LEMP, Angular+Node, React+Node |
+| API | GraphQL (Apollo/Yoga/Pothos + any DB) |
+| Infrastructure | Terraform/Terragrunt (AWS), Docker Compose |
+| Deployment | DigitalOcean Ubuntu/CentOS, AWS EC2, AWS ECS |
+| Database | PostgreSQL, MySQL, MongoDB, Redis, ScyllaDB, Meilisearch |
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+
+Quick version:
+- **Add a registry entry** — edit `skills.json`, run `make validate-full`, open PR
+- **Add a new wizard skill** — create `skills/your-skill/SKILL.md`, follow the confirm-before-generate pattern
+- **Improve an existing skill** — PRs welcome, especially filling in `<!-- TODO -->` sections
+- **Make your repo discoverable** — add `claude-skill` topic to your GitHub repo
 
 ---
 
 ## Credits
 
-Built on patterns and inspiration from:
-- [hmohamed01/Claude-Code-Scaffolding-Skill](https://github.com/hmohamed01/Claude-Code-Scaffolding-Skill) — 70+ template scaffolding approach and conversational CLI patterns
-- [reedmayhew18/claude-code-expert](https://github.com/reedmayhew18/claude-code-expert) — active/available skill split, context budgeting, and production wizard design
-
-This project takes the best ideas from both and adds environment-aware detection, a community registry, and auto-discovery tooling.
+Built on patterns and ideas from:
+- [hmohamed01/Claude-Code-Scaffolding-Skill](https://github.com/hmohamed01/Claude-Code-Scaffolding-Skill) — 70+ template scaffolding and conversational CLI patterns
+- [reedmayhew18/claude-code-expert](https://github.com/reedmayhew18/claude-code-expert) — active/available skill split and production wizard design
 
 ---
 
