@@ -1,5 +1,5 @@
 ---
-name: database-wizard
+name: database
 description: Database setup wizard — PostgreSQL, ScyllaDB/Cassandra, Redis — schema design, migrations, query patterns, and connection setup
 version: 1.0.0
 author: veekunth217

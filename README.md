@@ -1,7 +1,7 @@
 # claude-scaffold-skill
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Skills](https://img.shields.io/badge/Skills-20+-green.svg)
+![Skills](https://img.shields.io/badge/Skills-23+-green.svg)
 ![Registry](https://img.shields.io/badge/Registry-17%20community%20skills-orange.svg)
 ![Last Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)
 ![Validate Registry](https://github.com/veekunth217/claude-scaffold-skill/actions/workflows/validate-registry.yml/badge.svg)
@@ -94,6 +94,7 @@ That's it.
 | **Database** | `/database` | PG/ScyllaDB/Redis — schema-first wizard, migrations, query patterns |
 | **Suggest** | `/suggest` | No stack preference → 2-3 options with tradeoffs + skill recommendations |
 | **Python** | `/python` | FastAPI/Django/Flask/Celery/Jupyter — pyenv pre-flight, venv, DB, Docker, CI |
+| **Node.js** | `/nodejs` | Express/Fastify/NestJS/Hono — nvm pre-flight, TypeScript, Prisma/Drizzle, auth, Docker |
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 

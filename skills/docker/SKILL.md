@@ -1,5 +1,5 @@
 ---
-name: docker-skill
+name: docker
 description: Docker best practices — Dockerfile authoring, docker-compose, multi-stage builds, container networking, volume management, Docker in CI/CD
 version: 1.0.0
 author: veekunth217

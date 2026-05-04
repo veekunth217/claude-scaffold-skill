@@ -1,5 +1,5 @@
 ---
-name: terraform-wizard
+name: terraform
 description: Interactive Terraform/Terragrunt wizard for AWS — pick your components, get production-ready .tf files generated
 version: 1.0.0
 author: veekunth217

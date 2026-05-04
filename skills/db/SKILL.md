@@ -1,5 +1,5 @@
 ---
-name: db-skill
+name: db
 description: Full database skill — MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch — setup, queries, optimization, backups, debugging
 version: 1.0.0
 author: veekunth217

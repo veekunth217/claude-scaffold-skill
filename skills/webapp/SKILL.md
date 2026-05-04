@@ -1,5 +1,5 @@
 ---
-name: webapp-wizard
+name: webapp
 description: Full-stack web app wizard — Angular/Node, React/Node, Vue/Node — with optional deployment to AWS or DigitalOcean
 version: 1.0.0
 author: veekunth217

@@ -1,5 +1,5 @@
 ---
-name: deploy-wizard
+name: deploy
 description: Deploys your app to DigitalOcean or AWS — generates Nginx config, SSL, systemd service, and step-by-step server setup for Ubuntu/CentOS
 version: 1.0.0
 author: veekunth217

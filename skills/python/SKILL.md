@@ -1,5 +1,5 @@
 ---
-name: python-wizard
+name: python
 description: Python project wizard — FastAPI, Django, Flask, Celery, Jupyter — with proper pyenv/venv setup, DB, Docker, and deploy options
 version: 1.0.0
 author: veekunth217

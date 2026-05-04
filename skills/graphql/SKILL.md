@@ -1,5 +1,5 @@
 ---
-name: graphql-wizard
+name: graphql
 description: Sets up a GraphQL API — schema-first design, resolvers, subscriptions, with PostgreSQL or MongoDB, and optional codegen
 version: 1.0.0
 author: veekunth217

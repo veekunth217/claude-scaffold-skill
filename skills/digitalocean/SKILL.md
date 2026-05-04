@@ -1,5 +1,5 @@
 ---
-name: digitalocean-skill
+name: digitalocean
 description: DigitalOcean infrastructure — Droplets, managed databases, Spaces, load balancers, firewalls, DNS management
 version: 1.0.0
 author: veekunth217

@@ -1,5 +1,5 @@
 ---
-name: wordpress-wizard
+name: wordpress
 description: WordPress site, plugin, or theme wizard — scaffolds locally, sets up dev environment, and deploys to DigitalOcean or any Ubuntu server
 version: 1.0.0
 author: veekunth217

@@ -1,5 +1,5 @@
 ---
-name: skill-picker
+name: picker
 description: Redirects to the skill bootstrapper — the full interactive skill installer that detects your stack and recommends skills in tiers
 version: 2.0.0
 author: veekunth217

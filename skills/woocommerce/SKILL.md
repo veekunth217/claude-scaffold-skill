@@ -1,5 +1,5 @@
 ---
-name: woocommerce-skill
+name: woocommerce
 description: WooCommerce development — products, variations, pricing rules, payment gateways, hooks, cart/checkout customization, WebToffee CSV import/export
 version: 1.0.0
 author: veekunth217

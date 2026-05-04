@@ -1,5 +1,5 @@
 ---
-name: claude-scaffold
+name: scaffold
 description: Interactive project scaffolding wizard — detects environment, audits existing tools, then sets up any stack with explicit user approval at every step
 version: 1.0.0
 author: veekunth217
@@ -141,7 +141,7 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
-### Route G — GraphQL API
+### Route F — GraphQL API
 **Trigger words:** graphql, gql, apollo, resolvers, subscriptions, schema-first, type-graphql, pothos
 
 → Confirm: "Got it — a GraphQL API. Let me walk you through server choice, DB, and schema design."
@@ -149,7 +149,7 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
-### Route H — Database Setup
+### Route G — Database Setup
 **Trigger words:** postgres setup, postgresql, scylladb, cassandra, redis, database schema, migrations, prisma, drizzle, orm
 
 → Confirm: "Got it — let's set up your [DB]. I'll design the schema around your access patterns."
@@ -157,7 +157,7 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
-### Route J — Python Project
+### Route H — Python Project
 **Trigger words:** python, fastapi, django, flask, celery, jupyter, pandas, data science, pyenv, pip, uvicorn, pydantic, alembic, pytest
 
 → Confirm: "Got it — a Python [FastAPI / Django / Flask / data science] project. Let me check your Python setup first."
@@ -165,7 +165,15 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
-### Route I — Context Sync
+### Route I — Node.js API
+**Trigger words:** node, nodejs, node.js, express, fastify, nestjs, hono, rest api, node api, node backend, node server
+
+→ Confirm: "Got it — a Node.js [Express / Fastify / NestJS] API. Let me check your Node setup first."
+→ Hand off to: `skills/nodejs/SKILL.md`
+
+---
+
+### Route J — Context Sync
 **Trigger words:** sync, context sync, sync context, sync to new machine, new device, lost context, path hash, claude context, /sync export, /sync import
 
 → Confirm: "Got it — let's sync your Claude Code context to [or from] another device."
@@ -173,8 +181,8 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
-### Route F — Standard Scaffold (known stack, simple project)
-**Everything else:** React, Vue, Next.js, Hugo, FastAPI, Laravel, MERN, LAMP, LEMP, Docker
+### Route K — Standard Scaffold (known stack, simple project)
+**Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 
 After classifying, always confirm before anything else:
 
@@ -193,6 +201,8 @@ And is this the right environment?
 ```
 
 Then proceed to PHASE 3.
+
+**Note:** If the user mentions a specific Node.js framework (Express, Fastify, NestJS) without a frontend, prefer Route I over Route K.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: aws-skill
+name: aws
 description: AWS infrastructure management — EKS, ECR, VPC, RDS, ElastiCache, S3, Route53, ACM, Secrets Manager, CloudWatch, IAM
 version: 1.0.0
 author: veekunth217

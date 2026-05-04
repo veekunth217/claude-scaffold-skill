@@ -1,5 +1,5 @@
 ---
-name: server-skill
+name: server
 description: Linux server setup & tuning — Nginx, PHP-FPM, SSL/Certbot, UFW, Redis, MySQL/PostgreSQL, PM2, DigitalOcean Droplet
 version: 1.0.0
 author: veekunth217

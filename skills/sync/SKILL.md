@@ -1,5 +1,5 @@
 ---
-name: context-sync
+name: sync
 description: Sync Claude Code project context across devices — export from one machine, import on another, never lose your project memory again
 version: 1.0.0
 author: veekunth217

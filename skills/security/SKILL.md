@@ -1,5 +1,5 @@
 ---
-name: security-skill
+name: security
 description: Application and server security — OWASP Top 10, WordPress hardening, server hardening (UFW/fail2ban), SSL/TLS, secrets management, WAF
 version: 1.0.0
 author: veekunth217

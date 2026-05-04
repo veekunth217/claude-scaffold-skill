@@ -1,5 +1,5 @@
 ---
-name: stack-suggest
+name: suggest
 description: You describe what you want to build — this skill suggests the best language, framework, and Claude Code skills with clear reasoning and token/time savings callouts
 version: 1.0.0
 author: veekunth217

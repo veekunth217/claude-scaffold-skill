@@ -1,5 +1,5 @@
 ---
-name: php-skill
+name: php
 description: PHP development — OOP patterns, Laravel basics, WordPress plugin development, REST API endpoints, wpdb queries, security (sanitization, nonces)
 version: 1.0.0
 author: veekunth217

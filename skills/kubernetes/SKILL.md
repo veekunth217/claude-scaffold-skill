@@ -1,5 +1,5 @@
 ---
-name: kubernetes-skill
+name: kubernetes
 description: Kubernetes management — Helm charts, ArgoCD GitOps, Ingress, ConfigMaps, HPA autoscaling, blue/green deployments, debugging
 version: 1.0.0
 author: veekunth217

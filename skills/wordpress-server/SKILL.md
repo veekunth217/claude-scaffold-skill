@@ -1,5 +1,5 @@
 ---
-name: wordpress-server-skill
+name: wordpress-server
 description: WordPress server optimization — Nginx config, PHP 8.3-FPM tuning, Redis object caching, WP Rocket, security hardening, staging, multisite
 version: 1.0.0
 author: veekunth217
