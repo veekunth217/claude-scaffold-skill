@@ -112,6 +112,7 @@ open Claude Code → /scaffold
 | **Database** | `/database` | PG/ScyllaDB/Redis — schema-first wizard, migrations, query patterns |
 | **Suggest** | `/suggest` | No stack preference → options with tradeoffs + recommendations |
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
+| **Hooks** | `/hooks` | Auto-lint on Write, block `rm -rf`/force-push, run tests on edit, notify on Stop — wires `.claude/settings.json` |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 
 ### Reference Skills — Working snippets + configuration guides

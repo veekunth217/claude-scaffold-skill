@@ -181,6 +181,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route L — Claude Code Hooks Setup
+**Trigger words:** hooks, hook, pretooluse, posttooluse, sessionstart, subagentstop, guardrail, lint on save, block rm, auto-lint, auto-format, claude hooks, settings.json hooks
+
+→ Confirm: "Got it — let's set up Claude Code hooks. Auto-lint, dangerous-command blocking, notifications."
+→ Hand off to: `skills/hooks/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 
