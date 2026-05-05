@@ -114,6 +114,7 @@ open Claude Code → /scaffold
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
 | **Hooks** | `/hooks` | Auto-lint on Write, block `rm -rf`/force-push, run tests on edit, notify on Stop — wires `.claude/settings.json` |
 | **Budget** | `/budget` | Set up free-claude-code proxy — route Claude Code & Roo Code traffic to OpenRouter free / Ollama / NVIDIA NIM / DeepSeek |
+| **Handoff** | `/handoff` | Split work between Claude and Roo Code/Cline — generates self-contained prompts with full project context for parallel execution |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 
 ### Reference Skills — Working snippets + configuration guides

@@ -197,6 +197,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route N — Handoff to Roo Code
+**Trigger words:** handoff, hand off, roo, roo code, cline, delegate to roo, split task, parallel work, multi-agent, divide work, share work
+
+→ Confirm: "Got it — let's split the work between Claude and Roo. I'll generate self-contained prompts for the Roo tasks."
+→ Hand off to: `skills/handoff/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 
