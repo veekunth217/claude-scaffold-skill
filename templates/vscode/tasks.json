@@ -1,0 +1,37 @@
+{
+  "//": "Per-stack tasks generated during scaffold. Claude can reference these by label: 'run the test task'. User runs via Cmd/Ctrl+Shift+P > 'Tasks: Run Task'.",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "type": "shell",
+      "command": "[STACK_DEV_COMMAND]",
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "[STACK_TEST_COMMAND]",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always" },
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "[STACK_BUILD_COMMAND]",
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always" },
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "[STACK_LINT_COMMAND]",
+      "presentation": { "reveal": "silent" },
+      "problemMatcher": []
+    }
+  ]
+}

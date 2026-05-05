@@ -115,6 +115,11 @@ open Claude Code → /scaffold
 | **Hooks** | `/hooks` | Auto-lint on Write, block `rm -rf`/force-push, run tests on edit, notify on Stop — wires `.claude/settings.json` |
 | **Budget** | `/budget` | Set up free-claude-code proxy — route Claude Code & Roo Code traffic to OpenRouter free / Ollama / NVIDIA NIM / DeepSeek |
 | **Handoff** | `/handoff` | Split work between Claude and Roo Code/Cline — generates self-contained prompts with full project context for parallel execution |
+| **Clone** | `/clone` | Use any GitHub repo as a starting skeleton — strips git history, generates CLAUDE.md for the detected stack, optional placeholder rename |
+| **Design** | `/design` | Extract a design system from any reference website via designmd.me — applies tokens to CSS variables, Tailwind config, theme.ts |
+| **Dark Mode** | `/dark-mode` | Add dark mode + the **Black or White** animated toggle (MJ tribute) — system preference, invert, read modes supported |
+| **SaaS** | `/saas` | SaaS product wizard — auth model, billing, onboarding, generates phase plan, hands design to UI/UX Pro Max + execution to GSD |
+| **Launch** | `/launch` | Submission packages for CodeCanyon, WordPress.org, Product Hunt, plus full SaaS pre-launch audit (legal, payments, security, SEO) |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 
 ### Reference Skills — Working snippets + configuration guides
@@ -132,6 +137,28 @@ open Claude Code → /scaffold
 | **Docker** | `/docker` | Dockerfile best practices, multi-stage, compose, networking, CI/CD |
 | **Security** | `/security` | OWASP Top 10, WP hardening, server hardening, SSL/TLS, secrets, WAF |
 | **DB** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch — full setup + tuning |
+
+---
+
+## The 3-Tool AI Dev Stack
+
+The most cost-effective way to build with AI in 2026:
+
+| Role | Tool | What it's good at | Cost |
+|---|---|---|---|
+| 🧠 Architect | **Claude Code** | Decisions, debugging, code review, judgment calls | Paid (Anthropic) |
+| ✍️ Executor | **Roo Code / Cline** | Bulk file generation, boilerplate, mechanical refactors | Paid (less) — or free via proxy |
+| 🔀 Router | **free-claude-code proxy** | Routes traffic to OpenRouter free / Ollama / NIM / DeepSeek | Free (local Ollama) or near-free |
+
+```
+Set it up in 5 minutes:
+  /budget    → installs the proxy, configures VS Code & shell to use it
+  /handoff   → splits any task between Claude (architecture) and Roo (mechanical work)
+```
+
+The result: **Claude does the thinking, Roo does the typing, you pay only for thinking.**
+
+The `/handoff` skill auto-detects when the proxy is running and routes Roo prompts through it — bulk work runs on free models while critical work stays on Anthropic direct.
 
 ---
 
@@ -288,7 +315,7 @@ make discover-capabilities  # scan Claude Code releases → registry/discovered-
 
 ```
 claude-scaffold-skill/
-├── SKILL.md                         # Main entry — NL router (Routes A-K)
+├── SKILL.md                         # Main entry — NL router (Routes A-S)
 ├── Makefile                         # Dev commands
 ├── CONTRIBUTING.md                  # How to add skills and contribute
 ├── LICENSE                          # MIT
@@ -298,13 +325,21 @@ claude-scaffold-skill/
 │   ├── suggest/SKILL.md             # Stack suggester with tradeoffs
 │   ├── python/SKILL.md              # Python wizard (FastAPI/Django/Flask/Celery/Jupyter)
 │   ├── nodejs/SKILL.md              # Node.js wizard (Express/Fastify/NestJS/Hono)
-│   ├── terraform/SKILL.md           # AWS IaC wizard + Helm on EKS
+│   ├── terraform/SKILL.md           # IaC wizard — AWS EKS preset + DO K8s preset + custom
 │   ├── deploy/SKILL.md              # Server deployment wizard
 │   ├── wordpress/SKILL.md           # WP site/plugin/theme wizard
 │   ├── webapp/SKILL.md              # Full-stack web app wizard
 │   ├── graphql/SKILL.md             # GraphQL API wizard
 │   ├── database/SKILL.md            # DB schema wizard
-│   ├── sync/SKILL.md                # Context sync skill
+│   ├── sync/SKILL.md                # Context sync across devices
+│   ├── hooks/SKILL.md               # Claude Code hooks wizard (Layer 3 of ADK)
+│   ├── budget/SKILL.md              # free-claude-code proxy setup (free LLM routing)
+│   ├── handoff/SKILL.md             # Roo Code task delegation
+│   ├── clone/SKILL.md               # Use any GitHub repo as a starting skeleton
+│   ├── design/SKILL.md              # DesignMD integration — design tokens to project
+│   ├── dark-mode/SKILL.md           # Dark mode + Black or White (MJ tribute) toggle
+│   ├── saas/SKILL.md                # SaaS product wizard → GSD + UI/UX Pro Max
+│   ├── launch/SKILL.md              # CodeCanyon / WP.org / Product Hunt / SaaS audit
 │   ├── aws/SKILL.md                 # AWS reference skill
 │   ├── kubernetes/SKILL.md          # Kubernetes reference skill
 │   ├── cicd/SKILL.md                # CI/CD reference skill
@@ -317,6 +352,11 @@ claude-scaffold-skill/
 │   ├── security/SKILL.md            # Security reference skill
 │   ├── db/SKILL.md                  # Database reference skill (6 DBs)
 │   └── picker/SKILL.md              # Legacy — redirects to bootstrap
+│
+├── templates/
+│   ├── hooks/                       # Hook scripts: lint, block-dangerous, test-on-edit, notify-stop, session-start
+│   ├── vscode/                      # .vscode/ generators: extensions.json, settings.json, tasks.json
+│   └── dark-mode/                   # Dark mode CSS + toggle component templates
 │
 ├── registry/
 │   ├── skills.json                  # Curated community registry (17 entries)
@@ -338,7 +378,8 @@ claude-scaffold-skill/
 │
 ├── references/
 │   ├── stacks.md                    # Stack version requirements + commands
-│   └── environments.md              # Environment detection edge cases
+│   ├── environments.md              # Environment detection edge cases
+│   └── vscode-extensions.md         # Per-stack VS Code extension recommendations
 │
 └── .github/workflows/
     ├── sync-registry.yml            # Weekly: refresh stars + discover + open Issue

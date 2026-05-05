@@ -205,6 +205,46 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route O — Clone a Repo as Skeleton
+**Trigger words:** clone, fork, start from, use as template, skeleton from, clone repo, copy from github, scaffold from existing, base on this repo
+
+→ Confirm: "Got it — I'll clone that repo, strip its history, and set it up as a fresh project."
+→ Hand off to: `skills/clone/SKILL.md`
+
+---
+
+### Route P — Design System from Reference Site
+**Trigger words:** design, design system, design.md, designmd, tokens, brand colors, looks like, base design on, theme from
+
+→ Confirm: "Got it — let's extract a design system from your reference site and wire the tokens into your project."
+→ Hand off to: `skills/design/SKILL.md`
+
+---
+
+### Route Q — Dark Mode + Black or White Toggle
+**Trigger words:** dark mode, dark theme, black or white, theme toggle, invert mode, read mode, color scheme, prefers-color-scheme
+
+→ Confirm: "Got it — adding dark mode with the Black or White animated toggle."
+→ Hand off to: `skills/dark-mode/SKILL.md`
+
+---
+
+### Route R — SaaS Product Wizard
+**Trigger words:** saas, multi-tenant, billing, subscription, pricing tiers, stripe, paddle, freemium, b2b, b2c saas, product launch
+
+→ Confirm: "Got it — let's plan your SaaS. I'll cover auth model, billing, onboarding, and hand the rest to GSD + UI/UX Pro Max."
+→ Hand off to: `skills/saas/SKILL.md`
+
+---
+
+### Route S — Launch / Submission Helper
+**Trigger words:** launch, submit, codecanyon, wordpress.org, wp.org, product hunt, indie hackers, marketing, pre-launch audit, ready to ship
+
+→ Confirm: "Got it — let's prep your launch package."
+→ Hand off to: `skills/launch/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 
@@ -475,10 +515,24 @@ After any successful scaffold, generate a `CLAUDE.md` tailored to the stack:
 
 Generate a `.gitignore` appropriate for the stack. Use gitignore.io patterns for the detected combination of languages and frameworks. Always include:
 - OS files (`.DS_Store`, `Thumbs.db`)
-- IDE files (`.vscode/`, `.idea/`)
+- IDE files (`.idea/`) — but NOT `.vscode/` (we ship that on purpose, see below)
 - Environment files (`.env`, `.env.local`)
 - Dependency directories (`node_modules/`, `.venv/`, `vendor/`)
 - Build output (`dist/`, `build/`, `.next/`)
+
+### .vscode/ folder (always generated)
+
+VS Code is the most common editor. Generate `.vscode/` with:
+
+- **`extensions.json`** — recommends Claude Code, Roo Cline, GitLens + stack-specific extensions
+- **`settings.json`** — format-on-save, lint-on-save, exclusions for stack
+- **`tasks.json`** — labeled tasks: `dev`, `test`, `build`, `lint` mapped to stack commands
+  (Claude can reference these by label later: "run the test task")
+
+Pull base templates from `templates/vscode/` and merge in stack-specific overrides
+from `references/vscode-extensions.md`.
+
+`.vscode/` is committed (NOT in .gitignore) — these settings benefit everyone who clones the repo.
 
 ---
 

@@ -1,0 +1,10 @@
+{
+  "//": "Recommended VS Code extensions for this project. VS Code suggests these on first open. Replace [STACK_EXTENSIONS] with the stack-specific block from references/vscode-extensions.md.",
+  "recommendations": [
+    "anthropic.claude-code",
+    "rooveterinaryinc.roo-cline",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

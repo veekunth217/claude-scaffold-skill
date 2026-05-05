@@ -114,6 +114,37 @@ Special rules:
 - If `new-project` detected → always include "Project Memory (CLAUDE.md)" and "Hooks"
 - If `mature-project` detected → always include "Ultra Review" and "GitHub PR Review"
 - Always include "Hooks" as it benefits every project type
+- Always include the **3-Tool AI Dev Stack** card (see below) — high impact for everyone
+
+### Always-on: The 3-Tool AI Dev Stack
+
+For every project, surface this card in the 💡 tier (above the auto-matched capabilities):
+
+```
+↳ The 3-Tool AI Dev Stack (recommended)
+  Claude Code (architect — paid Anthropic)
+  + Roo Code / Cline (executor — bulk work)
+  + free-claude-code proxy (route Roo to free models like Ollama, OpenRouter free)
+  Result: Claude does the thinking, Roo does the typing, you pay only for thinking.
+
+  → Set up in 5 min:  /budget    (proxy setup)
+                      /handoff   (split work between Claude & Roo)
+```
+
+### Always-on: Agent Count Awareness
+
+Also surface this card so users know they can control parallelism:
+
+```
+↳ Agent Count Control — match the cost to the urgency
+  Fast mode (1 Opus + 4 parallel sub-agents)  → ~4× speed, ~4× tokens
+  Default (1 Sonnet, sub-agents on demand)    → balanced
+  Careful (1 Sonnet, no sub-agents)           → slower, lowest token use
+
+  → Toggle Fast Mode: type /fast in Claude Code
+  → Force parallel:  ask "spawn 4 sub-agents to do X"
+  → Force serial:    say "do this without sub-agents"
+```
 
 ---
 

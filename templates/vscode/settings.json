@@ -1,0 +1,29 @@
+{
+  "//": "Workspace VS Code settings. Per-stack overrides applied during scaffold.",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.terraform": true,
+    "**/*.pyc": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.terraform": true,
+    "**/coverage": true,
+    "**/*.lock": true
+  },
+  "claudeCode.//": "Set ANTHROPIC_BASE_URL via /budget skill if you want to route through free-claude-code proxy"
+}
