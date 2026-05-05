@@ -172,5 +172,15 @@
     "verified": false,
     "future": true,
     "added": "2026-05-04"
+  },
+  {
+    "name": "Ruflo",
+    "repo": "ruvnet/ruflo",
+    "description": "Leading agent orchestration platform for Claude — deploy multi-agent swarms, coordinate autonomous workflows, build conversational AI systems",
+    "tags": ["agents", "orchestration", "multi-agent", "swarm", "mcp", "workflow", "autonomous"],
+    "install": "git clone https://github.com/ruvnet/ruflo.git ~/.claude/skills/ruflo",
+    "stars": 42331,
+    "verified": true,
+    "added": "2026-05-05"
   }
 ]
