@@ -1,15 +1,11 @@
 {
   "version": "1.0",
   "exported_from_os": "linux",
-  "exported_from_user": "bunny",
-  "exported_from_path": "/home/bunny/claude-scaffold-skill",
-  "exported_from_hash": "-home-bunny-claude-scaffold-skill",
-  "exported_at": "2026-05-04T13:16:51.059349+00:00",
-  "files": [
-    "MEMORY.md",
-    "memory/feedback_git_safety.md",
-    "memory/feedback_no_roo.md",
-    "memory/project_state_scaffold.md"
-  ],
-  "claude_version": "unknown"
+  "exported_from_user": "user",
+  "exported_from_path": "/home/user/claude-scaffold-skill",
+  "exported_from_hash": "-home-user-claude-scaffold-skill",
+  "exported_at": "2026-05-05T00:00:00.000000+00:00",
+  "files": [],
+  "claude_version": "unknown",
+  "note": "Reset for public release. Run 'python scripts/sync-export.py' to populate."
 }
