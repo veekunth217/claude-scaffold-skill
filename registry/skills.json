@@ -182,5 +182,15 @@
     "stars": 42331,
     "verified": true,
     "added": "2026-05-05"
+  },
+  {
+    "name": "Octogent",
+    "repo": "hesamsheikh/octogent",
+    "description": "Orchestration dashboard over Claude Code for managing context, automation, and developer headspace — hooks, skills, and agent control in one UI",
+    "tags": ["dashboard", "orchestration", "hooks", "context", "automation", "agents", "claude-code", "workflow"],
+    "install": "git clone https://github.com/hesamsheikh/octogent.git ~/.claude/skills/octogent",
+    "stars": 803,
+    "verified": true,
+    "added": "2026-05-05"
   }
 ]

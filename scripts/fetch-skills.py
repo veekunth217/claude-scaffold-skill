@@ -23,9 +23,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SEARCH_QUERIES = [
+    # Exact topic matches — singular and plural variants
     "topic:claude-skill",
     "topic:claude-code-skill",
+    "topic:claude-skills",
+    "topic:claude-code-skills",
+    # Related activity topics people use without the right canonical tag
+    "topic:claude-hooks filename:SKILL.md",
+    "topic:claude-agents filename:SKILL.md",
+    "topic:claude-code-agent filename:SKILL.md",
+    # Broad SKILL.md scan scoped to Claude repos
     "topic:claude-code filename:SKILL.md",
+    "topic:anthropic filename:SKILL.md",
+    # Description-based fallback — catches repos that tag poorly but name correctly
+    '"claude code" "skill" filename:SKILL.md',
 ]
 
 REGISTRY_PATH = Path(__file__).parent.parent / "registry" / "skills.json"
