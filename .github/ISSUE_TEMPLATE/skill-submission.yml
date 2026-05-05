@@ -1,0 +1,46 @@
+name: Submit a skill to the registry
+description: Found a Claude Code skill worth adding? Submit it here.
+title: "[Skill] "
+labels: ["registry", "needs-review"]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo
+      description: Full repo path (e.g. username/repo-name)
+      placeholder: username/repo-name
+    validations:
+      required: true
+
+  - type: input
+    id: stars
+    attributes:
+      label: Approximate star count
+      placeholder: "0"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does it do?
+      description: One or two sentences. Will be used as the registry description (120 char max).
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated. Match existing tags where possible.
+      placeholder: scaffolding, typescript, react
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: The repo is public and accessible
+          required: true
+        - label: It has a SKILL.md in the root (or is a tool that integrates with Claude Code)
+          required: false
+        - label: I have no affiliation with this repo (or I do — that's fine, just noting)
+          required: false

@@ -1,0 +1,30 @@
+name: Bug report
+description: A skill isn't working as expected
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+      placeholder: "/scaffold, /bootstrap, /hooks, /sync..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you type, what did Claude do, what did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Claude Code version, stack you were scaffolding
+      placeholder: |
+        OS: macOS 15 / Ubuntu 24 / Windows 11
+        Claude Code version: x.x.x
+        Stack: Node.js + Express
