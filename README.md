@@ -113,6 +113,7 @@ open Claude Code → /scaffold
 | **Suggest** | `/suggest` | No stack preference → options with tradeoffs + recommendations |
 | **Context Sync** | `/sync` | Export/import Claude project memory across devices — solves the path hash problem |
 | **Hooks** | `/hooks` | Auto-lint on Write, block `rm -rf`/force-push, run tests on edit, notify on Stop — wires `.claude/settings.json` |
+| **Budget** | `/budget` | Set up free-claude-code proxy — route Claude Code & Roo Code traffic to OpenRouter free / Ollama / NVIDIA NIM / DeepSeek |
 | **Bootstrap** | `/skill-bootstrap` | Standalone skill installer — runs automatically after every scaffold |
 
 ### Reference Skills — Working snippets + configuration guides

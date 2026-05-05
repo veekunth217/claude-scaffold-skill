@@ -189,6 +189,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route M — Budget Mode (free LLM routing)
+**Trigger words:** budget, free, cheap, openrouter, ollama, nvidia nim, deepseek, save tokens, free claude, free-claude-code, proxy, route to local, save anthropic credits
+
+→ Confirm: "Got it — let's set up budget mode. Routes Claude Code traffic through free-claude-code proxy to free or local models."
+→ Hand off to: `skills/budget/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 
