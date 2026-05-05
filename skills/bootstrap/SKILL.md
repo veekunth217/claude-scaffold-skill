@@ -70,6 +70,7 @@ Always include these regardless of stack. These are the productivity foundation:
 - **Get Shit Done (GSD)** — `gsd-build/get-shit-done` — spec-driven workflow, planning, phase execution
 - **Awesome Claude Code** — `hesreallyhim/awesome-claude-code` — curated reference of best practices and tips
 - **Claude Code Expert** — `reedmayhew18/claude-code-expert` — 54-skill collection, 8-phase wizard, 19 agents
+- **Code Review Graph** — `tirth8205/code-review-graph` — graph-based dependency tracing, surfaces high-impact review areas before merge
 
 Mark all Tier 1 skills as `[RECOMMENDED]`.
 
@@ -94,8 +95,8 @@ Tag → skill mapping guidance:
 From remaining registry entries, take up to 7 by star count not already in Tier 1 or 2.
 
 **Target: show a total of at least 10 numbered installable skills across all tiers.**
-- Tier 1 contributes 3
-- Tier 2 contributes as many as score qualifies (min 1, max 5)
+- Tier 1 contributes 4
+- Tier 2 contributes as many as score qualifies (min 1, max 4)
 - Tier 3 fills the remainder to reach 10 total (or more if the registry has enough)
 - Never cap the list at fewer than 10 — developers need choice, not a curated shortlist of 3
 
@@ -142,17 +143,17 @@ Project detected: [detected stack tags]
        54-skill collection, 8-phase production wizard
        install: git clone ... ~/.claude/skills/claude-expert
 
+   [4] ✓ Code Review Graph                ⭐ 15,203
+       Graph-based review — traces dependencies, finds high-impact areas
+       install: git clone ... ~/.claude/skills/code-review-graph
+
 ─────────────────────────────────────────
 🟡 STACK MATCH — Picked for your [detected stack]
    Select any by typing its number.
 
-   [4]   UI/UX Pro Max                    ⭐ 73,729
+   [5]   UI/UX Pro Max                    ⭐ 73,729
        67 design styles, component patterns, accessibility
        install: git clone ... ~/.claude/skills/ui-ux-pro-max
-
-   [5]   Code Review Graph                ⭐ 15,203
-       Graph-based review tracing dependencies
-       install: git clone ... ~/.claude/skills/code-review-graph
 
 ─────────────────────────────────────────
 🟢 COMMUNITY PICKS — Highest rated others
@@ -208,7 +209,7 @@ Project detected: [detected stack tags]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Currently selected: 1, 2, 3
+Currently selected: 1, 2, 3, 4
 Type numbers to toggle (e.g. "4 5"), "all", "none", or "go" to install selected.
 The 💡 section is informational — no install needed, nothing to toggle.
 ```
