@@ -13,6 +13,15 @@ Modern PHP development with a focus on WordPress plugin development, OOP pattern
 
 **RULE: Always show generated class/function signatures before writing full implementation. Wait for GO.**
 
+> **🚧 Status: Stub — implementation pending**
+>
+> This reference skill has the structure but the snippet content is still being filled in
+> (you'll see `<!-- TODO -->` placeholders below). It activates and tells Claude the topic
+> exists, but won't yield deep snippets yet.
+>
+> **Want to help?** Pick any TODO, write the snippet, open a PR. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+> Each contribution moves the skill closer to "Ready" status.
+
 ---
 
 ## Capabilities

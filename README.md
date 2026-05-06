@@ -160,21 +160,27 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **Bootstrap** | `/skill-bootstrap` | Tiered skill installer — runs automatically after every scaffold |
 | **New Skill** | `/new-skill` | Author a new Claude Code skill — generates SKILL.md + draft registry entry, ready for PR |
 
-### Reference Skills — working snippets and config guides
+### Reference Skills — config guides and snippet collections
 
-| Skill | Command | Covers |
-|-------|---------|--------|
-| **AWS** | `/aws` | EKS, ECR, VPC, RDS, ElastiCache, S3, Route53, ACM, IAM |
-| **Kubernetes** | `/kubernetes` | Helm, ArgoCD, Ingress-nginx, HPA, Blue/Green, debug playbook |
-| **CI/CD** | `/cicd` | GitHub Actions, self-hosted runners, Docker push, OIDC to AWS |
-| **Server** | `/server` | Nginx, PHP-FPM, Certbot, UFW, fail2ban, Redis, MySQL/PG, PM2 |
-| **DigitalOcean** | `/digitalocean` | Droplets, Managed DBs, Spaces, Load Balancers, DNS, Terraform |
-| **Docker** | `/docker` | Dockerfile best practices, multi-stage, compose, networking |
-| **Security** | `/security` | OWASP Top 10, WP hardening, server hardening, SSL/TLS, WAF |
-| **PHP** | `/php` | OOP, Laravel, WordPress plugin dev, REST, wpdb, nonces |
-| **WooCommerce** | `/woocommerce` | Products, pricing, payment gateways, hooks, checkout |
-| **WordPress Server** | `/wordpress-server` | Nginx+WP, PHP 8.3-FPM, Redis cache, WP Rocket, hardening |
-| **Database** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch |
+> **Honest status:** Most reference skills below are **stubs** — they have the structure
+> (sections, RULE, frontmatter) but the actual snippet content is still being filled in. They
+> activate and surface the topic to Claude, but won't yield deep snippets until contributors
+> write them. Each stub is clearly marked at the top of its `SKILL.md`. **PRs welcome** — see
+> [CONTRIBUTING.md](CONTRIBUTING.md). The `/db` skill is the only fully-written reference today.
+
+| Skill | Command | Covers | Status |
+|-------|---------|--------|--------|
+| **AWS** | `/aws` | EKS, ECR, VPC, RDS, ElastiCache, S3, Route53, ACM, IAM | 🚧 Stub |
+| **Kubernetes** | `/kubernetes` | Helm, ArgoCD, Ingress-nginx, HPA, Blue/Green, debug playbook | 🚧 Stub |
+| **CI/CD** | `/cicd` | GitHub Actions, self-hosted runners, Docker push, OIDC to AWS | 🚧 Stub |
+| **Server** | `/server` | Nginx, PHP-FPM, Certbot, UFW, fail2ban, Redis, MySQL/PG, PM2 | 🚧 Stub |
+| **DigitalOcean** | `/digitalocean` | Droplets, Managed DBs, Spaces, Load Balancers, DNS | 🚧 Stub |
+| **Docker** | `/docker` | Dockerfile best practices, multi-stage, compose, networking | 🚧 Stub |
+| **Security** | `/security` | OWASP Top 10, WP hardening, server hardening, SSL/TLS, WAF | 🚧 Stub |
+| **PHP** | `/php` | OOP, Laravel, WordPress plugin dev, REST, wpdb, nonces | 🚧 Stub |
+| **WooCommerce** | `/woocommerce` | Products, pricing, payment gateways, hooks, checkout | 🚧 Stub |
+| **WordPress Server** | `/wordpress-server` | Nginx+WP, PHP 8.3-FPM, Redis cache, WP Rocket | 🚧 Stub |
+| **Database** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch | ✅ Ready |
 
 ---
 
@@ -203,7 +209,7 @@ The `/handoff` skill detects when the proxy is running and auto-routes Roo tasks
 Claude stores project memory in `~/.claude/projects/<path-hash>/`. The hash is derived from your absolute path, so it breaks between machines:
 
 ```
-/home/bunny/myapp   → -home-bunny-myapp      ← Machine A
+/home/alice/myapp   → -home-alice-myapp      ← Machine A
 /Users/john/myapp   → -Users-john-myapp       ← Machine B (Claude loses everything)
 ```
 

@@ -13,6 +13,15 @@ Expert-level AWS infrastructure management. Covers the full stack from networkin
 
 **RULE: Always show what will be created/changed and wait for GO before executing.**
 
+> **🚧 Status: Stub — implementation pending**
+>
+> This reference skill has the structure but the snippet content is still being filled in
+> (you'll see `<!-- TODO -->` placeholders below). It activates and tells Claude the topic
+> exists, but won't yield deep snippets yet.
+>
+> **Want to help?** Pick any TODO, write the snippet, open a PR. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+> Each contribution moves the skill closer to "Ready" status.
+
 ---
 
 ## Capabilities

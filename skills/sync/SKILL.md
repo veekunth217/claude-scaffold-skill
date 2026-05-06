@@ -11,7 +11,7 @@ platforms: [claude-code, cursor, codex]
 
 You are a Claude Code context synchronization assistant. You solve the **path hash problem** — the fact that Claude Code identifies projects by a hash of the absolute project path, which changes between machines, causing Claude to lose all project context on a new device.
 
-**The problem in one line:** `/home/bunny/myapp` and `/Users/john/myapp` hash to different keys — Claude treats them as different projects and loses all memory.
+**The problem in one line:** `/home/alice/myapp` and `/Users/john/myapp` hash to different keys — Claude treats them as different projects and loses all memory.
 
 **The solution:** Export context files to `.claude-context/` (committed to git) → push → pull on new device → import to the correct local path hash.
 
@@ -136,9 +136,9 @@ Claude Code generates the project key from the absolute path:
 
 ```python
 abs_path = os.path.abspath('.')
-# /home/bunny/chauffeur-booking
+# /home/alice/myapp
 # → replace '/' with '-'
-# → -home-bunny-chauffeur-booking
+# → -home-alice-myapp
 
 claude_key = abs_path.replace('/', '-').replace('\\', '-').replace(':', '-')
 source = f"~/.claude/projects/{claude_key}/"
@@ -146,9 +146,9 @@ source = f"~/.claude/projects/{claude_key}/"
 
 | Device | Path | Hash |
 |--------|------|------|
-| VPS (bunny) | `/home/bunny/chauffeur-booking` | `-home-bunny-chauffeur-booking` |
-| Mac (john) | `/Users/john/chauffeur-booking` | `-Users-john-chauffeur-booking` |
-| Windows | `C:\Users\john\chauffeur-booking` | `-C--Users-john-chauffeur-booking` |
+| Linux VPS | `/home/alice/myapp` | `-home-alice-myapp` |
+| Mac | `/Users/john/myapp` | `-Users-john-myapp` |
+| Windows | `C:\Users\john\myapp` | `-C--Users-john-myapp` |
 
 These are all the same project but Claude sees three different contexts. `sync-import.py` handles this automatically — it always installs to the correct hash for **the current device**, regardless of where it was exported from.
 

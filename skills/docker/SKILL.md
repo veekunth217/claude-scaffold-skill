@@ -13,6 +13,15 @@ Production Docker — from optimised Dockerfiles to multi-service compose stacks
 
 **RULE: Show Dockerfile and compose files before building. Warn before any `docker system prune` or volume removal.**
 
+> **🚧 Status: Stub — implementation pending**
+>
+> This reference skill has the structure but the snippet content is still being filled in
+> (you'll see `<!-- TODO -->` placeholders below). It activates and tells Claude the topic
+> exists, but won't yield deep snippets yet.
+>
+> **Want to help?** Pick any TODO, write the snippet, open a PR. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+> Each contribution moves the skill closer to "Ready" status.
+
 ---
 
 ## Capabilities
