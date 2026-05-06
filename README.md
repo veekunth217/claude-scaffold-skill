@@ -110,6 +110,24 @@ The main `SKILL.md` reads your description and routes to the right specialist �
 
 Every route follows the same contract: **show the plan, wait for GO, then generate.**
 
+When you say "fresh project," `/scaffold` asks where it should land — current directory, a new subfolder you name, or an absolute path — before generating anything. Never overwrites a non-empty directory unless you explicitly chose "Existing" mode.
+
+---
+
+## Document support — Anthropic's official skills, surfaced for you
+
+If your project ever touches PDFs, Excel, Word, or PowerPoint, `/bootstrap` surfaces Anthropic's official document skills as an awareness card:
+
+```bash
+# Install the official Anthropic marketplace
+/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills
+```
+
+This gives Claude native read/write for `.pdf`, `.xlsx`, `.docx`, and `.pptx` — automatically suggested for SaaS, WordPress, Python data, reports, docs, and ETL projects.
+
+The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills add` / `npx skills find`) so you know about the broader skills ecosystem beyond this collection.
+
 ---
 
 ## Skills
@@ -237,6 +255,8 @@ Project detected: python, fastapi, docker
 💡 ALREADY IN CLAUDE CODE — no install needed
    ↳ Hooks · MCP Servers · /ultrareview · CLAUDE.md · IDE Extension
    ↳ The 3-Tool AI Dev Stack (Claude + Roo + free proxy)
+   ↳ Anthropic Document Skills (PDF · Excel · Word · PowerPoint)
+   ↳ Vercel Skills CLI (cross-agent skill discovery)
 
 Currently selected: 1, 2, 3, 4
 Type numbers to toggle, "all", "none", or "go" to install.
@@ -333,7 +353,7 @@ claude-scaffold-skill/
 │   └── dark-mode/      # CSS tokens, toggle component, Black or White animation
 │
 ├── registry/
-│   ├── skills.json                  # 18 verified community skills
+│   ├── skills.json                  # 21 community skills (incl. Anthropic + Vercel)
 │   ├── discovered.json              # Weekly auto-discoveries (pending review)
 │   ├── claude-capabilities.json     # 16 built-in Claude Code features
 │   └── discovered-capabilities.json # Weekly docs scan results
@@ -341,18 +361,24 @@ claude-scaffold-skill/
 ├── scripts/
 │   ├── sync-export.py               # Export context → .claude-context/
 │   ├── sync-import.py               # Import from .claude-context/ → correct hash
-│   ├── fetch-skills.py              # GitHub scraper
+│   ├── fetch-skills.py              # GitHub scraper (10 search queries)
+│   ├── search-registry.py           # CLI search across the local registry
 │   ├── update-stars.py              # Star count refresher
-│   └── validate-registry.py        # Structure + 404 validator
+│   └── validate-registry.py         # Structure + 404 validator
 │
 ├── references/
 │   ├── stacks.md                    # Version requirements + commands per stack
 │   ├── environments.md              # Environment detection edge cases
 │   └── vscode-extensions.md        # Per-stack VS Code extension + settings overrides
 │
-└── .github/workflows/
-    ├── sync-registry.yml            # Weekly: refresh stars + discover
-    └── validate-registry.yml        # PR gate: blocks 404 repos
+├── SECURITY.md                      # Disclosure flow + how to audit 3rd-party skills
+│
+└── .github/
+    ├── PULL_REQUEST_TEMPLATE.md     # PR checklist
+    ├── ISSUE_TEMPLATE/              # Bug report + skill submission forms
+    └── workflows/
+        ├── sync-registry.yml        # Weekly: refresh stars + discover
+        └── validate-registry.yml    # PR gate: blocks 404 repos
 ```
 
 ---
@@ -362,9 +388,19 @@ claude-scaffold-skill/
 ```bash
 make validate               # validate registry structure (fast, no network)
 make validate-full          # validate + verify all repos exist on GitHub
+make test                   # alias for validate-full (CI entry point)
+make search Q=<keyword>     # search the registry (e.g. make search Q=pdf)
 make update-stars           # refresh star counts from GitHub API
 make discover               # run scraper → registry/discovered.json
 make discover-capabilities  # scan Claude Code releases → discovered-capabilities.json
+```
+
+**Search examples:**
+
+```bash
+make search Q=pdf       # → Anthropic Document Skills
+make search Q=agents    # → 6 entries (Ruflo, Agent Orchestrator, Browser Use, ...)
+make search Q=dashboard # → Octogent
 ```
 
 ---
