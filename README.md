@@ -112,6 +112,8 @@ Every route follows the same contract: **show the plan, wait for GO, then genera
 
 When you say "fresh project," `/scaffold` asks where it should land — current directory, a new subfolder you name, or an absolute path — before generating anything. Never overwrites a non-empty directory unless you explicitly chose "Existing" mode.
 
+> **Curious what `/scaffold` actually generates?** See [examples/](examples/) for committed reference outputs (FastAPI + Postgres, Next.js + Tailwind) — same shape `/scaffold` writes into your project.
+
 ---
 
 ## Document support — Anthropic's official skills, surfaced for you
@@ -156,6 +158,7 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **Handoff** | `/handoff` | Split tasks between Claude and Roo Code — generates self-contained Roo prompts |
 | **Context Sync** | `/sync` | Export/import Claude project memory across machines |
 | **Bootstrap** | `/skill-bootstrap` | Tiered skill installer — runs automatically after every scaffold |
+| **New Skill** | `/new-skill` | Author a new Claude Code skill — generates SKILL.md + draft registry entry, ready for PR |
 
 ### Reference Skills — working snippets and config guides
 
@@ -280,6 +283,10 @@ A second registry (`registry/claude-capabilities.json`) tracks 16 built-in Claud
 
 ### Add your skill
 
+**The easy way** — open Claude Code and type `/new-skill`. The wizard walks you through name, description, tags, and trigger words; generates a properly-structured `skills/your-name/SKILL.md`, optionally wires a route in the main router, and appends a draft registry entry. Then you push it to your own GitHub repo and open a PR.
+
+**The manual way:**
+
 1. Fork, edit `registry/skills.json`:
 
 ```json
@@ -335,17 +342,22 @@ The weekly scraper finds it automatically.
 
 ```
 claude-scaffold-skill/
-├── SKILL.md                         # Main entry — NL router (Routes A-S)
+├── SKILL.md                         # Main entry — NL router (Routes A-T)
 ├── Makefile                         # Dev commands
 ├── CONTRIBUTING.md                  # How to add skills and contribute
 │
-├── skills/                          # 30+ skills
+├── skills/                          # 32 skills
 │   ├── scaffold/   python/   nodejs/   terraform/   deploy/
 │   ├── wordpress/  webapp/   graphql/  database/    suggest/
 │   ├── sync/       hooks/    budget/   handoff/     clone/
-│   ├── design/     dark-mode/ saas/   launch/      bootstrap/
+│   ├── design/     dark-mode/ saas/    launch/      bootstrap/
+│   ├── new-skill/  ← author a new skill via /new-skill
 │   └── aws/ kubernetes/ cicd/ server/ digitalocean/
 │       woocommerce/ wordpress-server/ php/ docker/ security/ db/
+│
+├── examples/                        # Reference outputs from /scaffold
+│   ├── fastapi-postgres/            # Python + FastAPI + Postgres
+│   └── nextjs-tailwind/             # Next.js + TypeScript + Tailwind
 │
 ├── templates/
 │   ├── hooks/          # lint.sh, block-dangerous.sh, test-on-edit.sh, notify-stop.sh

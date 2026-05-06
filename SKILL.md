@@ -245,6 +245,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route T — Author a New Skill
+**Trigger words:** new skill, scaffold a skill, create a skill, build a skill, contribute a skill, skill author, skill template, write a skill
+
+→ Confirm: "Got it — let's scaffold a new Claude Code skill. I'll generate SKILL.md and a draft registry entry."
+→ Hand off to: `skills/new-skill/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 

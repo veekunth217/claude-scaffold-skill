@@ -52,3 +52,9 @@ CLAUDE.md
 .claude-context/*.jsonl
 .claude-context/*.json
 !.claude-context/sync-manifest.json
+
+# examples/ is intentionally NOT gitignored — it shows what /scaffold generates
+# Re-include the files we'd normally hide, but only inside examples/:
+!examples/**/.vscode/
+!examples/**/.vscode/*
+!examples/**/CLAUDE.md
