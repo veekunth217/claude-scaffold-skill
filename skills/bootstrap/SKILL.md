@@ -146,6 +146,37 @@ Also surface this card so users know they can control parallelism:
   → Force serial:    say "do this without sub-agents"
 ```
 
+### Always-on: Anthropic Official Document Skills
+
+For projects that touch documents (PDF, Excel, Word, PowerPoint), surface this card:
+
+```
+↳ Anthropic Document Skills (official, free)
+  Read & write PDFs, Excel (xlsx), Word (docx), PowerPoint (pptx).
+  Source-available reference implementations from Anthropic.
+
+  → Install:  /plugin marketplace add anthropics/skills
+              /plugin install document-skills@anthropic-agent-skills
+
+  When useful: invoice generation, spec parsing, report builders,
+  data extraction from spreadsheets, slide deck creation.
+```
+
+Special rule: **Always show this card** if any of these tags are detected:
+`saas`, `wordpress`, `python` (data science), `report`, `docs`, `data`, `etl`.
+Otherwise show it only when user types `more` or asks about documents.
+
+### Always-on: Skill Discovery via vercel-labs
+
+Also surface as awareness — not auto-install:
+
+```
+↳ Vercel Skills CLI (cross-agent skill installer)
+  npx skills add vercel-labs/skills --skill find-skills
+  Then ask Claude in plain English: "Is there any good skill for [task]?"
+  Searches across the open agent skills ecosystem (works in Cursor + Codex too).
+```
+
 ---
 
 ## Phase 4 — Present the Menu

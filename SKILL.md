@@ -253,18 +253,37 @@ After classifying, always confirm before anything else:
 ```
 Got it — [restate what they said in one sentence].
 
-Quick check:
-  Fresh project (empty directory) or existing project?
-  1. Fresh — create everything
-  2. Existing — add to what's there (non-destructive)
+Quick check (3 questions):
 
-And is this the right environment?
-  Detected: [environment]
-  1. Yes
-  2. No — it's [different environment]
+1. Fresh project or existing?
+   a. Fresh — create everything from scratch
+   b. Existing — add to what's already in this directory (non-destructive)
+
+2. Where should this live?
+   Current directory: [pwd output]
+   Contents: [empty / N files — list briefly if non-empty]
+
+   a. Use current directory (only safe if empty or you said "Existing")
+   b. Create a new subfolder — what name? (default: my-app)
+   c. Different absolute path? (you'll provide)
+
+3. Environment confirmation?
+   Detected: [environment]
+   a. Yes, that's right
+   b. No — it's [user clarifies]
 ```
 
-Then proceed to PHASE 3.
+**Capture the answers as PROJECT_NAME and TARGET_DIR before continuing.**
+- If they pick 2a (current dir), TARGET_DIR = `.` and PROJECT_NAME = current folder name
+- If they pick 2b (subfolder), TARGET_DIR = `./[answer]` and PROJECT_NAME = the answer
+- If they pick 2c (other path), TARGET_DIR = absolute path they provide
+
+If TARGET_DIR is the current directory and it's not empty, refuse to proceed unless they
+chose "Existing" mode — show the file list and ask them to either pick a subfolder or
+confirm overwriting risks.
+
+Then proceed to PHASE 3 — every command in the plan must use these captured values
+(`mkdir $TARGET_DIR && cd $TARGET_DIR`) instead of placeholder `[project-name]`.
 
 **Note:** If the user mentions a specific Node.js framework (Express, Fastify, NestJS) without a frontend, prefer Route I over Route K.
 

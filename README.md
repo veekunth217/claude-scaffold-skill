@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-30%2B-brightgreen.svg)](#skills)
-[![Registry](https://img.shields.io/badge/Community%20Registry-18%20skills-orange.svg)](registry/skills.json)
+[![Registry](https://img.shields.io/badge/Community%20Registry-21%20skills-orange.svg)](registry/skills.json)
 [![Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)](#)
 [![Validate Registry](https://github.com/veekunth217/claude-scaffold-skill/actions/workflows/validate-registry.yml/badge.svg)](https://github.com/veekunth217/claude-scaffold-skill/actions)
 
@@ -41,6 +41,8 @@ This skill collection fixes that:
 - **`/sync`** — Claude stores project memory in a path-hashed folder that breaks between machines. Sync exports it to git, imports it anywhere.
 
 Everything else (`/hooks`, `/budget`, `/handoff`, `/dark-mode`, `/launch`, `/saas`...) extends your workflow once the foundation is set.
+
+The registry also surfaces **Anthropic's official document skills** (PDF, Excel, Word, PowerPoint) and the **Vercel cross-agent skills CLI** as awareness cards — so you always know what's available beyond this collection.
 
 ---
 
@@ -244,7 +246,7 @@ Type numbers to toggle, "all", "none", or "go" to install.
 
 ## Community Registry
 
-`registry/skills.json` tracks 18 verified community skills. It auto-updates every Sunday:
+`registry/skills.json` tracks 21 community skills (incl. Anthropic's official document marketplace and the Vercel cross-agent CLI). It auto-updates every Sunday:
 
 ```
 GitHub Action → scans topic:claude-skill + topic:claude-code-skill

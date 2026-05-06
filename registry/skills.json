@@ -192,5 +192,27 @@
     "stars": 803,
     "verified": true,
     "added": "2026-05-05"
+  },
+  {
+    "name": "Anthropic Document Skills (Official)",
+    "repo": "anthropics/skills",
+    "description": "Official Anthropic skills: read/write PDF, Excel (xlsx), Word (docx), PowerPoint (pptx). Source-available reference implementations powering Claude.",
+    "tags": ["official", "anthropic", "documents", "pdf", "excel", "xlsx", "docx", "pptx", "office", "marketplace"],
+    "install": "/plugin marketplace add anthropics/skills",
+    "stars": 0,
+    "verified": true,
+    "marketplace": true,
+    "added": "2026-05-05"
+  },
+  {
+    "name": "Vercel Skills CLI",
+    "repo": "vercel-labs/skills",
+    "description": "Open agent skills CLI — `npx skills add <repo>` installs from any GitHub. `npx skills find` searches. Works in Claude/Cursor/Codex.",
+    "tags": ["cli", "installer", "marketplace", "discovery", "vercel", "ecosystem", "cross-agent"],
+    "install": "npx skills add vercel-labs/skills --skill find-skills",
+    "stars": 0,
+    "verified": true,
+    "marketplace": true,
+    "added": "2026-05-05"
   }
 ]
