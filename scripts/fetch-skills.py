@@ -111,7 +111,97 @@ def has_skill_md(repo_full_name: str, headers: dict) -> bool:
     return data is not None
 
 
-def build_entry(item: dict) -> dict:
+# ── Quality scoring criteria ────────────────────────────────────────
+# We do NOT auto-add discovered skills to skills.json. They land in
+# discovered.json with a quality_score so the maintainer review pass
+# (weekly Issue) can prioritize the strong candidates.
+#
+# Scoring is intentionally lenient — borderline skills still appear in
+# the queue, just lower-ranked. Maintainers make the final call.
+
+QUALITY_FLAG_THRESHOLDS = {
+    "low_stars": 3,           # < this = `low_stars` flag (still listed)
+    "stale_days": 365,        # last commit older than this = `stale` flag
+    "min_desc_chars": 30,     # description shorter than this = `thin_desc`
+}
+
+
+def quality_score(item: dict, headers: dict) -> tuple[int, list[str]]:
+    """Return (score, flags) for a discovered repo.
+
+    Scoring weights (max ~100):
+      +30  has SKILL.md in root
+      +20  has at least one canonical topic (claude-skill / claude-code-skill / etc.)
+      +20  description is >= 30 chars and non-empty
+      +15  stars >= 10
+      +10  pushed within last 365 days
+      + 5  README.md exists in root
+    """
+    score = 0
+    flags = []
+    repo = item["full_name"]
+
+    # SKILL.md presence (already checked but recorded for transparency)
+    score += 30
+    flags.append("has_skill_md")
+
+    # Canonical topics
+    topics = set(item.get("topics", []))
+    canonical = {
+        "claude-skill", "claude-code-skill",
+        "claude-skills", "claude-code-skills",
+    }
+    if topics & canonical:
+        score += 20
+        flags.append("canonical_topic")
+    else:
+        flags.append("non_canonical_topic")
+
+    # Description quality
+    desc = (item.get("description") or "").strip()
+    if len(desc) >= QUALITY_FLAG_THRESHOLDS["min_desc_chars"]:
+        score += 20
+    else:
+        flags.append("thin_desc")
+
+    # Stars
+    stars = item.get("stargazers_count", 0)
+    if stars >= 10:
+        score += 15
+    elif stars < QUALITY_FLAG_THRESHOLDS["low_stars"]:
+        flags.append("low_stars")
+
+    # Recency — `pushed_at` from search API
+    pushed_at = item.get("pushed_at", "")
+    if pushed_at:
+        try:
+            pushed = datetime.strptime(pushed_at[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            days_old = (datetime.now(timezone.utc) - pushed).days
+            if days_old <= QUALITY_FLAG_THRESHOLDS["stale_days"]:
+                score += 10
+            else:
+                flags.append("stale")
+        except ValueError:
+            pass
+
+    # README.md presence (cheap check)
+    if api_get(f"/repos/{repo}/contents/README.md", headers) is not None:
+        score += 5
+        flags.append("has_readme")
+
+    # Archived = strong negative signal
+    if item.get("archived"):
+        score -= 30
+        flags.append("archived")
+
+    # Fork-of-fork-of with no own activity
+    if item.get("fork") and item.get("size", 0) < 50:
+        flags.append("thin_fork")
+
+    return score, flags
+
+
+def build_entry(item: dict, score: int, flags: list[str]) -> dict:
     repo = item["full_name"]
     return {
         "name": item.get("name", repo.split("/")[-1]),
@@ -122,6 +212,10 @@ def build_entry(item: dict) -> dict:
         "stars": item.get("stargazers_count", 0),
         "verified": False,
         "added": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        # Quality metadata for the maintainer review queue
+        "quality_score": score,
+        "quality_flags": flags,
+        "pushed_at": item.get("pushed_at", ""),
     }
 
 
@@ -168,14 +262,44 @@ def main():
             if not has_skill_md(repo, headers):
                 print("not found, skipping")
                 continue
-            print("found")
+            print("found", end="")
             time.sleep(RATE_LIMIT_PAUSE)
 
-        entries.append(build_entry(item))
+        score, flags = quality_score(item, headers)
+        if not args.skip_skill_check:
+            print(f"  (score={score}, flags={','.join(flags) or 'none'})")
+            time.sleep(RATE_LIMIT_PAUSE)
+
+        entries.append(build_entry(item, score, flags))
+
+    # Sort highest-quality candidates first so maintainer review queue
+    # is pre-prioritized. Borderline candidates still appear, just lower.
+    entries.sort(key=lambda e: -e.get("quality_score", 0))
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_searched": len(all_raw),
+        "scoring_criteria": {
+            "max_score": 100,
+            "weights": {
+                "has_skill_md": 30,
+                "canonical_topic": 20,
+                "good_description": 20,
+                "stars_gte_10": 15,
+                "recently_pushed": 10,
+                "has_readme": 5,
+                "archived_penalty": -30,
+            },
+            "flags_explained": {
+                "canonical_topic": "uses claude-skill/claude-code-skill/claude-skills/claude-code-skills topic",
+                "non_canonical_topic": "no canonical topic — found via fallback queries",
+                "thin_desc": "description < 30 chars",
+                "low_stars": "fewer than 3 stars",
+                "stale": "no push in over 365 days",
+                "archived": "repo is archived (strong negative signal)",
+                "thin_fork": "is a fork with little code",
+            },
+        },
         "new_discoveries": entries,
         "skipped_already_in_registry": len([i for i in all_raw if i["full_name"] in existing_repos]),
     }

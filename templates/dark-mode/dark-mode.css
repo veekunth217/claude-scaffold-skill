@@ -1,0 +1,107 @@
+/* ───────────────────────────────────────────────────────────────
+   Dark Mode + Black or White toggle styles
+   Pairs with templates/dark-mode/toggle-black-or-white.tsx
+   ─────────────────────────────────────────────────────────────── */
+
+/* Theme tokens */
+:root {
+  --color-bg: #FFFFFF;
+  --color-fg: #0A0A0A;
+  --color-border: #E5E5E5;
+  --color-muted: #6B6B6B;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0A0A0A;
+  --color-fg: #FFFFFF;
+  --color-border: #2A2A2A;
+  --color-muted: #9B9B9B;
+}
+
+/* Respect system preference on first load (overridden by [data-theme]) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg: #0A0A0A;
+    --color-fg: #FFFFFF;
+    --color-border: #2A2A2A;
+    --color-muted: #9B9B9B;
+  }
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  transition: background 400ms ease, color 400ms ease;
+}
+
+/* ─── Black or White toggle ─────────────────────────────────── */
+.bow-toggle {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 50%, #0A0A0A 50%, #0A0A0A 100%);
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-position 600ms cubic-bezier(.4,0,.2,1);
+}
+
+[data-theme="dark"] .bow-toggle {
+  background-position: 100% 0%;
+}
+
+.bow-orb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1A1A1F 0%, #0A0A0A 70%);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.1), inset 0 0 8px rgba(255,255,255,0.2);
+  transition: transform 600ms cubic-bezier(.4,0,.2,1),
+              background 400ms ease;
+}
+
+[data-theme="dark"] .bow-orb {
+  transform: translateX(24px);
+  background: radial-gradient(circle at 65% 35%, #FFFFFF 0%, #E5E5E5 70%);
+}
+
+/* Subtle visual flourish during transition */
+.bow-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.bow-toggle:active::after {
+  opacity: 1;
+}
+
+/* Screen-reader-only utility used by the toggle button */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* View Transitions API — silky theme swap on supported browsers */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

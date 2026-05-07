@@ -315,12 +315,17 @@ Type numbers to toggle, "all", "none", or "go" to install.
 `registry/skills.json` tracks 21 community skills (incl. Anthropic's official document marketplace and the Vercel cross-agent CLI). It auto-updates every Sunday:
 
 ```
-GitHub Action → scans topic:claude-skill + topic:claude-code-skill
+GitHub Action → scans 10 topic queries (claude-skill, claude-skills, etc.)
              → finds repos with SKILL.md in root
-             → deduplicates, opens Issue for review
-             → maintainer adds via PR
+             → scores each on 6 quality signals (stars, recency, topics,
+               description length, README, archived status — max 100)
+             → writes to registry/discovered.json — never auto-merges
+             → opens GitHub Issue with skills sorted by score for review
+             → maintainer reads, picks the worthwhile ones, opens PR
              → PR blocked by CI if any repo returns 404
 ```
+
+**No skill enters `registry/skills.json` without human review.** The scraper just builds a sorted candidate queue. Quality scoring criteria are documented in [CONTRIBUTING.md](CONTRIBUTING.md#what-the-scraper-actually-does-and-what-it-doesnt).
 
 A second registry (`registry/claude-capabilities.json`) tracks 16 built-in Claude Code features — surfaced as `💡` awareness items matched to your stack.
 

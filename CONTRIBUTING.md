@@ -47,6 +47,35 @@ tags: [tag1, tag2]
 
 The weekly scraper will find it and open a GitHub Issue for maintainer review.
 
+### What the scraper actually does (and what it doesn't)
+
+The scraper **never auto-adds skills to `registry/skills.json`.** It writes everything it finds to `registry/discovered.json` — a review queue — with a quality score from 0–100. Maintainers read the auto-opened Issue and PR only the skills that pass review.
+
+**Quality scoring breakdown (max 100):**
+
+| Signal | Points | Why it matters |
+|---|---|---|
+| Has `SKILL.md` in root | 30 | Confirms it's actually a Claude Code skill |
+| Uses canonical topic (`claude-skill` / `claude-skills` / `claude-code-skill` / `claude-code-skills`) | 20 | Author tagged it correctly |
+| Description ≥ 30 chars | 20 | Skill explains itself |
+| Stars ≥ 10 | 15 | Some community validation |
+| Pushed within last 365 days | 10 | Still maintained |
+| Has `README.md` | 5 | Basic documentation |
+| Archived repo | **−30** | Strong negative signal |
+
+**Flags that lower priority but don't block:**
+- `low_stars` — under 3 stars
+- `stale` — no commits in 12+ months
+- `thin_desc` — description shorter than 30 chars
+- `non_canonical_topic` — found via fallback search, not a canonical tag
+- `thin_fork` — small fork without original work
+
+**What we look for during human review (qualitative):**
+- Does the SKILL.md follow the **confirm-before-generate** pattern? (Phase 1 detect → ask → show plan → wait for GO → execute)
+- Is the scope focused? (one job, done well — not a kitchen sink)
+- Is the install path reasonable? (not running arbitrary remote code)
+- Does it duplicate an existing registry entry? (we prefer one well-maintained skill over five forks)
+
 ---
 
 ## 2. Improve the Scaffolding Wizard
