@@ -182,6 +182,8 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 
 ### Reference Skills — config guides and snippet collections
 
+These are **directly-invoked** skills (type `/aws`, `/kubernetes`, etc.) — they're not part of the `/scaffold` router. Use them when you want focused help on a specific topic.
+
 > **Honest status:** Most reference skills below are **stubs** — they have the structure
 > (sections, RULE, frontmatter) but the actual snippet content is still being filled in. They
 > activate and surface the topic to Claude, but won't yield deep snippets until contributors
@@ -394,12 +396,14 @@ claude-scaffold-skill/
 ├── Makefile                         # Dev commands
 ├── CONTRIBUTING.md                  # How to add skills and contribute
 │
-├── skills/                          # 32 skills
+├── skills/                          # 33 skills
 │   ├── scaffold/   python/   nodejs/   terraform/   deploy/
 │   ├── wordpress/  webapp/   graphql/  database/    suggest/
 │   ├── sync/       hooks/    budget/   handoff/     clone/
 │   ├── design/     dark-mode/ saas/    launch/      bootstrap/
-│   ├── new-skill/  ← author a new skill via /new-skill
+│   ├── new-skill/      ← author a new skill via /new-skill
+│   ├── update-skills/  ← refresh installed skills via /update-skills
+│   ├── picker/         ← legacy redirect to /skill-bootstrap (kept for compat)
 │   └── aws/ kubernetes/ cicd/ server/ digitalocean/
 │       woocommerce/ wordpress-server/ php/ docker/ security/ db/
 │
