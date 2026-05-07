@@ -131,19 +131,31 @@ For every project, surface this card in the 💡 tier (above the auto-matched ca
                       /handoff   (split work between Claude & Roo)
 ```
 
-### Always-on: Agent Count Awareness
+### Always-on: Agent Count & Speed Modes
 
-Also surface this card so users know they can control parallelism:
+Also surface this card so users know what speed/cost knobs they have:
 
 ```
-↳ Agent Count Control — match the cost to the urgency
-  Fast mode (1 Opus + 4 parallel sub-agents)  → ~4× speed, ~4× tokens
-  Default (1 Sonnet, sub-agents on demand)    → balanced
-  Careful (1 Sonnet, no sub-agents)           → slower, lowest token use
+↳ Speed vs Cost — three usage patterns
 
-  → Toggle Fast Mode: type /fast in Claude Code
-  → Force parallel:  ask "spawn 4 sub-agents to do X"
-  → Force serial:    say "do this without sub-agents"
+  Fast mode    →  /fast (real toggle in Claude Code) — Opus 4.6 with
+                  faster output. Toggle on for hard problems, off
+                  when done. Costs more tokens.
+
+  Default      →  No toggle — Sonnet 4.6, sub-agents spawned
+                  on-demand when Claude judges parallel work helps.
+
+  Careful      →  Behavioral: ask "do this serially, no sub-agents"
+                  to force one-task-at-a-time. Slower, cheapest.
+
+  Force parallel:  ask "spawn 4 sub-agents to do X"
+  Force serial:    say "do this without sub-agents"
+
+  How to check what's active:
+    Fast mode:  type /fast — Claude Code shows ON/OFF status
+    Model:      visible in your Claude Code status bar
+    (Default and Careful are usage patterns, not toggles —
+     there's no command to "check" them)
 ```
 
 ### Always-on: Anthropic Official Document Skills

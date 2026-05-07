@@ -253,6 +253,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route U — Update Installed Skills
+**Trigger words:** update skills, refresh skills, pull updates, sync skills, latest version, update claude-scaffold, get latest, update my skills
+
+→ Confirm: "Got it — let me check what's installed in ~/.claude/skills/ and what updates are available."
+→ Hand off to: `skills/update-skills/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 

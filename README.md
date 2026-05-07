@@ -57,6 +57,25 @@ Open Claude Code in any project and type `/scaffold`. That's it.
 
 > **No restart needed.** Claude Code picks up skills from `~/.claude/skills/` automatically.
 
+### Keeping skills updated
+
+New skills land in this repo every week. To pull the latest:
+
+```bash
+# Quick — just one command
+cd ~/.claude/skills/claude-scaffold-skill && git pull
+```
+
+Or use the built-in updater (it scans every git-installed skill in `~/.claude/skills/`, shows you what changed, asks before pulling):
+
+```
+/update-skills
+```
+
+**Other install paths:**
+- Skills installed via `/plugin install` (e.g. Anthropic document skills) → update with `/plugin update`
+- Skills installed via `npx skills add` (Vercel CLI) → update with `npx skills update`
+
 ---
 
 ## Quick Start — 60 seconds to first scaffold
@@ -159,6 +178,7 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **Context Sync** | `/sync` | Export/import Claude project memory across machines |
 | **Bootstrap** | `/skill-bootstrap` | Tiered skill installer — runs automatically after every scaffold |
 | **New Skill** | `/new-skill` | Author a new Claude Code skill — generates SKILL.md + draft registry entry, ready for PR |
+| **Update Skills** | `/update-skills` | Pull latest commits for every git-installed skill in `~/.claude/skills/` — preview changes, ask before applying |
 
 ### Reference Skills — config guides and snippet collections
 
@@ -181,6 +201,23 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **WooCommerce** | `/woocommerce` | Products, pricing, payment gateways, hooks, checkout | 🚧 Stub |
 | **WordPress Server** | `/wordpress-server` | Nginx+WP, PHP 8.3-FPM, Redis cache, WP Rocket | 🚧 Stub |
 | **Database** | `/db` | MySQL, PostgreSQL, MongoDB, Redis, ScyllaDB, Meilisearch | ✅ Ready |
+
+---
+
+## Speed & cost modes — what you can actually toggle
+
+Three usage patterns. Only one is a real toggle; the other two are behavioral patterns you ask for in plain English.
+
+| Mode | How to activate | How to check | What you get |
+|---|---|---|---|
+| **Fast** | `/fast` (real toggle) | type `/fast` again — it shows ON/OFF | Opus 4.6 with faster output. Costs more tokens. Toggle on for hard problems, off when done. |
+| **Default** | (no toggle — it's the baseline) | Status bar shows model = Sonnet 4.6 | Sonnet 4.6 with sub-agents on demand. Balanced. |
+| **Careful** | Ask: "do this serially, no sub-agents" | (no command — pattern only) | One task at a time. Slowest, cheapest. |
+
+Other useful asks:
+- **Force parallel:** "spawn 4 sub-agents to do X" → faster, costs more
+- **Check current model:** look at the Claude Code status bar — model name shows there
+- **Restart from fresh context:** `/clear`
 
 ---
 
