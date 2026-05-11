@@ -19,6 +19,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # PAT (not GITHUB_TOKEN) so pushes bypass branch-protection rulesets.
+          # Persisted into git config, so all subsequent `git push` calls use it.
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -53,9 +57,10 @@ jobs:
 
       - name: Commit and push registry updates
         run: |
-          git add registry/discovered.json
+          git add registry/discovered.json registry/skills.json
           git diff --staged --quiet || git commit -m "chore: update discovered skills registry [skip ci]"
-          git push
+          git pull --rebase origin main || true
+          git push origin HEAD:main
 
       - name: Build issue body
         if: steps.check-new.outputs.new_count != '0'
@@ -139,6 +144,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main  # always pull latest after discover-skills may have pushed
+          token: ${{ secrets.PAT_TOKEN }}  # PAT so pushes bypass branch protection
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -165,7 +171,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add registry/discovered-capabilities.json
           git diff --staged --quiet || git commit -m "chore: update discovered capabilities scan [skip ci]"
-          git push
+          git pull --rebase origin main || true
+          git push origin HEAD:main
 
       - name: Open issue for new capability discoveries
         if: steps.check-caps.outputs.new_count != '0'
