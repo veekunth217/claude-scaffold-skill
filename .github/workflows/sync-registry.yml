@@ -32,12 +32,7 @@ jobs:
       - name: Refresh star counts in skills.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python scripts/update-stars.py
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add registry/skills.json
-          git diff --staged --quiet || git commit -m "chore: refresh star counts [skip ci]"
+        run: python scripts/update-stars.py
 
       - name: Run skill discovery scraper
         env:
@@ -57,10 +52,24 @@ jobs:
 
       - name: Commit and push registry updates
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Snapshot the regenerated files (they're full overwrites, no merge needed)
+          cp registry/discovered.json /tmp/discovered.json
+          cp registry/skills.json    /tmp/skills.json
+          # Reset hard to the latest remote so the push is always a fast-forward
+          git fetch origin main
+          git reset --hard origin/main
+          # Lay the regenerated files back on top
+          cp /tmp/discovered.json registry/discovered.json
+          cp /tmp/skills.json    registry/skills.json
           git add registry/discovered.json registry/skills.json
-          git diff --staged --quiet || git commit -m "chore: update discovered skills registry [skip ci]"
-          git pull --rebase origin main || true
-          git push origin HEAD:main
+          if git diff --staged --quiet; then
+            echo "No registry changes — nothing to push."
+          else
+            git commit -m "chore: update discovered skills + star counts [skip ci]"
+            git push origin HEAD:main
+          fi
 
       - name: Build issue body
         if: steps.check-new.outputs.new_count != '0'
@@ -169,10 +178,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Snapshot the regenerated file, reset to latest remote, lay it back on top
+          cp registry/discovered-capabilities.json /tmp/discovered-capabilities.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/discovered-capabilities.json registry/discovered-capabilities.json
           git add registry/discovered-capabilities.json
-          git diff --staged --quiet || git commit -m "chore: update discovered capabilities scan [skip ci]"
-          git pull --rebase origin main || true
-          git push origin HEAD:main
+          if git diff --staged --quiet; then
+            echo "No capability changes — nothing to push."
+          else
+            git commit -m "chore: update discovered capabilities scan [skip ci]"
+            git push origin HEAD:main
+          fi
 
       - name: Open issue for new capability discoveries
         if: steps.check-caps.outputs.new_count != '0'
