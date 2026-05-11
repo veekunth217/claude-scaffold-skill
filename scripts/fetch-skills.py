@@ -233,6 +233,19 @@ def main():
     existing_repos = load_existing_registry(REGISTRY_PATH)
     print(f"Loaded {len(existing_repos)} repos from existing registry.")
 
+    # Load the *previous* discovered.json so we can tell what's genuinely new
+    # this run vs. what was already in the review queue last time.
+    out_path_pre = Path(args.output)
+    previously_discovered: set[str] = set()
+    if out_path_pre.exists():
+        try:
+            with open(out_path_pre) as f:
+                prev = json.load(f)
+            previously_discovered = {e["repo"] for e in prev.get("new_discoveries", [])}
+            print(f"Loaded {len(previously_discovered)} repos from previous discovered.json.")
+        except (json.JSONDecodeError, KeyError):
+            print("Previous discovered.json unreadable — treating all finds as new.")
+
     all_raw: list[dict] = []
     seen_ids: set[int] = set()
 
@@ -276,9 +289,17 @@ def main():
     # is pre-prioritized. Borderline candidates still appear, just lower.
     entries.sort(key=lambda e: -e.get("quality_score", 0))
 
+    # Split into "new this run" (never seen in a prior discovered.json or the
+    # verified registry) vs "already in the queue from before".
+    new_this_run = [e for e in entries if e["repo"] not in previously_discovered]
+    carried_over = [e for e in entries if e["repo"] in previously_discovered]
+
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_searched": len(all_raw),
+        "queue_size": len(entries),
+        "new_this_run": len(new_this_run),
+        "carried_over": len(carried_over),
         "scoring_criteria": {
             "max_score": 100,
             "weights": {
@@ -300,8 +321,11 @@ def main():
                 "thin_fork": "is a fork with little code",
             },
         },
+        # Full queue (everything found this run, minus what's already verified),
+        # sorted by quality score. This is the browsable review list.
         "new_discoveries": entries,
-        "skipped_already_in_registry": len([i for i in all_raw if i["full_name"] in existing_repos]),
+        # Just the repos that first appeared this run — what the weekly Issue reports.
+        "newly_added_this_run": new_this_run,
     }
 
     out_path = Path(args.output)
@@ -309,11 +333,15 @@ def main():
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"\nDone. {len(entries)} new skill(s) discovered.")
+    print(f"\nDone. Queue: {len(entries)} candidate(s) "
+          f"({len(new_this_run)} new this run, {len(carried_over)} carried over).")
     print(f"Output: {out_path}")
-    if entries:
-        for e in entries:
-            print(f"  - {e['repo']} ({e['stars']} ⭐)")
+    if new_this_run:
+        print("New this run:")
+        for e in new_this_run[:20]:
+            print(f"  - {e['repo']} ({e['stars']} ⭐, score {e.get('quality_score')})")
+        if len(new_this_run) > 20:
+            print(f"  ... and {len(new_this_run) - 20} more")
 
 
 if __name__ == "__main__":
