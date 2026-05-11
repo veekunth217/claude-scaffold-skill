@@ -179,6 +179,7 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **Bootstrap** | `/skill-bootstrap` | Tiered skill installer — runs automatically after every scaffold |
 | **New Skill** | `/new-skill` | Author a new Claude Code skill — generates SKILL.md + draft registry entry, ready for PR |
 | **Update Skills** | `/update-skills` | Pull latest commits for every git-installed skill in `~/.claude/skills/` — preview changes, ask before applying |
+| **Review Skills** | `/review-skills` | Triage the discovered-skills queue 25 at a time — keep good ones into the registry, reject the rest (persisted, resumable) |
 
 ### Reference Skills — config guides and snippet collections
 
@@ -330,6 +331,23 @@ GitHub Action → scans 10 topic queries (claude-skill, claude-skills, etc.)
 
 **No skill enters `registry/skills.json` without human review.** `discovered.json` is a sorted candidate queue you browse at your own pace; the weekly Issue only nudges you about what's *newly* appeared since the last scrape. Quality scoring criteria are documented in [CONTRIBUTING.md](CONTRIBUTING.md#what-the-scraper-actually-does-and-what-it-doesnt).
 
+### Triaging the queue — page by page
+
+The queue is grouped into sections (🆕 just launched · 🔥 popular · 💎 quiet gems · 📦 long tail) so you can review by flavour. Work through it 25 at a time:
+
+```bash
+make review-status                    # how many pending, broken down by section
+make review                           # show the next page (default 25)
+make review SECTION=just-launched     # only the freshly-launched ones
+make review PAGE=3                    # jump to page 3
+
+# Record decisions (they persist):
+python scripts/review-queue.py --accept owner/repo   # → appended to skills.json, verified
+python scripts/review-queue.py --reject owner/repo   # → added to rejected.json, never shown again
+```
+
+Or run it conversationally inside Claude Code with **`/review-skills`** — it shows you a page, you say "keep 1 3 7, reject the rest", it updates the files and offers to commit. Rejected repos go in `registry/rejected.json`; the scraper skips them on every future run, so the queue only ever shrinks toward "done."
+
 A second registry (`registry/claude-capabilities.json`) tracks 16 built-in Claude Code features — surfaced as `💡` awareness items matched to your stack.
 
 ### Add your skill
@@ -418,16 +436,18 @@ claude-scaffold-skill/
 │   └── dark-mode/      # CSS tokens, toggle component, Black or White animation
 │
 ├── registry/
-│   ├── skills.json                  # 21 community skills (incl. Anthropic + Vercel)
-│   ├── discovered.json              # Weekly auto-discoveries (pending review)
+│   ├── skills.json                  # 21 verified community skills (incl. Anthropic + Vercel)
+│   ├── discovered.json              # Candidate queue from the scraper (sorted, sectioned)
+│   ├── rejected.json                # Repos rejected during review — scraper skips these
 │   ├── claude-capabilities.json     # 16 built-in Claude Code features
 │   └── discovered-capabilities.json # Weekly docs scan results
 │
 ├── scripts/
 │   ├── sync-export.py               # Export context → .claude-context/
 │   ├── sync-import.py               # Import from .claude-context/ → correct hash
-│   ├── fetch-skills.py              # GitHub scraper (10 search queries)
+│   ├── fetch-skills.py              # GitHub scraper (10 queries, quality scoring, skips rejected)
 │   ├── search-registry.py           # CLI search across the local registry
+│   ├── review-queue.py              # Page/triage discovered.json — accept/reject decisions
 │   ├── update-stars.py              # Star count refresher
 │   └── validate-registry.py         # Structure + 404 validator
 │

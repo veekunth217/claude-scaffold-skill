@@ -1,0 +1,5 @@
+{
+  "_comment": "Repos explicitly rejected during review. The scraper skips these forever so they never re-appear in discovered.json. Re-include one by removing its entry. Maintained by scripts/review-queue.py and the /review-skills wizard.",
+  "updated": "2026-05-07",
+  "rejected": []
+}

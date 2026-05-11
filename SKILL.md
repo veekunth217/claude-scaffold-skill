@@ -261,6 +261,14 @@ Wait for their description. Then classify it into one of these routes:
 
 ---
 
+### Route V — Review the Discovery Queue
+**Trigger words:** review skills, review queue, triage skills, curate registry, discovered skills, keep or reject, review discovered, page through skills, registry review
+
+→ Confirm: "Got it — let's triage the discovered-skills queue. I'll show you a page at a time, you keep or reject."
+→ Hand off to: `skills/review-skills/SKILL.md`
+
+---
+
 ### Route K — Standard Scaffold (known stack, simple project)
 **Everything else:** React, Vue, Next.js, Hugo, Laravel, MERN, LAMP, LEMP, Docker
 

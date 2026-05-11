@@ -76,6 +76,19 @@ The scraper **never auto-adds skills to `registry/skills.json`.** It writes ever
 - Is the install path reasonable? (not running arbitrary remote code)
 - Does it duplicate an existing registry entry? (we prefer one well-maintained skill over five forks)
 
+**How maintainers actually work the queue:**
+
+`registry/discovered.json` holds the full candidate list, grouped into sections (🆕 just launched · 🔥 popular · 💎 quiet gems · 📦 long tail) and sorted by quality score. Review it in pages:
+
+```bash
+make review-status                  # counts per section
+make review SECTION=just-launched   # page through one section
+python scripts/review-queue.py --accept owner/repo   # → skills.json (verified)
+python scripts/review-queue.py --reject owner/repo   # → rejected.json (scraper skips it forever)
+```
+
+Or use the `/review-skills` wizard in Claude Code for a conversational version. Decisions persist: accepted repos drop out of the queue because they're in `skills.json`; rejected repos drop out because they're in `rejected.json`. Un-reject by removing the slug from `rejected.json` (or just `--accept` it later).
+
 ---
 
 ## 2. Improve the Scaffolding Wizard

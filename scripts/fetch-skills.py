@@ -40,6 +40,7 @@ SEARCH_QUERIES = [
 ]
 
 REGISTRY_PATH = Path(__file__).parent.parent / "registry" / "skills.json"
+REJECTED_PATH = Path(__file__).parent.parent / "registry" / "rejected.json"
 GITHUB_API = "https://api.github.com"
 RATE_LIMIT_PAUSE = 2
 
@@ -82,6 +83,18 @@ def load_existing_registry(path: Path) -> set[str]:
     with open(path) as f:
         data = json.load(f)
     return {entry["repo"] for entry in data}
+
+
+def load_rejected(path: Path) -> set[str]:
+    """Repos a maintainer explicitly rejected during review — never re-list them."""
+    if not path.exists():
+        return set()
+    try:
+        with open(path) as f:
+            data = json.load(f)
+        return set(data.get("rejected", []))
+    except (json.JSONDecodeError, KeyError):
+        return set()
 
 
 def search_github(query: str, headers: dict) -> list[dict]:
@@ -231,7 +244,11 @@ def main():
 
     headers = get_headers(args.token)
     existing_repos = load_existing_registry(REGISTRY_PATH)
-    print(f"Loaded {len(existing_repos)} repos from existing registry.")
+    rejected_repos_set = load_rejected(REJECTED_PATH)
+    # Anything verified OR explicitly rejected is "decided" — skip it.
+    decided_repos = existing_repos | rejected_repos_set
+    print(f"Loaded {len(existing_repos)} verified + {len(rejected_repos_set)} rejected = "
+          f"{len(decided_repos)} decided repos to skip.")
 
     # Load the *previous* discovered.json so we can tell what's genuinely new
     # this run vs. what was already in the review queue last time.
@@ -262,7 +279,7 @@ def main():
     print(f"\nTotal unique repos found: {len(all_raw)}")
 
     entries = []
-    seen_repos = set(existing_repos)
+    seen_repos = set(decided_repos)  # skip verified + rejected
 
     for item in all_raw:
         repo = item["full_name"]
