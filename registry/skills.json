@@ -3,7 +3,17 @@
     "name": "Claude Code Scaffolding Skill",
     "repo": "hmohamed01/Claude-Code-Scaffolding-Skill",
     "description": "70+ project templates with interactive CLI setup for web, mobile, desktop, and backend stacks",
-    "tags": ["scaffolding", "setup", "react", "vue", "nextjs", "fastapi", "flutter", "typescript", "boilerplate"],
+    "tags": [
+      "scaffolding",
+      "setup",
+      "react",
+      "vue",
+      "nextjs",
+      "fastapi",
+      "flutter",
+      "typescript",
+      "boilerplate"
+    ],
     "install": "git clone https://github.com/hmohamed01/Claude-Code-Scaffolding-Skill.git ~/.claude/skills/claude-scaffold",
     "stars": 36,
     "verified": true,
@@ -13,7 +23,16 @@
     "name": "Claude Code Expert",
     "repo": "reedmayhew18/claude-code-expert",
     "description": "54-skill collection with active/available split, 8-phase production wizard, 19 specialized agents, and 9 interaction modes",
-    "tags": ["expert", "wizard", "agents", "workflow", "production", "testing", "review", "refactor"],
+    "tags": [
+      "expert",
+      "wizard",
+      "agents",
+      "workflow",
+      "production",
+      "testing",
+      "review",
+      "refactor"
+    ],
     "install": "git clone https://github.com/reedmayhew18/claude-code-expert.git ~/.claude/skills/claude-expert",
     "stars": 0,
     "verified": true,
@@ -23,9 +42,15 @@
     "name": "Everything Claude Code",
     "repo": "affaan-m/everything-claude-code",
     "description": "Comprehensive collection of Claude Code tips, skills, and configurations for power users",
-    "tags": ["collection", "tips", "configuration", "power-user", "productivity"],
+    "tags": [
+      "collection",
+      "tips",
+      "configuration",
+      "power-user",
+      "productivity"
+    ],
     "install": "git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/skills/everything-claude",
-    "stars": 172979,
+    "stars": 179255,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -33,9 +58,15 @@
     "name": "Superpowers",
     "repo": "obra/superpowers",
     "description": "Battle-tested Claude Code skills for professional software development workflows",
-    "tags": ["professional", "workflow", "development", "battle-tested", "productivity"],
+    "tags": [
+      "professional",
+      "workflow",
+      "development",
+      "battle-tested",
+      "productivity"
+    ],
     "install": "git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers",
-    "stars": 177817,
+    "stars": 186291,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -43,9 +74,19 @@
     "name": "UI/UX Pro Max",
     "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
     "description": "67 UI/UX design styles, design system generation, component patterns, and accessibility guidance",
-    "tags": ["ui", "ux", "design", "components", "accessibility", "design-system", "tailwind", "css", "figma"],
+    "tags": [
+      "ui",
+      "ux",
+      "design",
+      "components",
+      "accessibility",
+      "design-system",
+      "tailwind",
+      "css",
+      "figma"
+    ],
     "install": "git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git ~/.claude/skills/ui-ux-pro-max",
-    "stars": 73729,
+    "stars": 76850,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -53,9 +94,15 @@
     "name": "Claude Skills Collection",
     "repo": "mastepanoski/claude-skills",
     "description": "Curated set of reusable Claude Code skills covering debugging, documentation, and code quality",
-    "tags": ["debugging", "documentation", "code-quality", "refactoring", "collection"],
+    "tags": [
+      "debugging",
+      "documentation",
+      "code-quality",
+      "refactoring",
+      "collection"
+    ],
     "install": "git clone https://github.com/mastepanoski/claude-skills.git ~/.claude/skills/claude-skills",
-    "stars": 22,
+    "stars": 25,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -63,9 +110,17 @@
     "name": "Code Review Graph",
     "repo": "tirth8205/code-review-graph",
     "description": "Graph-based code review skill that traces dependencies and surfaces high-impact review areas",
-    "tags": ["code-review", "review", "graph", "dependencies", "analysis", "quality", "security"],
+    "tags": [
+      "code-review",
+      "review",
+      "graph",
+      "dependencies",
+      "analysis",
+      "quality",
+      "security"
+    ],
     "install": "git clone https://github.com/tirth8205/code-review-graph.git ~/.claude/skills/code-review-graph",
-    "stars": 15203,
+    "stars": 16109,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -73,9 +128,15 @@
     "name": "Claude Code Toolkit",
     "repo": "applied-artificial-intelligence/claude-code-toolkit",
     "description": "Production workflow toolkit covering planning, memory management, and structured task execution for Claude Code",
-    "tags": ["workflow", "planning", "memory", "productivity", "toolkit"],
+    "tags": [
+      "workflow",
+      "planning",
+      "memory",
+      "productivity",
+      "toolkit"
+    ],
     "install": "git clone https://github.com/applied-artificial-intelligence/claude-code-toolkit.git ~/.claude/skills/claude-code-toolkit",
-    "stars": 64,
+    "stars": 65,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -83,9 +144,16 @@
     "name": "Get Shit Done (GSD)",
     "repo": "gsd-build/get-shit-done",
     "description": "Opinionated Claude Code workflow system with spec-driven planning, phase execution, and structured delivery",
-    "tags": ["workflow", "spec", "planning", "phases", "delivery", "productivity"],
+    "tags": [
+      "workflow",
+      "spec",
+      "planning",
+      "phases",
+      "delivery",
+      "productivity"
+    ],
     "install": "git clone https://github.com/gsd-build/get-shit-done.git ~/.claude/skills/gsd",
-    "stars": 59791,
+    "stars": 61493,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -93,29 +161,50 @@
     "name": "Awesome Claude Code",
     "repo": "hesreallyhim/awesome-claude-code",
     "description": "Curated awesome-list of Claude Code skills, tools, tips, and resources for developers",
-    "tags": ["collection", "reference", "awesome-list", "resources", "tips", "community"],
+    "tags": [
+      "collection",
+      "reference",
+      "awesome-list",
+      "resources",
+      "tips",
+      "community"
+    ],
     "install": "git clone https://github.com/hesreallyhim/awesome-claude-code.git ~/.claude/skills/awesome-claude-code",
-    "stars": 42429,
+    "stars": 43364,
     "verified": false,
     "added": "2026-05-04"
   },
   {
     "name": "Agent Orchestrator",
     "repo": "ComposioHQ/agent-orchestrator",
-    "description": "Multi-agent orchestration framework for Claude Code — coordinate parallel agents with shared context and tool access",
-    "tags": ["agents", "orchestration", "multi-agent", "parallel", "composio", "automation"],
+    "description": "Multi-agent orchestration framework for Claude Code \u2014 coordinate parallel agents with shared context and tool access",
+    "tags": [
+      "agents",
+      "orchestration",
+      "multi-agent",
+      "parallel",
+      "composio",
+      "automation"
+    ],
     "install": "git clone https://github.com/ComposioHQ/agent-orchestrator.git ~/.claude/skills/agent-orchestrator",
-    "stars": 6785,
+    "stars": 6956,
     "verified": false,
     "added": "2026-05-04"
   },
   {
     "name": "Claude Memory (claude-mem)",
     "repo": "thedotmack/claude-mem",
-    "description": "Lightweight persistent memory layer for Claude Code — stores context between sessions to reduce token usage",
-    "tags": ["memory", "token-saving", "persistence", "context", "sessions", "efficiency"],
+    "description": "Lightweight persistent memory layer for Claude Code \u2014 stores context between sessions to reduce token usage",
+    "tags": [
+      "memory",
+      "token-saving",
+      "persistence",
+      "context",
+      "sessions",
+      "efficiency"
+    ],
     "install": "git clone https://github.com/thedotmack/claude-mem.git ~/.claude/skills/claude-mem",
-    "stars": 71750,
+    "stars": 74756,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -123,7 +212,17 @@
     "name": "UX/UI Premium Direction Style Selector",
     "repo": "Luispitik/ux-ui-premium-direction-style-selector",
     "description": "8 visual direction demos with animations, accessibility, and theme extraction for Next.js/React projects",
-    "tags": ["ui", "ux", "design", "animation", "accessibility", "nextjs", "react", "theme", "premium"],
+    "tags": [
+      "ui",
+      "ux",
+      "design",
+      "animation",
+      "accessibility",
+      "nextjs",
+      "react",
+      "theme",
+      "premium"
+    ],
     "install": "git clone https://github.com/Luispitik/ux-ui-premium-direction-style-selector.git ~/.claude/skills/ux-ui-premium",
     "stars": 27,
     "verified": false,
@@ -132,10 +231,14 @@
   {
     "name": "gstack",
     "repo": "garrytan/gstack",
-    "description": "Full-stack scaffolding and workflow system — tracking for future registry inclusion pending public release",
-    "tags": ["scaffolding", "full-stack", "workflow"],
+    "description": "Full-stack scaffolding and workflow system \u2014 tracking for future registry inclusion pending public release",
+    "tags": [
+      "scaffolding",
+      "full-stack",
+      "workflow"
+    ],
     "install": "git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack",
-    "stars": 88888,
+    "stars": 93645,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -143,10 +246,15 @@
   {
     "name": "OpenMemory",
     "repo": "CaviraOSS/OpenMemory",
-    "description": "Open-source memory management system for AI agents — tracking for future registry inclusion",
-    "tags": ["memory", "agents", "open-source", "persistence"],
+    "description": "Open-source memory management system for AI agents \u2014 tracking for future registry inclusion",
+    "tags": [
+      "memory",
+      "agents",
+      "open-source",
+      "persistence"
+    ],
     "install": "git clone https://github.com/CaviraOSS/OpenMemory.git ~/.claude/skills/openmemory",
-    "stars": 4057,
+    "stars": 4088,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -154,10 +262,14 @@
   {
     "name": "Free Claude Code",
     "repo": "Alishahryar1/free-claude-code",
-    "description": "Community resources and configurations for Claude Code — tracking for future registry inclusion",
-    "tags": ["community", "configuration", "resources"],
+    "description": "Community resources and configurations for Claude Code \u2014 tracking for future registry inclusion",
+    "tags": [
+      "community",
+      "configuration",
+      "resources"
+    ],
     "install": "git clone https://github.com/Alishahryar1/free-claude-code.git ~/.claude/skills/free-claude-code",
-    "stars": 20933,
+    "stars": 23732,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -165,10 +277,16 @@
   {
     "name": "Browser Use",
     "repo": "browser-use/browser-use",
-    "description": "Browser automation agent for Claude — enables web browsing, scraping, and UI interaction — tracking for future registry inclusion",
-    "tags": ["browser", "automation", "web-scraping", "agents", "ui-testing"],
+    "description": "Browser automation agent for Claude \u2014 enables web browsing, scraping, and UI interaction \u2014 tracking for future registry inclusion",
+    "tags": [
+      "browser",
+      "automation",
+      "web-scraping",
+      "agents",
+      "ui-testing"
+    ],
     "install": "git clone https://github.com/browser-use/browser-use.git ~/.claude/skills/browser-use",
-    "stars": 91989,
+    "stars": 93392,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -176,20 +294,37 @@
   {
     "name": "Ruflo",
     "repo": "ruvnet/ruflo",
-    "description": "Leading agent orchestration platform for Claude — deploy multi-agent swarms, coordinate autonomous workflows, build conversational AI systems",
-    "tags": ["agents", "orchestration", "multi-agent", "swarm", "mcp", "workflow", "autonomous"],
+    "description": "Leading agent orchestration platform for Claude \u2014 deploy multi-agent swarms, coordinate autonomous workflows, build conversational AI systems",
+    "tags": [
+      "agents",
+      "orchestration",
+      "multi-agent",
+      "swarm",
+      "mcp",
+      "workflow",
+      "autonomous"
+    ],
     "install": "git clone https://github.com/ruvnet/ruflo.git ~/.claude/skills/ruflo",
-    "stars": 42331,
+    "stars": 48884,
     "verified": true,
     "added": "2026-05-05"
   },
   {
     "name": "Octogent",
     "repo": "hesamsheikh/octogent",
-    "description": "Orchestration dashboard over Claude Code for managing context, automation, and developer headspace — hooks, skills, and agent control in one UI",
-    "tags": ["dashboard", "orchestration", "hooks", "context", "automation", "agents", "claude-code", "workflow"],
+    "description": "Orchestration dashboard over Claude Code for managing context, automation, and developer headspace \u2014 hooks, skills, and agent control in one UI",
+    "tags": [
+      "dashboard",
+      "orchestration",
+      "hooks",
+      "context",
+      "automation",
+      "agents",
+      "claude-code",
+      "workflow"
+    ],
     "install": "git clone https://github.com/hesamsheikh/octogent.git ~/.claude/skills/octogent",
-    "stars": 803,
+    "stars": 952,
     "verified": true,
     "added": "2026-05-05"
   },
@@ -197,9 +332,20 @@
     "name": "Anthropic Document Skills (Official)",
     "repo": "anthropics/skills",
     "description": "Official Anthropic skills: read/write PDF, Excel (xlsx), Word (docx), PowerPoint (pptx). Source-available reference implementations powering Claude.",
-    "tags": ["official", "anthropic", "documents", "pdf", "excel", "xlsx", "docx", "pptx", "office", "marketplace"],
+    "tags": [
+      "official",
+      "anthropic",
+      "documents",
+      "pdf",
+      "excel",
+      "xlsx",
+      "docx",
+      "pptx",
+      "office",
+      "marketplace"
+    ],
     "install": "/plugin marketplace add anthropics/skills",
-    "stars": 0,
+    "stars": 132163,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
@@ -207,10 +353,18 @@
   {
     "name": "Vercel Skills CLI",
     "repo": "vercel-labs/skills",
-    "description": "Open agent skills CLI — `npx skills add <repo>` installs from any GitHub. `npx skills find` searches. Works in Claude/Cursor/Codex.",
-    "tags": ["cli", "installer", "marketplace", "discovery", "vercel", "ecosystem", "cross-agent"],
+    "description": "Open agent skills CLI \u2014 `npx skills add <repo>` installs from any GitHub. `npx skills find` searches. Works in Claude/Cursor/Codex.",
+    "tags": [
+      "cli",
+      "installer",
+      "marketplace",
+      "discovery",
+      "vercel",
+      "ecosystem",
+      "cross-agent"
+    ],
     "install": "npx skills add vercel-labs/skills --skill find-skills",
-    "stars": 0,
+    "stars": 17964,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
