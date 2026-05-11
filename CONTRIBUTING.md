@@ -49,7 +49,7 @@ The weekly scraper will find it and open a GitHub Issue for maintainer review.
 
 ### What the scraper actually does (and what it doesn't)
 
-The scraper **never auto-adds skills to `registry/skills.json`.** It writes everything it finds to `registry/discovered.json` — a review queue — with a quality score from 0–100. Maintainers read the auto-opened Issue and PR only the skills that pass review.
+The scraper **never auto-adds skills to `registry/skills.json`.** It writes everything it finds to `registry/discovered.json` — a sorted review queue — with a quality score from 0–100. Each run it also diffs against the previous `discovered.json` and opens a GitHub Issue **only for the candidates that are new since last time** (or stays silent if nothing new appeared). The full browsable queue always lives in `discovered.json`; the Issue is just a nudge about what changed. Maintainers PR only the skills that pass review.
 
 **Quality scoring breakdown (max 100):**
 
