@@ -29,11 +29,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Refresh star counts in skills.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/update-stars.py
-
       - name: Run skill discovery scraper
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,18 +49,23 @@ jobs:
           fi
 
       - name: Commit and push registry updates
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Snapshot the regenerated files (they're full overwrites, no merge needed)
+          # discovered.json is fully owned by this job (regenerated each run) —
+          # snapshot it so we can lay it back after syncing to the latest remote.
           cp registry/discovered.json /tmp/discovered.json
-          cp registry/skills.json    /tmp/skills.json
-          # Reset hard to the latest remote so the push is always a fast-forward
+          # Sync to the freshest remote so the push is a clean fast-forward AND
+          # we don't clobber registry edits made while this job was running.
           git fetch origin main
           git reset --hard origin/main
-          # Lay the regenerated files back on top
+          # Restore the runner-owned file on top of the up-to-date tree
           cp /tmp/discovered.json registry/discovered.json
-          cp /tmp/skills.json    registry/skills.json
+          # Refresh star counts on the FRESH skills.json (not a stale snapshot) —
+          # this is why a concurrent "add a new skill" commit won't be reverted.
+          python scripts/update-stars.py
           git add registry/discovered.json registry/skills.json
           if git diff --staged --quiet; then
             echo "No registry changes — nothing to push."

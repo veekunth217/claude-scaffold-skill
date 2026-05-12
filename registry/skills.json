@@ -368,5 +368,25 @@
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
+  },
+  {
+    "name": "Agency Agents",
+    "repo": "msitarzewski/agency-agents",
+    "description": "144+ specialized AI agent personalities for Claude Code (~/.claude/agents/) across 12 divisions — engineering, design, product, marketing, sales.",
+    "tags": [
+      "agents",
+      "subagents",
+      "personalities",
+      "workflow",
+      "engineering",
+      "design",
+      "product",
+      "multi-agent",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/msitarzewski/agency-agents.git ~/.claude/skills/agency-agents",
+    "stars": 96100,
+    "verified": true,
+    "added": "2026-05-07"
   }
 ]
