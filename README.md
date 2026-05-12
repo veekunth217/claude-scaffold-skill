@@ -242,6 +242,19 @@ Set up in 5 minutes:
 
 The `/handoff` skill detects when the proxy is running and auto-routes Roo tasks through it. Heavy lifting runs on free models. Critical work stays on Anthropic.
 
+### A fourth, optional tier — async agents
+
+For fire-and-forget work (dependency bumps, mechanical PRs, "fix this flaky test"), there's a whole category of **asynchronous cloud agents**: [Jules](https://jules.google/) (Google, Gemini-powered), the OpenAI Codex agent, Devin, GitHub Copilot agent mode. You hand them a task + a repo, they spin up a VM, make the change, run tests, and open a PR you review later.
+
+| Tier | Tool | Interaction model |
+|---|---|---|
+| 🧠 Architect | Claude Code | live, turn-by-turn |
+| ✍️ Executor | Roo Code / Cline | live, bulk in-editor |
+| 🔀 Router | free-claude-code | (config — routes Roo to free models) |
+| 📨 Delegate | Jules / Codex / Devin | async — fire a task, get a PR |
+
+Not Claude Code skills (so not in the registry) — but if you're already splitting work with `/handoff`, the "delegate the boring PR to an async agent" tier slots in naturally above it.
+
 ---
 
 ## Context Sync — take your Claude memory anywhere
