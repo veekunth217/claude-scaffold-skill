@@ -189,6 +189,37 @@ Also surface as awareness — not auto-install:
   Searches across the open agent skills ecosystem (works in Cursor + Codex too).
 ```
 
+### Always-on: Specialist Subagents (install-once, use everywhere)
+
+If the user hasn't installed it yet, surface this card — high value, low friction:
+
+```
+↳ Awesome Claude Code Subagents — 131 specialists, install once
+  VoltAgent/awesome-claude-code-subagents (~20k ⭐)
+  10 categories: backend, infra, security, testing, frontend, data/AI,
+  dev-experience, domain experts, meta-orchestration, research.
+
+  Install:  git clone https://github.com/VoltAgent/awesome-claude-code-subagents.git \
+              ~/.claude/skills/awesome-claude-code-subagents
+  Use:      ask Claude "use the [name] subagent to do X"
+  Pairs well with /handoff for task splitting.
+```
+
+### Conditional: n8n MCP (only show when automation/workflow tags detected)
+
+If detected tags include `automation`, `workflow`, `saas`, `integration`, or the
+user's project has any `.n8n/` folder or n8n-related dependency, surface this:
+
+```
+↳ n8n MCP — Claude builds n8n workflows for you
+  czlonkowski/n8n-mcp (~21k ⭐)
+  MCP server with 1,650 n8n nodes + 2,352 workflow templates indexed.
+  After setup, ask Claude "build an n8n workflow that does X" — done.
+
+  Setup:  https://github.com/czlonkowski/n8n-mcp (Docker / Railway / local)
+          Add to Claude Code MCP config and restart.
+```
+
 ---
 
 ## Phase 4 — Present the Menu
