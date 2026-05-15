@@ -388,5 +388,80 @@
     "stars": 96100,
     "verified": true,
     "added": "2026-05-07"
+  },
+  {
+    "name": "Awesome Claude Code Subagents",
+    "repo": "VoltAgent/awesome-claude-code-subagents",
+    "description": "131+ specialised Claude Code subagents across 10 categories — backend, infra, security, data/AI, frontend, testing, domain specialists.",
+    "tags": [
+      "subagents",
+      "agents",
+      "collection",
+      "backend",
+      "frontend",
+      "devops",
+      "security",
+      "testing",
+      "ai"
+    ],
+    "install": "git clone https://github.com/VoltAgent/awesome-claude-code-subagents.git ~/.claude/skills/awesome-claude-code-subagents",
+    "stars": 19900,
+    "verified": true,
+    "added": "2026-05-12"
+  },
+  {
+    "name": "n8n MCP",
+    "repo": "czlonkowski/n8n-mcp",
+    "description": "MCP server bridging Claude Code (and Cursor/Windsurf) to n8n — 1,650 nodes, 2,352 templates, AI can build workflows directly.",
+    "tags": [
+      "mcp",
+      "n8n",
+      "automation",
+      "workflow",
+      "integration",
+      "no-code",
+      "agents"
+    ],
+    "install": "git clone https://github.com/czlonkowski/n8n-mcp.git ~/.claude/skills/n8n-mcp",
+    "stars": 20800,
+    "verified": true,
+    "added": "2026-05-12"
+  },
+  {
+    "name": "LightRAG",
+    "repo": "HKUDS/LightRAG",
+    "description": "RAG system combining knowledge graphs with traditional retrieval — dual-level retrieval, multimodal, supports Postgres/Mongo/Neo4j/OpenSearch.",
+    "tags": [
+      "rag",
+      "retrieval",
+      "knowledge-graph",
+      "ai",
+      "embeddings",
+      "vector",
+      "search"
+    ],
+    "install": "git clone https://github.com/HKUDS/LightRAG.git ~/.claude/skills/lightrag",
+    "stars": 35200,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-12"
+  },
+  {
+    "name": "Deploy Your Own SaaS",
+    "repo": "atarity/deploy-your-own-saas",
+    "description": "Curated list of 200+ self-hostable alternatives to paid SaaS — Notion, Airtable, Jira, Gmail, password managers, photo hosting, and more.",
+    "tags": [
+      "reference",
+      "self-hosted",
+      "saas",
+      "open-source",
+      "alternatives",
+      "deployment"
+    ],
+    "install": "git clone https://github.com/atarity/deploy-your-own-saas.git ~/.claude/skills/deploy-your-own-saas",
+    "stars": 9300,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-12"
   }
 ]
