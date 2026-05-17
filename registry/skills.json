@@ -50,7 +50,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/skills/everything-claude",
-    "stars": 179304,
+    "stars": 184789,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -66,7 +66,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers",
-    "stars": 186345,
+    "stars": 194181,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -86,7 +86,7 @@
       "figma"
     ],
     "install": "git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git ~/.claude/skills/ui-ux-pro-max",
-    "stars": 76869,
+    "stars": 79387,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -102,7 +102,7 @@
       "collection"
     ],
     "install": "git clone https://github.com/mastepanoski/claude-skills.git ~/.claude/skills/claude-skills",
-    "stars": 25,
+    "stars": 28,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -120,7 +120,7 @@
       "security"
     ],
     "install": "git clone https://github.com/tirth8205/code-review-graph.git ~/.claude/skills/code-review-graph",
-    "stars": 16112,
+    "stars": 16630,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -136,7 +136,7 @@
       "toolkit"
     ],
     "install": "git clone https://github.com/applied-artificial-intelligence/claude-code-toolkit.git ~/.claude/skills/claude-code-toolkit",
-    "stars": 65,
+    "stars": 66,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -153,7 +153,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/gsd-build/get-shit-done.git ~/.claude/skills/gsd",
-    "stars": 61500,
+    "stars": 62605,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -170,7 +170,7 @@
       "community"
     ],
     "install": "git clone https://github.com/hesreallyhim/awesome-claude-code.git ~/.claude/skills/awesome-claude-code",
-    "stars": 43370,
+    "stars": 43969,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -187,7 +187,7 @@
       "automation"
     ],
     "install": "git clone https://github.com/ComposioHQ/agent-orchestrator.git ~/.claude/skills/agent-orchestrator",
-    "stars": 6956,
+    "stars": 7079,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -204,7 +204,7 @@
       "efficiency"
     ],
     "install": "git clone https://github.com/thedotmack/claude-mem.git ~/.claude/skills/claude-mem",
-    "stars": 74768,
+    "stars": 76196,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -238,7 +238,7 @@
       "workflow"
     ],
     "install": "git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack",
-    "stars": 93678,
+    "stars": 98107,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -254,7 +254,7 @@
       "persistence"
     ],
     "install": "git clone https://github.com/CaviraOSS/OpenMemory.git ~/.claude/skills/openmemory",
-    "stars": 4088,
+    "stars": 4114,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -269,7 +269,7 @@
       "resources"
     ],
     "install": "git clone https://github.com/Alishahryar1/free-claude-code.git ~/.claude/skills/free-claude-code",
-    "stars": 23744,
+    "stars": 25029,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -286,7 +286,7 @@
       "ui-testing"
     ],
     "install": "git clone https://github.com/browser-use/browser-use.git ~/.claude/skills/browser-use",
-    "stars": 93394,
+    "stars": 94219,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -305,7 +305,7 @@
       "autonomous"
     ],
     "install": "git clone https://github.com/ruvnet/ruflo.git ~/.claude/skills/ruflo",
-    "stars": 48907,
+    "stars": 51958,
     "verified": true,
     "added": "2026-05-05"
   },
@@ -324,7 +324,7 @@
       "workflow"
     ],
     "install": "git clone https://github.com/hesamsheikh/octogent.git ~/.claude/skills/octogent",
-    "stars": 953,
+    "stars": 999,
     "verified": true,
     "added": "2026-05-05"
   },
@@ -345,7 +345,7 @@
       "marketplace"
     ],
     "install": "/plugin marketplace add anthropics/skills",
-    "stars": 132196,
+    "stars": 135871,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
@@ -364,7 +364,7 @@
       "cross-agent"
     ],
     "install": "npx skills add vercel-labs/skills --skill find-skills",
-    "stars": 17972,
+    "stars": 18806,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
@@ -372,7 +372,7 @@
   {
     "name": "Agency Agents",
     "repo": "msitarzewski/agency-agents",
-    "description": "144+ specialized AI agent personalities for Claude Code (~/.claude/agents/) across 12 divisions — engineering, design, product, marketing, sales.",
+    "description": "144+ specialized AI agent personalities for Claude Code (~/.claude/agents/) across 12 divisions \u2014 engineering, design, product, marketing, sales.",
     "tags": [
       "agents",
       "subagents",
@@ -385,14 +385,14 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/msitarzewski/agency-agents.git ~/.claude/skills/agency-agents",
-    "stars": 96100,
+    "stars": 98531,
     "verified": true,
     "added": "2026-05-07"
   },
   {
     "name": "Awesome Claude Code Subagents",
     "repo": "VoltAgent/awesome-claude-code-subagents",
-    "description": "131+ specialised Claude Code subagents across 10 categories — backend, infra, security, data/AI, frontend, testing, domain specialists.",
+    "description": "131+ specialised Claude Code subagents across 10 categories \u2014 backend, infra, security, data/AI, frontend, testing, domain specialists.",
     "tags": [
       "subagents",
       "agents",
@@ -405,14 +405,14 @@
       "ai"
     ],
     "install": "git clone https://github.com/VoltAgent/awesome-claude-code-subagents.git ~/.claude/skills/awesome-claude-code-subagents",
-    "stars": 19900,
+    "stars": 19959,
     "verified": true,
     "added": "2026-05-12"
   },
   {
     "name": "n8n MCP",
     "repo": "czlonkowski/n8n-mcp",
-    "description": "MCP server bridging Claude Code (and Cursor/Windsurf) to n8n — 1,650 nodes, 2,352 templates, AI can build workflows directly.",
+    "description": "MCP server bridging Claude Code (and Cursor/Windsurf) to n8n \u2014 1,650 nodes, 2,352 templates, AI can build workflows directly.",
     "tags": [
       "mcp",
       "n8n",
@@ -423,14 +423,14 @@
       "agents"
     ],
     "install": "git clone https://github.com/czlonkowski/n8n-mcp.git ~/.claude/skills/n8n-mcp",
-    "stars": 20800,
+    "stars": 21008,
     "verified": true,
     "added": "2026-05-12"
   },
   {
     "name": "LightRAG",
     "repo": "HKUDS/LightRAG",
-    "description": "RAG system combining knowledge graphs with traditional retrieval — dual-level retrieval, multimodal, supports Postgres/Mongo/Neo4j/OpenSearch.",
+    "description": "RAG system combining knowledge graphs with traditional retrieval \u2014 dual-level retrieval, multimodal, supports Postgres/Mongo/Neo4j/OpenSearch.",
     "tags": [
       "rag",
       "retrieval",
@@ -441,7 +441,7 @@
       "search"
     ],
     "install": "git clone https://github.com/HKUDS/LightRAG.git ~/.claude/skills/lightrag",
-    "stars": 35200,
+    "stars": 35284,
     "verified": false,
     "future": true,
     "added": "2026-05-12"
@@ -449,7 +449,7 @@
   {
     "name": "Deploy Your Own SaaS",
     "repo": "atarity/deploy-your-own-saas",
-    "description": "Curated list of 200+ self-hostable alternatives to paid SaaS — Notion, Airtable, Jira, Gmail, password managers, photo hosting, and more.",
+    "description": "Curated list of 200+ self-hostable alternatives to paid SaaS \u2014 Notion, Airtable, Jira, Gmail, password managers, photo hosting, and more.",
     "tags": [
       "reference",
       "self-hosted",
@@ -459,7 +459,7 @@
       "deployment"
     ],
     "install": "git clone https://github.com/atarity/deploy-your-own-saas.git ~/.claude/skills/deploy-your-own-saas",
-    "stars": 9300,
+    "stars": 9335,
     "verified": false,
     "future": true,
     "added": "2026-05-12"
