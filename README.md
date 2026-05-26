@@ -284,7 +284,7 @@ make sync-tools ONLY=cursor,claude
 - ✅ Git-native — memory lives in your repo, `git blame`-able, code-review-able
 - ✅ Zero vendor lock-in — plain markdown, works offline forever
 - ✅ One source of truth, regenerable — new dev runs `make sync-tools` after `git clone` and every AI tool they use immediately knows the project
-- ❌ Not live — re-run after editing the source (vs Vilix's MCP-live sync). Phase 2 plan: optional MCP server for tools that support it.
+- ⏳ Not live yet — re-run after editing the source. **Phase 2 (spec'd, not built):** [skills/sync/PHASE2-MCP.md](skills/sync/PHASE2-MCP.md) — a small MCP server so Claude / Cursor / Codex / Roo / Cline / Windsurf see edits live, no re-run. ~half-day build, contributions welcome.
 
 ---
 

@@ -183,6 +183,9 @@ What it does:
 **Why most adapter files are gitignored:**
 They're per-machine projections of the canonical source. Committing them would create merge conflicts every time someone with a different tool stack syncs. The source-of-truth (`.claude-context/`) is what's committed; the adapters are local rebuilds.
 
+**Phase 2 — live MCP sync (planned, contributions welcome):**
+See [PHASE2-MCP.md](PHASE2-MCP.md) for the full spec. Adds a small MCP server alongside the file adapters so edits flow between tools without re-running push. Covers every MCP-capable tool (Claude Code, Cursor, Codex CLI, Windsurf, Roo, Cline). The file-based Phase 1 stays as the universal fallback and the source of truth.
+
 ---
 
 ## How the Path Hash Works
