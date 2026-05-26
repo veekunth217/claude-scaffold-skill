@@ -175,7 +175,7 @@ The registry also surfaces the **Vercel cross-agent Skills CLI** (`npx skills ad
 | **Hooks** | `/hooks` | Wire `.claude/settings.json` — auto-lint, block `rm -rf`, run tests on edit |
 | **Budget** | `/budget` | Route Claude Code + Roo Code traffic to free models via local proxy |
 | **Handoff** | `/handoff` | Split tasks between Claude and Roo Code — generates self-contained Roo prompts |
-| **Context Sync** | `/sync` | Export/import Claude project memory across machines |
+| **Context Sync** | `/sync` | Export/import Claude memory across machines, **and** push it as adapter files to Cursor, Codex, Roo, Cline, Aider, Windsurf (cross-tool memory bridge — git-native alternative to Vilix) |
 | **Bootstrap** | `/skill-bootstrap` | Tiered skill installer — runs automatically after every scaffold |
 | **New Skill** | `/new-skill` | Author a new Claude Code skill — generates SKILL.md + draft registry entry, ready for PR |
 | **Update Skills** | `/update-skills` | Pull latest commits for every git-installed skill in `~/.claude/skills/` — preview changes, ask before applying |
@@ -254,6 +254,37 @@ For fire-and-forget work (dependency bumps, mechanical PRs, "fix this flaky test
 | 📨 Delegate | Jules / Codex / Devin | async — fire a task, get a PR |
 
 Not Claude Code skills (so not in the registry) — but if you're already splitting work with `/handoff`, the "delegate the boring PR to an async agent" tier slots in naturally above it.
+
+---
+
+## Cross-tool memory bridge — git-native alternative to Vilix/Mem0
+
+Use Claude Code **and** Cursor **and** Codex CLI **and** Roo Code **and** Aider on the same project? Each one has its own instruction/memory file — `CLAUDE.md`, `.cursorrules`, `AGENTS.md`, etc. — and you re-explain your project to every one of them.
+
+`/sync tools push` writes them all from **one canonical source** (`.claude-context/MEMORY.md`, committed to git):
+
+```bash
+make sync-tools-detect      # see which tool configs exist in this project
+make sync-tools             # generate adapter files for every detected tool
+make sync-tools DRY=1       # show what would change without writing
+make sync-tools ONLY=cursor,claude
+```
+
+| Tool | Adapter file | Written when |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | always |
+| Cursor | `.cursor/rules/memory.mdc` | `.cursor/` or `.cursorrules` exists |
+| Roo Code | `.roo/rules/memory.md` | `.roo/` exists |
+| Cline | `.clinerules/memory.md` | `.clinerules` exists |
+| Codex CLI | `AGENTS.md` | `.codex/` or `AGENTS.md` exists |
+| Aider | `CONVENTIONS.md` | `.aider/` or `CONVENTIONS.md` exists |
+| Windsurf | `.windsurfrules` | `.windsurfrules` exists |
+
+**vs Vilix / Mem0 (proprietary SaaS at ~$20/mo):**
+- ✅ Git-native — memory lives in your repo, `git blame`-able, code-review-able
+- ✅ Zero vendor lock-in — plain markdown, works offline forever
+- ✅ One source of truth, regenerable — new dev runs `make sync-tools` after `git clone` and every AI tool they use immediately knows the project
+- ❌ Not live — re-run after editing the source (vs Vilix's MCP-live sync). Phase 2 plan: optional MCP server for tools that support it.
 
 ---
 
@@ -461,6 +492,7 @@ claude-scaffold-skill/
 │   ├── fetch-skills.py              # GitHub scraper (10 queries, quality scoring, skips rejected)
 │   ├── search-registry.py           # CLI search across the local registry
 │   ├── review-queue.py              # Page/triage discovered.json — accept/reject decisions
+│   ├── sync-tools.py                # Cross-tool memory bridge — write adapter files for every AI tool
 │   ├── update-stars.py              # Star count refresher
 │   └── validate-registry.py         # Structure + 404 validator
 │

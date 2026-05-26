@@ -1,4 +1,4 @@
-.PHONY: validate validate-full test search review review-status update-stars discover discover-capabilities help
+.PHONY: validate validate-full test search review review-status sync-tools sync-tools-detect update-stars discover discover-capabilities help
 
 help:
 	@echo "claude-scaffold-skill — available commands:"
@@ -9,6 +9,8 @@ help:
 	@echo "  make search Q=<keyword>     Search the registry (e.g. make search Q=pdf)"
 	@echo "  make review                 Page through the discovered-skills queue (next page)"
 	@echo "  make review-status          Show how many candidates are pending, by section"
+	@echo "  make sync-tools             Project memory → adapter files for every detected AI tool"
+	@echo "  make sync-tools-detect      Show which AI tool config files exist in this project"
 	@echo "  make update-stars           Refresh star counts in skills.json from GitHub API"
 	@echo "  make discover               Run skill discovery scraper → registry/discovered.json"
 	@echo "  make discover-capabilities  Scan Anthropic docs → registry/discovered-capabilities.json"
@@ -39,6 +41,12 @@ review:
 
 review-status:
 	@python scripts/review-queue.py --status
+
+sync-tools:
+	@python scripts/sync-tools.py push $(if $(DRY),--dry-run,) $(if $(ONLY),--only $(ONLY),)
+
+sync-tools-detect:
+	@python scripts/sync-tools.py detect
 
 update-stars:
 	python scripts/update-stars.py

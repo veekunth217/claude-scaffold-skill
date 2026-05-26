@@ -1,19 +1,23 @@
 ---
 name: sync
-description: Sync Claude Code project context across devices — export from one machine, import on another, never lose your project memory again
-version: 1.0.0
+description: Share project memory across devices AND across AI tools (Claude Code, Cursor, Codex, Roo, Cline, Aider, Windsurf) — git-native, no SaaS, no lock-in.
+version: 2.0.0
 author: veekunth217
-tags: [sync, context, memory, cross-device, portable, git, backup]
+tags: [sync, context, memory, cross-device, cross-tool, mcp, portable, git, backup]
 platforms: [claude-code, cursor, codex]
 ---
 
-# Context Sync
+# Context Sync — Cross-Device + Cross-Tool
 
-You are a Claude Code context synchronization assistant. You solve the **path hash problem** — the fact that Claude Code identifies projects by a hash of the absolute project path, which changes between machines, causing Claude to lose all project context on a new device.
+Two problems, one canonical source of truth:
 
-**The problem in one line:** `/home/alice/myapp` and `/Users/john/myapp` hash to different keys — Claude treats them as different projects and loses all memory.
+1. **Cross-device** — Claude Code identifies projects by a hash of the absolute path, so context is lost between machines (`/home/alice/myapp` → `-home-alice-myapp` ≠ `/Users/john/myapp` → `-Users-john-myapp`). Solved by `export` / `import`.
 
-**The solution:** Export context files to `.claude-context/` (committed to git) → push → pull on new device → import to the correct local path hash.
+2. **Cross-tool** — You use Claude Code, Cursor, Codex CLI, Roo, Cline, Aider, or Windsurf — each has its own instruction/memory file (`CLAUDE.md`, `.cursorrules`, `AGENTS.md`, ...). You re-explain your project to every one. Solved by `tools push` — one canonical memory file → adapter files for every detected tool.
+
+**The shared truth:** `.claude-context/MEMORY.md` (+ `memory/*.md`), committed to git.
+Every tool reads from a locally-generated adapter file pointing at that truth.
+No SaaS. No proprietary memory broker. No vendor lock-in.
 
 ---
 
@@ -127,6 +131,57 @@ for f in folder.glob('*.jsonl'):
 print(f'Freed {removed:,} bytes')
 "
 ```
+
+---
+
+### `/sync tools detect`
+
+List which AI dev tools are present in this project — shows what `tools push` would write.
+
+Run:
+```bash
+python scripts/sync-tools.py detect
+```
+
+Detection (no false positives — we only write where the tool already lives):
+
+| Tool | Output adapter file | Detected by |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | always written (universal) |
+| Cursor | `.cursor/rules/memory.mdc` | `.cursor/` or `.cursorrules` exists |
+| Roo Code | `.roo/rules/memory.md` | `.roo/` or `.rooignore` exists |
+| Cline | `.clinerules/memory.md` | `.clinerules` exists |
+| Codex CLI | `AGENTS.md` | `.codex/` or `AGENTS.md` exists |
+| Aider | `CONVENTIONS.md` | `.aider/`, `CONVENTIONS.md`, or `.aider.conf.yml` |
+| Windsurf | `.windsurfrules` | `.windsurfrules` or `.windsurf/` exists |
+
+---
+
+### `/sync tools push`
+
+Generate adapter files from `.claude-context/MEMORY.md` for every detected tool.
+
+Run:
+```bash
+python scripts/sync-tools.py push            # write them
+python scripts/sync-tools.py push --dry-run  # show diff without writing
+python scripts/sync-tools.py push --only cursor,claude  # subset
+```
+
+What it does:
+1. Assembles the canonical memory (`MEMORY.md` + every `memory/*.md`) into one block
+2. For each detected tool, wraps it in the right format (e.g. Cursor `.mdc` gets YAML frontmatter) with a clear "AUTO-GENERATED" header pointing back to the source
+3. Writes `.claude-context/sync-tools-manifest.json` listing what was written
+
+**Why this is better than commercial cross-AI memory tools (Vilix, Mem0):**
+- No SaaS subscription
+- Memory lives in your git repo, not a third-party DB
+- One canonical file you can `git blame`, diff, and review like code
+- New devs run `python scripts/sync-tools.py push` after `git clone` — every AI tool they use immediately has the project context
+- When you update `.claude-context/MEMORY.md`, re-run push and every adapter regenerates
+
+**Why most adapter files are gitignored:**
+They're per-machine projections of the canonical source. Committing them would create merge conflicts every time someone with a different tool stack syncs. The source-of-truth (`.claude-context/`) is what's committed; the adapters are local rebuilds.
 
 ---
 
