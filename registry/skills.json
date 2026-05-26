@@ -463,5 +463,23 @@
     "verified": false,
     "future": true,
     "added": "2026-05-12"
+  },
+  {
+    "name": "Hallmark",
+    "repo": "nutlope/hallmark",
+    "description": "Design skill that generates UI without looking AI-generated. 22 themes, 65 anti-slop gates, build/audit/redesign/study ops. Cross-agent.",
+    "tags": [
+      "design",
+      "ui",
+      "ux",
+      "frontend",
+      "anti-ai-slop",
+      "themes",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/nutlope/hallmark.git ~/.claude/skills/hallmark",
+    "stars": 2000,
+    "verified": true,
+    "added": "2026-05-24"
   }
 ]
