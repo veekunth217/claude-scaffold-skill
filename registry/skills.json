@@ -481,5 +481,57 @@
     "stars": 2000,
     "verified": true,
     "added": "2026-05-24"
+  },
+  {
+    "name": "FreeLLMAPI",
+    "repo": "tashfeenahmed/freellmapi",
+    "description": "OpenAI-compatible proxy that aggregates free-tier keys from ~14 AI providers with automatic failover. Companion to free-claude-code.",
+    "tags": [
+      "proxy",
+      "free",
+      "llm",
+      "openai-compatible",
+      "failover",
+      "budget",
+      "aggregator"
+    ],
+    "install": "git clone https://github.com/tashfeenahmed/freellmapi.git ~/.claude/skills/freellmapi",
+    "stars": 5532,
+    "verified": true,
+    "added": "2026-05-26"
+  },
+  {
+    "name": "Free LLM API Resources",
+    "repo": "cheahjs/free-llm-api-resources",
+    "description": "Definitive curated list of free LLM inference resources accessible via API — providers, limits, models, sign-up details.",
+    "tags": [
+      "reference",
+      "free",
+      "llm",
+      "api",
+      "providers",
+      "curated-list"
+    ],
+    "install": "git clone https://github.com/cheahjs/free-llm-api-resources.git ~/.claude/skills/free-llm-api-resources",
+    "stars": 22329,
+    "verified": true,
+    "added": "2026-05-26"
+  },
+  {
+    "name": "Awesome LLM Apps",
+    "repo": "Shubhamsaboo/awesome-llm-apps",
+    "description": "100+ runnable AI agent + RAG apps — clone, customize, ship. Covers chat, search, automation, multi-agent, knowledge bases.",
+    "tags": [
+      "reference",
+      "agents",
+      "rag",
+      "examples",
+      "templates",
+      "awesome-list"
+    ],
+    "install": "git clone https://github.com/Shubhamsaboo/awesome-llm-apps.git ~/.claude/skills/awesome-llm-apps",
+    "stars": 111810,
+    "verified": true,
+    "added": "2026-05-26"
   }
 ]
