@@ -533,5 +533,95 @@
     "stars": 111810,
     "verified": true,
     "added": "2026-05-26"
+  },
+  {
+    "name": "MarkItDown MCP",
+    "repo": "microsoft/markitdown",
+    "description": "Microsoft MCP server + library converting PDF, Office, HTML, images and more into clean markdown for LLMs. Pairs with Anthropic doc skills.",
+    "tags": [
+      "mcp",
+      "documents",
+      "markdown",
+      "pdf",
+      "office",
+      "conversion",
+      "microsoft",
+      "ingestion"
+    ],
+    "install": "pip install markitdown-mcp",
+    "stars": 80000,
+    "verified": true,
+    "added": "2026-05-29"
+  },
+  {
+    "name": "Stop Slop",
+    "repo": "hardikpandya/stop-slop",
+    "description": "Anti-AI-slop skill — strips tell-tale AI writing patterns so generated prose reads human. Complements Hallmark on the design side.",
+    "tags": [
+      "anti-ai-slop",
+      "writing",
+      "editing",
+      "content",
+      "skill",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/hardikpandya/stop-slop.git ~/.claude/skills/stop-slop",
+    "stars": 0,
+    "verified": true,
+    "added": "2026-05-29"
+  },
+  {
+    "name": "NotebookLM Python",
+    "repo": "teng-lin/notebooklm-py",
+    "description": "Unofficial Python API + agentic skill for Google NotebookLM — programmatic access to notebooks, sources, and audio overviews.",
+    "tags": [
+      "notebooklm",
+      "google",
+      "api",
+      "research",
+      "agents",
+      "python",
+      "knowledge-base"
+    ],
+    "install": "git clone https://github.com/teng-lin/notebooklm-py.git ~/.claude/skills/notebooklm-py",
+    "stars": 13013,
+    "verified": true,
+    "added": "2026-05-29"
+  },
+  {
+    "name": "500 AI Agents Projects",
+    "repo": "ashishpatel26/500-AI-Agents-Projects",
+    "description": "Curated catalogue of 500 AI agent project ideas with use cases and implementations across industries — idea/reference source.",
+    "tags": [
+      "reference",
+      "agents",
+      "examples",
+      "projects",
+      "ideas",
+      "awesome-list"
+    ],
+    "install": "git clone https://github.com/ashishpatel26/500-AI-Agents-Projects.git ~/.claude/skills/500-ai-agents-projects",
+    "stars": 5000,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-29"
+  },
+  {
+    "name": "DeerFlow",
+    "repo": "bytedance/deer-flow",
+    "description": "ByteDance deep-research agent framework (LangGraph) combining search, crawling, code exec and reporting. Large general framework, not Claude-specific.",
+    "tags": [
+      "agent-framework",
+      "deep-research",
+      "langgraph",
+      "multi-agent",
+      "automation",
+      "bytedance"
+    ],
+    "install": "git clone https://github.com/bytedance/deer-flow.git ~/.claude/skills/deer-flow",
+    "stars": 16000,
+    "verified": false,
+    "future": true,
+    "added": "2026-05-29"
   }
 ]
