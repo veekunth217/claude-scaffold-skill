@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-24T03:59:23.282183+00:00",
+  "generated_at": "2026-05-31T04:15:53.029284+00:00",
   "docs_pages_scanned": 9,
-  "confirmed_count": 6,
+  "confirmed_count": 4,
   "new_count": 3,
   "new_capabilities": [
     {
@@ -46,6 +46,24 @@
   ],
   "recent_changelog_entries": [
     {
+      "heading": "v2.1.158"
+    },
+    {
+      "heading": "v2.1.157"
+    },
+    {
+      "heading": "v2.1.156"
+    },
+    {
+      "heading": "v2.1.154"
+    },
+    {
+      "heading": "v2.1.153"
+    },
+    {
+      "heading": "v2.1.152"
+    },
+    {
       "heading": "v2.1.150"
     },
     {
@@ -56,24 +74,6 @@
     },
     {
       "heading": "v2.1.147"
-    },
-    {
-      "heading": "v2.1.146"
-    },
-    {
-      "heading": "v2.1.145"
-    },
-    {
-      "heading": "v2.1.144"
-    },
-    {
-      "heading": "v2.1.143"
-    },
-    {
-      "heading": "v2.1.142"
-    },
-    {
-      "heading": "v2.1.141"
     }
   ]
 }
