@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-30%2B-brightgreen.svg)](#skills)
-[![Registry](https://img.shields.io/badge/Community%20Registry-35%20skills-orange.svg)](registry/skills.json)
+[![Registry](https://img.shields.io/badge/Community%20Registry-38%20skills-orange.svg)](registry/skills.json)
 [![Updated](https://img.shields.io/badge/Updated-May%202026-lightgrey.svg)](#)
 [![Validate Registry](https://github.com/veekunth217/claude-scaffold-skill/actions/workflows/validate-registry.yml/badge.svg)](https://github.com/veekunth217/claude-scaffold-skill/actions)
 
@@ -359,7 +359,7 @@ Type numbers to toggle, "all", "none", or "go" to install.
 
 ## Community Registry
 
-`registry/skills.json` tracks 35 community skills (incl. Anthropic's official document marketplace, the Vercel cross-agent CLI, MCP servers, and curated agent collections). It auto-updates every Sunday:
+`registry/skills.json` tracks 38 community skills (incl. Anthropic's official document marketplace, the Vercel cross-agent CLI, MCP servers, and curated agent collections). It auto-updates every Sunday:
 
 ```
 GitHub Action → scans 10 topic queries (claude-skill, claude-skills, etc.)
@@ -480,7 +480,7 @@ claude-scaffold-skill/
 │   └── dark-mode/      # CSS tokens, toggle component, Black or White animation
 │
 ├── registry/
-│   ├── skills.json                  # 35 community skills (21 verified, incl. Anthropic + Vercel)
+│   ├── skills.json                  # 38 community skills (24 verified, incl. Anthropic + Vercel)
 │   ├── discovered.json              # Candidate queue from the scraper (sorted, sectioned)
 │   ├── rejected.json                # Repos rejected during review — scraper skips these
 │   ├── claude-capabilities.json     # 16 built-in Claude Code features

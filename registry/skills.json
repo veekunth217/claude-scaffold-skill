@@ -623,5 +623,60 @@
     "verified": false,
     "future": true,
     "added": "2026-05-29"
+  },
+  {
+    "name": "RTK",
+    "repo": "rtk-ai/rtk",
+    "description": "Rust CLI proxy intercepting dev command outputs (git, grep, test runners, Docker) before hitting AI context — 60–90% token savings, ~10ms overhead.",
+    "tags": [
+      "token-saving",
+      "cli",
+      "rust",
+      "context",
+      "compression",
+      "productivity",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/rtk-ai/rtk.git ~/.claude/skills/rtk",
+    "stars": 63000,
+    "verified": true,
+    "added": "2026-06-17"
+  },
+  {
+    "name": "ECC Agent Harness",
+    "repo": "affaan-m/ECC",
+    "description": "Agent harness OS: 67 agents, 271+ skills, hook automation, memory persistence. Cross-platform — Claude Code, Cursor, Codex CLI, Gemini, Zed.",
+    "tags": [
+      "agents",
+      "orchestration",
+      "skills",
+      "memory",
+      "hooks",
+      "cross-agent",
+      "multi-agent",
+      "workflow"
+    ],
+    "install": "git clone https://github.com/affaan-m/ECC.git ~/.claude/skills/ecc",
+    "stars": 212000,
+    "verified": true,
+    "added": "2026-06-17"
+  },
+  {
+    "name": "Headroom",
+    "repo": "chopratejas/headroom",
+    "description": "Context compression toolkit (lib, proxy, MCP server, CLI) — 73–92% token reduction, reversible local caching, cross-agent shared memory.",
+    "tags": [
+      "token-saving",
+      "compression",
+      "mcp",
+      "context",
+      "memory",
+      "proxy",
+      "cli"
+    ],
+    "install": "git clone https://github.com/chopratejas/headroom.git ~/.claude/skills/headroom",
+    "stars": 31000,
+    "verified": true,
+    "added": "2026-06-17"
   }
 ]
