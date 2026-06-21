@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-14T04:28:42.971472+00:00",
+  "generated_at": "2026-06-21T04:35:28.763339+00:00",
   "docs_pages_scanned": 9,
-  "confirmed_count": 5,
-  "new_count": 3,
+  "confirmed_count": 4,
+  "new_count": 2,
   "new_capabilities": [
     {
       "name": "IDE Extension",
@@ -29,22 +29,24 @@
       "sources": [
         "https://github.com/anthropics/claude-code/releases"
       ]
-    },
-    {
-      "name": "Custom Skills",
-      "category": "extensibility",
-      "tags": [
-        "workflow",
-        "team",
-        "customization"
-      ],
-      "matched_pattern": "slash command|custom skill",
-      "sources": [
-        "https://github.com/anthropics/claude-code/releases"
-      ]
     }
   ],
   "recent_changelog_entries": [
+    {
+      "heading": "v2.1.185"
+    },
+    {
+      "heading": "v2.1.183"
+    },
+    {
+      "heading": "v2.1.181"
+    },
+    {
+      "heading": "v2.1.179"
+    },
+    {
+      "heading": "v2.1.178"
+    },
     {
       "heading": "v2.1.177"
     },
@@ -59,21 +61,6 @@
     },
     {
       "heading": "v2.1.173"
-    },
-    {
-      "heading": "v2.1.172"
-    },
-    {
-      "heading": "v2.1.170"
-    },
-    {
-      "heading": "v2.1.169"
-    },
-    {
-      "heading": "v2.1.168"
-    },
-    {
-      "heading": "v2.1.167"
     }
   ]
 }
