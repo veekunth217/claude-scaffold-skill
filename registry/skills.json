@@ -678,5 +678,115 @@
     "stars": 42167,
     "verified": true,
     "added": "2026-06-17"
+  },
+  {
+    "name": "Stitch Skills",
+    "repo": "google-labs-code/stitch-skills",
+    "description": "Official Google Labs Agent Skills for the Stitch UI-design MCP — generate, edit, and iterate on UI designs. Follows the open Agent Skills standard.",
+    "tags": [
+      "design",
+      "ui",
+      "stitch",
+      "google",
+      "mcp",
+      "official",
+      "skill",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/google-labs-code/stitch-skills.git ~/.claude/skills/stitch-skills",
+    "stars": 6100,
+    "verified": true,
+    "added": "2026-06-23"
+  },
+  {
+    "name": "Taste Skill",
+    "repo": "Leonxlnx/taste-skill",
+    "description": "Gives your AI good taste — stops it generating boring, generic slop. Design-judgment skill that raises the aesthetic bar of generated UI.",
+    "tags": [
+      "design",
+      "taste",
+      "anti-ai-slop",
+      "ui",
+      "ux",
+      "aesthetics",
+      "skill"
+    ],
+    "install": "git clone https://github.com/Leonxlnx/taste-skill.git ~/.claude/skills/taste-skill",
+    "stars": 49600,
+    "verified": true,
+    "added": "2026-06-23"
+  },
+  {
+    "name": "Impeccable",
+    "repo": "pbakaus/impeccable",
+    "description": "The design language that makes your AI harness better at design. Cross-agent (Claude, Codex, Cursor, Gemini) design-quality skill.",
+    "tags": [
+      "design",
+      "ui",
+      "ux",
+      "design-system",
+      "anti-ai-slop",
+      "cross-agent",
+      "skill"
+    ],
+    "install": "git clone https://github.com/pbakaus/impeccable.git ~/.claude/skills/impeccable",
+    "stars": 40700,
+    "verified": true,
+    "added": "2026-06-23"
+  },
+  {
+    "name": "Remotion Video Skill",
+    "repo": "wshuyi/remotion-video-skill",
+    "description": "Claude Code skill for creating programmatic videos with the Remotion (React) framework — wraps the library into an agent-drivable workflow.",
+    "tags": [
+      "video",
+      "remotion",
+      "react",
+      "creative",
+      "rendering",
+      "skill"
+    ],
+    "install": "git clone https://github.com/wshuyi/remotion-video-skill.git ~/.claude/skills/remotion-video-skill",
+    "stars": 291,
+    "verified": true,
+    "added": "2026-06-23"
+  },
+  {
+    "name": "HyperFrames",
+    "repo": "heygen-com/hyperframes",
+    "description": "HeyGen's agent-native video toolkit — write HTML, render video. Built for agents, with .claude-plugin skills for HTML-to-video generation.",
+    "tags": [
+      "video",
+      "html",
+      "rendering",
+      "creative",
+      "heygen",
+      "agents",
+      "skill",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/heygen-com/hyperframes.git ~/.claude/skills/hyperframes",
+    "stars": 30600,
+    "verified": true,
+    "added": "2026-06-23"
+  },
+  {
+    "name": "GSAP Skills",
+    "repo": "greensock/gsap-skills",
+    "description": "Official GreenSock AI skills — teach coding agents to use GSAP animation correctly. Multi-agent (.claude-plugin + .cursor-plugin).",
+    "tags": [
+      "animation",
+      "gsap",
+      "greensock",
+      "frontend",
+      "official",
+      "ui",
+      "skill",
+      "cross-agent"
+    ],
+    "install": "git clone https://github.com/greensock/gsap-skills.git ~/.claude/skills/gsap-skills",
+    "stars": 9800,
+    "verified": true,
+    "added": "2026-06-23"
   }
 ]
