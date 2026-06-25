@@ -788,5 +788,26 @@
     "stars": 9800,
     "verified": true,
     "added": "2026-06-23"
+  },
+  {
+    "name": "Ponytail",
+    "repo": "DietrichGebert/ponytail",
+    "description": "Lazy-senior-dev mode for AI agents: YAGNI, stdlib-first, one line over fifty. Cuts ~54% of code without dropping safety. Works across 14 agents.",
+    "tags": [
+      "yagni",
+      "minimalism",
+      "code-quality",
+      "refactoring",
+      "claude-code-plugin",
+      "agent-skills",
+      "cross-agent",
+      "prompt-engineering",
+      "mcp"
+    ],
+    "install": "/plugin marketplace add DietrichGebert/ponytail",
+    "stars": 57000,
+    "verified": true,
+    "marketplace": true,
+    "added": "2026-06-25"
   }
 ]
