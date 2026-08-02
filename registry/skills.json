@@ -50,7 +50,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/skills/everything-claude",
-    "stars": 233354,
+    "stars": 236855,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -66,7 +66,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers",
-    "stars": 261143,
+    "stars": 264817,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -86,7 +86,7 @@
       "figma"
     ],
     "install": "git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git ~/.claude/skills/ui-ux-pro-max",
-    "stars": 110127,
+    "stars": 112443,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -120,7 +120,7 @@
       "security"
     ],
     "install": "git clone https://github.com/tirth8205/code-review-graph.git ~/.claude/skills/code-review-graph",
-    "stars": 26415,
+    "stars": 27980,
     "verified": true,
     "added": "2026-05-01"
   },
@@ -136,7 +136,7 @@
       "toolkit"
     ],
     "install": "git clone https://github.com/applied-artificial-intelligence/claude-code-toolkit.git ~/.claude/skills/claude-code-toolkit",
-    "stars": 80,
+    "stars": 81,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -153,7 +153,7 @@
       "productivity"
     ],
     "install": "git clone https://github.com/gsd-build/get-shit-done.git ~/.claude/skills/gsd",
-    "stars": 64793,
+    "stars": 64780,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -170,7 +170,7 @@
       "community"
     ],
     "install": "git clone https://github.com/hesreallyhim/awesome-claude-code.git ~/.claude/skills/awesome-claude-code",
-    "stars": 50939,
+    "stars": 51476,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -187,7 +187,7 @@
       "automation"
     ],
     "install": "git clone https://github.com/ComposioHQ/agent-orchestrator.git ~/.claude/skills/agent-orchestrator",
-    "stars": 8575,
+    "stars": 8737,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -204,7 +204,7 @@
       "efficiency"
     ],
     "install": "git clone https://github.com/thedotmack/claude-mem.git ~/.claude/skills/claude-mem",
-    "stars": 88565,
+    "stars": 89269,
     "verified": false,
     "added": "2026-05-04"
   },
@@ -238,7 +238,7 @@
       "workflow"
     ],
     "install": "git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack",
-    "stars": 124357,
+    "stars": 125762,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -254,7 +254,7 @@
       "persistence"
     ],
     "install": "git clone https://github.com/CaviraOSS/OpenMemory.git ~/.claude/skills/openmemory",
-    "stars": 4375,
+    "stars": 4398,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -269,7 +269,7 @@
       "resources"
     ],
     "install": "git clone https://github.com/Alishahryar1/free-claude-code.git ~/.claude/skills/free-claude-code",
-    "stars": 42299,
+    "stars": 43323,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -286,7 +286,7 @@
       "ui-testing"
     ],
     "install": "git clone https://github.com/browser-use/browser-use.git ~/.claude/skills/browser-use",
-    "stars": 106776,
+    "stars": 107525,
     "verified": false,
     "future": true,
     "added": "2026-05-04"
@@ -305,7 +305,7 @@
       "autonomous"
     ],
     "install": "git clone https://github.com/ruvnet/ruflo.git ~/.claude/skills/ruflo",
-    "stars": 65991,
+    "stars": 66783,
     "verified": true,
     "added": "2026-05-05"
   },
@@ -324,7 +324,7 @@
       "workflow"
     ],
     "install": "git clone https://github.com/hesamsheikh/octogent.git ~/.claude/skills/octogent",
-    "stars": 1372,
+    "stars": 1385,
     "verified": true,
     "added": "2026-05-05"
   },
@@ -345,7 +345,7 @@
       "marketplace"
     ],
     "install": "/plugin marketplace add anthropics/skills",
-    "stars": 164169,
+    "stars": 165665,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
@@ -364,7 +364,7 @@
       "cross-agent"
     ],
     "install": "npx skills add vercel-labs/skills --skill find-skills",
-    "stars": 27208,
+    "stars": 27785,
     "verified": true,
     "marketplace": true,
     "added": "2026-05-05"
@@ -385,7 +385,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/msitarzewski/agency-agents.git ~/.claude/skills/agency-agents",
-    "stars": 136671,
+    "stars": 138064,
     "verified": true,
     "added": "2026-05-07"
   },
@@ -405,7 +405,7 @@
       "ai"
     ],
     "install": "git clone https://github.com/VoltAgent/awesome-claude-code-subagents.git ~/.claude/skills/awesome-claude-code-subagents",
-    "stars": 23716,
+    "stars": 23934,
     "verified": true,
     "added": "2026-05-12"
   },
@@ -423,7 +423,7 @@
       "agents"
     ],
     "install": "git clone https://github.com/czlonkowski/n8n-mcp.git ~/.claude/skills/n8n-mcp",
-    "stars": 22407,
+    "stars": 22465,
     "verified": true,
     "added": "2026-05-12"
   },
@@ -441,7 +441,7 @@
       "search"
     ],
     "install": "git clone https://github.com/HKUDS/LightRAG.git ~/.claude/skills/lightrag",
-    "stars": 38131,
+    "stars": 38418,
     "verified": false,
     "future": true,
     "added": "2026-05-12"
@@ -459,7 +459,7 @@
       "deployment"
     ],
     "install": "git clone https://github.com/atarity/deploy-your-own-saas.git ~/.claude/skills/deploy-your-own-saas",
-    "stars": 9808,
+    "stars": 9840,
     "verified": false,
     "future": true,
     "added": "2026-05-12"
@@ -478,7 +478,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/nutlope/hallmark.git ~/.claude/skills/hallmark",
-    "stars": 17745,
+    "stars": 20601,
     "verified": true,
     "added": "2026-05-24"
   },
@@ -496,7 +496,7 @@
       "aggregator"
     ],
     "install": "git clone https://github.com/tashfeenahmed/freellmapi.git ~/.claude/skills/freellmapi",
-    "stars": 17012,
+    "stars": 17497,
     "verified": true,
     "added": "2026-05-26"
   },
@@ -513,7 +513,7 @@
       "curated-list"
     ],
     "install": "git clone https://github.com/cheahjs/free-llm-api-resources.git ~/.claude/skills/free-llm-api-resources",
-    "stars": 28233,
+    "stars": 29061,
     "verified": true,
     "added": "2026-05-26"
   },
@@ -530,7 +530,7 @@
       "awesome-list"
     ],
     "install": "git clone https://github.com/Shubhamsaboo/awesome-llm-apps.git ~/.claude/skills/awesome-llm-apps",
-    "stars": 127678,
+    "stars": 129612,
     "verified": true,
     "added": "2026-05-26"
   },
@@ -549,7 +549,7 @@
       "ingestion"
     ],
     "install": "pip install markitdown-mcp",
-    "stars": 169023,
+    "stars": 170694,
     "verified": true,
     "added": "2026-05-29"
   },
@@ -566,7 +566,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/hardikpandya/stop-slop.git ~/.claude/skills/stop-slop",
-    "stars": 14435,
+    "stars": 14852,
     "verified": true,
     "added": "2026-05-29"
   },
@@ -584,7 +584,7 @@
       "knowledge-base"
     ],
     "install": "git clone https://github.com/teng-lin/notebooklm-py.git ~/.claude/skills/notebooklm-py",
-    "stars": 18194,
+    "stars": 18404,
     "verified": true,
     "added": "2026-05-29"
   },
@@ -601,7 +601,7 @@
       "awesome-list"
     ],
     "install": "git clone https://github.com/ashishpatel26/500-AI-Agents-Projects.git ~/.claude/skills/500-ai-agents-projects",
-    "stars": 35167,
+    "stars": 35567,
     "verified": false,
     "future": true,
     "added": "2026-05-29"
@@ -619,7 +619,7 @@
       "bytedance"
     ],
     "install": "git clone https://github.com/bytedance/deer-flow.git ~/.claude/skills/deer-flow",
-    "stars": 77860,
+    "stars": 78759,
     "verified": false,
     "future": true,
     "added": "2026-05-29"
@@ -638,7 +638,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/rtk-ai/rtk.git ~/.claude/skills/rtk",
-    "stars": 73256,
+    "stars": 74278,
     "verified": true,
     "added": "2026-06-17"
   },
@@ -657,7 +657,7 @@
       "workflow"
     ],
     "install": "git clone https://github.com/affaan-m/ECC.git ~/.claude/skills/ecc",
-    "stars": 233355,
+    "stars": 236855,
     "verified": true,
     "added": "2026-06-17"
   },
@@ -675,7 +675,7 @@
       "cli"
     ],
     "install": "git clone https://github.com/chopratejas/headroom.git ~/.claude/skills/headroom",
-    "stars": 62426,
+    "stars": 63905,
     "verified": true,
     "added": "2026-06-17"
   },
@@ -694,7 +694,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/google-labs-code/stitch-skills.git ~/.claude/skills/stitch-skills",
-    "stars": 7814,
+    "stars": 7888,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -712,7 +712,7 @@
       "skill"
     ],
     "install": "git clone https://github.com/Leonxlnx/taste-skill.git ~/.claude/skills/taste-skill",
-    "stars": 67648,
+    "stars": 70057,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -730,7 +730,7 @@
       "skill"
     ],
     "install": "git clone https://github.com/pbakaus/impeccable.git ~/.claude/skills/impeccable",
-    "stars": 50152,
+    "stars": 53751,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -747,7 +747,7 @@
       "skill"
     ],
     "install": "git clone https://github.com/wshuyi/remotion-video-skill.git ~/.claude/skills/remotion-video-skill",
-    "stars": 318,
+    "stars": 324,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -766,7 +766,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/heygen-com/hyperframes.git ~/.claude/skills/hyperframes",
-    "stars": 37656,
+    "stars": 39088,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -785,7 +785,7 @@
       "cross-agent"
     ],
     "install": "git clone https://github.com/greensock/gsap-skills.git ~/.claude/skills/gsap-skills",
-    "stars": 12382,
+    "stars": 12833,
     "verified": true,
     "added": "2026-06-23"
   },
@@ -805,7 +805,7 @@
       "mcp"
     ],
     "install": "/plugin marketplace add DietrichGebert/ponytail",
-    "stars": 89399,
+    "stars": 93554,
     "verified": true,
     "marketplace": true,
     "added": "2026-06-25"
