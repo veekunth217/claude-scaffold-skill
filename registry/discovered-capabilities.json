@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-09T02:06:09.434228+00:00",
+  "generated_at": "2026-08-16T01:42:36.560476+00:00",
   "docs_pages_scanned": 9,
-  "confirmed_count": 7,
-  "new_count": 2,
+  "confirmed_count": 4,
+  "new_count": 3,
   "new_capabilities": [
     {
       "name": "IDE Extension",
@@ -13,6 +13,19 @@
         "ide"
       ],
       "matched_pattern": "VS Code|JetBrains|IDE extension",
+      "sources": [
+        "https://github.com/anthropics/claude-code/releases"
+      ]
+    },
+    {
+      "name": "Image Input",
+      "category": "multimodal",
+      "tags": [
+        "frontend",
+        "ui",
+        "design"
+      ],
+      "matched_pattern": "image|screenshot|multimodal|paste.*image",
       "sources": [
         "https://github.com/anthropics/claude-code/releases"
       ]
@@ -33,6 +46,24 @@
   ],
   "recent_changelog_entries": [
     {
+      "heading": "v2.1.233"
+    },
+    {
+      "heading": "v2.1.232"
+    },
+    {
+      "heading": "v2.1.231"
+    },
+    {
+      "heading": "v2.1.229"
+    },
+    {
+      "heading": "v2.1.228"
+    },
+    {
+      "heading": "v2.1.227"
+    },
+    {
       "heading": "v2.1.226"
     },
     {
@@ -43,24 +74,6 @@
     },
     {
       "heading": "v2.1.223"
-    },
-    {
-      "heading": "v2.1.222"
-    },
-    {
-      "heading": "v2.1.221"
-    },
-    {
-      "heading": "v2.1.220"
-    },
-    {
-      "heading": "v2.1.219"
-    },
-    {
-      "heading": "v2.1.218"
-    },
-    {
-      "heading": "v2.1.217"
     }
   ]
 }
