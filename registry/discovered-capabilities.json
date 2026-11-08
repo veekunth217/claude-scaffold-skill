@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-01T05:00:23.194267+00:00",
+  "generated_at": "2026-11-08T05:10:00.719388+00:00",
   "docs_pages_scanned": 9,
-  "confirmed_count": 8,
+  "confirmed_count": 7,
   "new_count": 3,
   "new_capabilities": [
     {
@@ -46,6 +46,15 @@
   ],
   "recent_changelog_entries": [
     {
+      "heading": "v2.1.319"
+    },
+    {
+      "heading": "v2.1.318"
+    },
+    {
+      "heading": "v2.1.317"
+    },
+    {
       "heading": "v2.1.316"
     },
     {
@@ -65,15 +74,6 @@
     },
     {
       "heading": "v2.1.308"
-    },
-    {
-      "heading": "v2.1.307"
-    },
-    {
-      "heading": "v2.1.306"
-    },
-    {
-      "heading": "v2.1.305"
     }
   ]
 }
